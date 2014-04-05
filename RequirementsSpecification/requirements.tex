@@ -1,0 +1,70 @@
+\documentclass[12pt, a4paper]{scrartcl}
+\usepackage{graphicx} %Required for diagrams
+
+
+\topmargin -1.5cm  
+\oddsidemargin -0.04cm  
+\evensidemargin -0.04cm 
+\textwidth 16.59cm
+\textheight 21.94cm 
+\parskip 7.2pt         
+%\renewcommand{\baselinestretch}{1.5} % Uncomment for 1.5 spacing between lines
+\parindent 0pt	
+
+\begin{document}
+
+\include{titlepage}
+
+
+\include{history}
+
+%NOTE: build it twice if warnings occur and table of contents do not show(Happens on Kile application-Linux)
+\tableofcontents
+
+\newpage
+
+\section{Overview}
+
+\subsection{Background}
+Reliable communication in certain parts of South Africa is not always possible in remote locations using GSM, 3G or other similar mediums.\\
+\textbf{\\}
+Therefore, communication normally occur using SMS - which generally is not very secure. This can cause a loss in confidentiality, availability and integrity to the communicators.\\
+\textbf{\\}
+
+
+\subsection{Document Conventions}
+\begin{itemize}
+\item Documentation formulation: LaTeX
+\item Naming convention: Crows Foot Notation
+\end{itemize}
+
+
+\subsection{Project Scope}
+The goal of this project is to create a mobile application which can be used on more than one platform(i.e. IOS and Android) and will be able to encrypt messages which can then be decrypted on the receiving end. Thereby reducing the risk of the confidential information being obtained by an unauthorised party.
+
+\subsection{References}
+\begin{itemize}
+\item{Kyle Riley - MWR Info Security}
+\item{Bernard Wagner - MWR Info Security}
+\end{itemize}
+
+
+\textbf{\\}
+
+
+%%%%%%%%%%%%%
+%Functional Requirements
+%%%%%%%%%%%%%
+\include{SystemFeatures}
+\include{SystemDescription}
+
+%%%%%%%%%%%%%
+%NON Functional Requirements
+%%%%%%%%%%%%%
+
+
+
+\include{glossary}
+
+\end{document}
+
