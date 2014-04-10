@@ -5,49 +5,34 @@
 
 \begin{document}
 
-\include{titlepage}
 
+\include{titlepage}
 
 \include{history}
 
-%NOTE: build it twice if warnings occur and table of contents do not show(Happens on Kile application-Linux)
 \tableofcontents
 
 \newpage
 
+%Introduction for this document
+\include{Introduction}
 
-\section{References}
-\begin{itemize}
-\item{Kyle Riley - MWR Info Security}
-\item{Bernard Wagner - MWR Info Security}
-\end{itemize}
-
-\section{Overview}
-
-\subsection{Background}
-Reliable communication in certain parts of South Africa is not always possible in remote locations using GSM, 3G or other similar mediums.
-
-Therefore, communication normally occur using SMS - which generally is not very secure. This can cause a loss in confidentiality, availability and integrity to the communicators.
-
-
-
-\subsection{Document Conventions}
-\begin{itemize}
-\item Documentation formulation: LaTeX
-\item Naming convention: Crows Foot Notation
-\end{itemize}
-
-
-\subsection{Project Scope}
-The goal of this project is to create a mobile application which can be used on more than one platform(i.e. IOS and Android) and will be able to encrypt messages which can then be decrypted on the receiving end. Thereby reducing the risk of the confidential information being obtained by an unauthorised party.
-
+%The General description of the project
+\include{GeneralDescription}
 
 
 %%%%%%%%%%%%%
-%Functional Requirements
+%Requirements of the system
 %%%%%%%%%%%%%
-\include{FunctionalRequirements}
-\include{QualityRequirements}
+\section{Specific requirements}
+
+\include{ExternalInterfaceRequirements}
+
+%Includes most functional requirements here
+\include{SystemFeatures}
+
+%Quality Requirements included in here
+\include{OtherRequirements}
 
 
 %%%%%%%%%%%%%
@@ -55,10 +40,6 @@ The goal of this project is to create a mobile application which can be used on 
 %%%%%%%%%%%%%
 \include{SystemDescription}
 
-
-
-
-\include{glossary}
 
 \end{document}
 
