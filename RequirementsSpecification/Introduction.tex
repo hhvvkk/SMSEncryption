@@ -1,23 +1,40 @@
 \section{Introduction}
 
 \subsection{Purpose}%\subsection{Background}
-Reliable communication in certain parts of South Africa is not always possible in remote locations using GSM, 3G or other similar mediums.
+This document describes the software requirements and specification for SMSEncryption mobile application.
+\vspace{10pt}\\
+The document will be used to ensure requirements are well understood by all stakeholders. It is therefore intended for all stakeholders of the project including the developers and customers.
 
-Therefore, communication normally occur using SMS - which generally is not very secure. This can cause a loss in confidentiality, availability and integrity to the communicators.
+
+\subsection{Background}
+Reliable communication in certain parts of South Africa is not always possible in remote locations using GSM, 3G or other similar mediums.
+\vspace{10pt}\\
+Therefore, communication normally occur using SMS which generally is not very secure. This can cause a loss in confidentiality, integrity and availability of the communicators.
+\vspace{10pt}\\
+There is a need to develop a secure way of communicate using conventional mediums such as SMS.
 
 \subsection{Scope}
 %objectives, goals, benefits, 
 %Relate the software to corporate goals or business strategies.
-The goal of this project is to create a mobile application which can be used on more than one platform(i.e. IOS and Android) and will be able to encrypt messages which can then be decrypted on the receiving end. \\
-\vspace{10pt}
-The benefit of this application is that you are able to communicate securely, knowing that you are reducing the risk of the confidential information being obtained by an unauthorised party.
-
+The goal of this project is to create a mobile application which can be used on more than one platform(i.e. IOS and Android) and will be able to encrypt messages which can then be decrypted on the receiving end.
+\vspace{10pt}\\
+By using SMSEncryption, the user will be able to communicate securely with another user who also has the same application. The application will be secured using a password before the user can decrypt or encrypt a message.
+\vspace{10pt}\\
+The method of encryption will be an appropriate algorithm which will prevent the message from being decrypted by an unauthorised party who obtains the message.
+\vspace{10pt}\\
+The benefit of this application is that you are able to communicate securely, knowing that you are reducing the risk of the confidential information being obtained by an unauthorised party. It allows for the use of convenient mediums of communication(such as SMS) which will be robust in remote areas with little signal.
 
 
 \subsection{Definitions, acronyms and abbreviations}
 \begin{itemize}
-\item Encrypt - The act of 
-\item Decrypt - alsas
+\item SMSEncryption - The current project which will allow secure communication once implemented.
+\item Ciphertext - A message that has been changed into another form.
+\item Encrypt - The act of encoding messages into a ciphertext which only the authorised parties can read the content of the message.
+\item Decrypt - The act of decoding a ciphertext back into the orginal form before conversion took place.
+\item User - An authorised person who will interact with the application.
+\item Sender - The person who will send a message using the application
+\item Receiver - The person who receives a message using the application
+\item SMS - Short Message Service (SMS) is a text messaging service component of phone, Web, or mobile communication systems. This allows for short messages to be sent to other devices.
 \end{itemize}
 
 \subsection{Document Conventions}
