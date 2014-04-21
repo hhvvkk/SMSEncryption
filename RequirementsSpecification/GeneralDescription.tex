@@ -4,15 +4,15 @@
  %Describes the environment of the system
 
 \subsubsection{Description}
-This is a new product which can be used in conjunction with any mobile text manipulation service, be this provided by the operating system or another application, capable of using the basic GSM character set, should you require encryption and decryption functionality.
+SMSEncryption is a new product which can be used in conjunction with any mobile text manipulation application, such as the general keyboard input used by the different mobile operating systems, or any other text manipulating application, capable of using the basic GSM character set - should you require encryption and decryption functionality for secure communication between two parties.
 \vspace{12pt}\\
-The GSM character set only contains certain characters which limits which encryption methods we can make use of. Many encryption algorithms greatly increase the number of characters, but this approach will be infeasable.
+The GSM character set contains a limited amount of characters, which will, in turn, limit the encryption methods we can make use of, as many encryption algorithms greatly increase both the size of the message, and the number of different characters used. Making use of these encryption algorithms that generate large amounts of characters will be infeasible, as sending large SMSes will be expensive.
 \vspace{12pt}\\
-Software interface - The software interface will make use of operating system features such as a clipboard on the device to facilitate copying and pasting of messages or ciphertexts.
+Software interface - The software interface will make use of operating system features, such as a clipboard on the device to facilitate 'copying' and 'pasting' of texts or ciphertexts.
 \vspace{12pt}\\
-User interface - The user interface is what will allow the user to encrypt a message and decrypt a message which has been sent by other users of this application.
+User interface - The user interface is what will allow the user to type a message, encrypt it, copy the ciphertext, and paste it into the application that will send the message. On the receiving end, the message received will be copied, and pasted into the SMSEncryption application, which will be used to decrypt the received message. This ensures integrity of the message, as only users of the application will be able to encrypt/decrypt the message in the agreed upon way.
 \vspace{12pt}\\
-Hardware Interface - The software will run on a mobile device that allows user interaction.
+Hardware Interface - The software will run on a mobile device that allows user interaction and text manipulation.
 
 
 %Note:
@@ -33,22 +33,26 @@ SMSEncryption Use case diagram
 %An overview of the system's main features
 %? complete list of "brief" use-case descriptions
 %? features will be specified in detail in Section 3
+%check for the "lock time" when password is typed incorrectly
+%check first item for cipher message list
 \subsubsection{Log In}
 \begin{itemize}
-\item On first use a password must be created for future use by the user of the application.
-\item The application will ask the user for login details which he/she must then enter correctly. 
-\item If it is incorrect, the application will close preventing access for an unauthorised user.
+\item On first use of the application, a password must be created that will ensure user authentication.
+\item Every time a user wants to use the application, the password must be provided along with the login details.
+\item If the provided password (and related details) are entered correctly, the user may gain access to the application.
+\item If the password provided remains incorrect after a specified number of times, the application will lock for a specified time - preventing access from an unauthorised user.
 \end{itemize}
 \subsubsection{Message}
 \textbf{Create}
 \begin{itemize}
-\item The plaintext is created independently by the user and input into the application
-\item The plaintext can be created and edited within the application.
+\item The plaintext is created independently by the user and input into the application.
+\item The plaintext can also be created and edited within the application.
 \end{itemize}
 \textbf{Cipher Message}
 \begin{itemize}
-\item The user will select a relevant contact, that contacts details will then be used to perform encryption or decryption.\item The message will be encrypted to obtain the cipher text which the user can then copy out and send to the desired receiver via any messaging method.
-\item The desired receiver will be able to decrypt the message into its plaintext.
+\item The user will select a relevant contact, that contacts details will then be used to perform encryption or decryption.
+\item The message will be encrypted to obtain the cipher text, which the user can then copy out and paste into the application that will send the ciphertext to the desired receiver; via any messaging method.
+\item The desired receiver will be able to decrypt the message back into its plaintext.
 \end{itemize}
 
 \subsubsection{Device Synchronization}
@@ -67,7 +71,7 @@ SMSEncryption Use case diagram
 \begin{itemize}
 \item There will be only one user class who will have full access to all the features provided by the application after local authentication.
 \item It is assumed that the user has proficient knowledge on how to copy items from messages such as SMS and paste it within this application.
-\item Assumed that the users performed the device synchronization phase correctly as there is no way for the device to know.
+\item It is also assumed that the users performed the device synchronization phase correctly as there is no way for the device to know.
 \end{itemize}
 
 
