@@ -47,16 +47,15 @@ SMSEncryption Use case diagram
 \end{itemize}
 \textbf{Cipher Message}
 \begin{itemize}
-\item The message will be encrypted to obtain the cipher text which the user can then copy out and send to the desired receiver via any messaging method.
+\item The user will select a relevant contact, that contacts details will then be used to perform encryption or decryption.\item The message will be encrypted to obtain the cipher text which the user can then copy out and send to the desired receiver via any messaging method.
 \item The desired receiver will be able to decrypt the message into its plaintext.
 \end{itemize}
 
-
-\subsubsection{Cipher - CLARITY - Maybe add to 3.4}
+\subsubsection{Device Synchronization}
 \begin{itemize}
-\item The user can generate a cipher which will influence how it is encrypted and decrypted by the sender and receiver. 
-\item This cypher can be copied and can be used in other places such as add cipher.
-\item The user can add a cipher to the application determining how the message will be encrypted and decrypted which allows communication between two users.
+\item In order for communication to take place between two devices they need to be synchronized.
+\item A user adds what is called a contact, it will ask the name of the contact as well as generate a unique word to be provided to the other person and an input box where the unique word appearing on the contacts phone.
+\item Both users must add each other at the same time, because they need each other unique word that will be generated for their communication. This will synchronize communication between the devices.
 \end{itemize}
 
 \subsection{User characteristics}
@@ -68,6 +67,7 @@ SMSEncryption Use case diagram
 \begin{itemize}
 \item There will be only one user class who will have full access to all the features provided by the application after local authentication.
 \item It is assumed that the user has proficient knowledge on how to copy items from messages such as SMS and paste it within this application.
+\item Assumed that the users performed the device synchronization phase correctly as there is no way for the device to know.
 \end{itemize}
 
 
@@ -85,4 +85,5 @@ SMSEncryption Use case diagram
 
 \begin{itemize}
 \item It is assumed that the amount of characters in the basic GSM character set is 128 for the 7-bit encoding used in GSM.
+\item It is assumed that the devices being used allows for copy and pasting of text between different interfaces and applicaitons.
 \end{itemize}
