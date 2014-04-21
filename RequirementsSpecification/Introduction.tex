@@ -1,7 +1,7 @@
 \section{Introduction}
 
 \subsection{Purpose}%\subsection{Background}
-This document describes the software requirements and specification for SMSEncryption mobile application.
+This document describes the software requirements and specification for the SMSEncryption mobile application.
 \vspace{10pt}\\
 The document will be used to ensure requirements are well understood by all stakeholders. It is therefore intended for all stakeholders of the project including the developers and customers.
 
@@ -16,27 +16,27 @@ There is a need to develop a secure way of communicate using conventional medium
 \subsection{Scope}
 %objectives, goals, benefits, 
 %Relate the software to corporate goals or business strategies.
-The goal of this project is to create a mobile application which can be used on more than one platform(i.e. IOS and Android) and will be able to encrypt messages which can then be decrypted on the receiving end.
+The goal of this project is to create a mobile application which can be used on more than one platform(i.e. IOS and Android). This application will be able to encrypt messages which can then be decrypted on the receiving end.
 \vspace{10pt}\\
-By using SMSEncryption, the user will be able to communicate securely with another user who also has the same application. The application will be secured using a password before the user can decrypt or encrypt a message.
+By using SMSEncryption, the user will be able to encrypt messages which can only be decrypted using the same application. The user will require local authentication to access the access the appliaction and make use of it's features.
 \vspace{10pt}\\
-The method of encryption will be an appropriate algorithm which will prevent the message from being decrypted by an unauthorised party who obtains the message.
-\vspace{10pt}\\
-The benefit of this application is that you are able to communicate securely, knowing that you are reducing the risk of the confidential information being obtained by an unauthorised party. It allows for the use of convenient mediums of communication(such as SMS) which will be robust in remote areas with little signal.
+The benefit of this application is that you can use SMS technology to send messages containing confidential information which only you and the desired recipient can read in an unencrypted form.
 
 
 \subsection{Definitions, acronyms and abbreviations}
 \begin{itemize}
-\item SMSEncryption - The current project which will allow secure communication once implemented.
-\item Message - The message intended to be sent from a sender to a receiver.
-\item Ciphertext - A message that has been changed into another form.
-\item Encrypt - The act of encoding messages into a ciphertext which only the authorised parties can read the content of the message.
+\item SMSEncryption - The current project which will allow you to encrypt and decrypt text with the purpose of it being sent as a message via messaging applications eg. WhatsApp, SMS etc.
+\item Message - The text intended to be sent from a sender to a receiver  or stored once said message has been encrypted via SMSEncryption.
+\item Plaintext -  Is information a sender wishes to transmit to a receiver. 
+\item Ciphertext - Is the result of encryption performed on plaintext using an algorithm, called a cipher.
+\item Encrypt -  To alter the plaintext using an algorithm so as to be unintelligible to unauthorized parties.
 \item Decrypt - The act of decoding a ciphertext back into the orginal form before conversion took place.
 \item User - An authorised person who will interact with the application.
-\item Sender - The person who will send a message using the application.
-\item Receiver - The person who receives a message using the application.
-\item SMS - Short Message Service (SMS) is a text messaging service component of phone, Web, or mobile communication systems. This allows for short messages to be sent to other devices.
+\item Sender - The person who authored and intends to send a messagethat has been encrypted via the application.
+\item Receiver - The intended party who receives a message which has been encrypted via the application.
+\item SMS - Short Message Service (SMS) is a text messaging service component of phone, Web, or mobile communication systems. This allows for short messages to be sent to other devices over a network which is not controlled by the sender or receiver.
 \item GSM - Global System for Mobile Communications (GSM) is a second generation standard for protocols used on mobile devices.
+\item Entropy -  The expected value of the information contained in a message.
 \end{itemize}
 
 \subsection{Document Conventions}

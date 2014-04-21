@@ -4,15 +4,15 @@
  %Describes the environment of the system
 
 \subsubsection{Description}
-This is a new product which will be able to work together with other messaging capabilities, such as normal messaging on mobile devices, and also other applications capable of using the basic GSM character set.
+This is a new product which can be used in conjunction with any mobile text manipulation service, be this provided by the operating system or another application, capable of using the basic GSM character set, should you require encryption and decryption functionality.
 \vspace{12pt}\\
-GSM character set only allows a number of characters which may prevent the use of certain encryption. Many encryption algorithms greatly increase the number of characters, but this approach will be infeasable.
+The GSM character set only contains certain characters which limits which encryption methods we can make use of. Many encryption algorithms greatly increase the number of characters, but this approach will be infeasable.
 \vspace{12pt}\\
-Software interface - The software interface will make use of the clipboard functionality on the phone in order to copy and paste messages or ciphertexts.
+Software interface - The software interface will make use of operating system features such as a clipboard on the device to facilitate copying and pasting of messages or ciphertexts.
 \vspace{12pt}\\
 User interface - The user interface is what will allow the user to encrypt a message and decrypt a message which has been sent by other users of this application.
 \vspace{12pt}\\
-Hardware Interface - The software will run on a mobile device with touch screen capabilities.
+Hardware Interface - The software will run on a mobile device that allows user interaction.
 
 
 %Note:
@@ -35,25 +35,24 @@ SMSEncryption Use case diagram
 %? features will be specified in detail in Section 3
 \subsubsection{Log In}
 \begin{itemize}
-\item The application will ask the user for login details which he/she must then enter in correctly. 
+\item On first use a password must be created for future use by the user of the application.
+\item The application will ask the user for login details which he/she must then enter correctly. 
 \item If it is incorrect, the application will close preventing access for an unauthorised user.
 \end{itemize}
 \subsubsection{Message}
 \textbf{Create}
 \begin{itemize}
-\item The user can create a message using this application.
-\item The application will also allow the user to edit the message which is currently being typed in.
-\item The limit of the message will be displayed while the user is entering a message.
+\item The plaintext is created independently by the user and input into the application
+\item The plaintext can be created and edited within the application.
 \end{itemize}
 \textbf{Cipher Message}
 \begin{itemize}
-\item The message can be encrypted to obtain the cipher text which the user can send to the other user. 
-\item The cipher text can be sent after copying the message to the clipboard and pasting it into a message such as SMS or other similar applications.
-\item The user who receives a message will be able to decrypt the message afterwards showing the original message before encryption.
+\item The message will be encrypted to obtain the cipher text which the user can then copy out and send to the desired receiver via any messaging method.
+\item The desired receiver will be able to decrypt the message into its plaintext.
 \end{itemize}
 
 
-\subsubsection{Cipher}
+\subsubsection{Cipher - CLARITY - Maybe add to 3.4}
 \begin{itemize}
 \item The user can generate a cipher which will influence how it is encrypted and decrypted by the sender and receiver. 
 \item This cypher can be copied and can be used in other places such as add cipher.
@@ -67,7 +66,7 @@ SMSEncryption Use case diagram
 %? Only user characteristics that affect the software
 %requirements
 \begin{itemize}
-\item There will be only one user class who will have full access to all the features provided by the application.
+\item There will be only one user class who will have full access to all the features provided by the application after local authentication.
 \item It is assumed that the user has proficient knowledge on how to copy items from messages such as SMS and paste it within this application.
 \end{itemize}
 
@@ -76,7 +75,6 @@ SMSEncryption Use case diagram
 %Anything that will limit the designer's options
 \begin{itemize}
 \item The application must make use of the basic GSM character set.
-\item The application will be delivered as a prototype if time permits.
 \end{itemize}
 
 
