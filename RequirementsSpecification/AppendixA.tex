@@ -4,23 +4,24 @@
 %content page uit te hou. Dit unclutter dit so `n betjie
 \subsection*{Introduction}
 
+This appendix is about research done in pursuit of a possible solution to the given problem. It is about RSA and how we researched possible RSA solutions to encrypt an SMS message.
+
 \subsection*{Method}
 
+We started by trying to use the build in RSA implementation that is built into Java. After that we did research into the background of RSA, more specifically the math’s that make it work. We then attempted numerous combinations of the mathematical principals behind RSA to see if any of them could manage to be used to fulfill the needed requirements.
+
 \subsection*{Result}
-%mention van specifiek die hoeveelheid characters wat gebruik kan word as jy bv
-%encryption gebruik wat so sterk is ens...
-%
+
+The build in RSA used keys that would become too large to redistribute, in order to accommodate encrypted text of as close as possible to 160 characters after padding required a 700 bit key. It also limited the amount of characters to about 77 characters before it became larger than 160 characters.
+\vspace{10pt}\\
+We implemented a custom RSA but it started out week due to the limits imposed by our character set. We looked into an alternative where 2 encrypted characters represented 1 plain text character. This gave some strength to the encryption but limited the message one could send to 80 characters. The client said that this was not an option.
 
 \subsection*{Discussion}
-%mention watokal jy wil
 
-%+mention problems met RSA in terme van die projek
-%vb. hoeveelheid characters(na encryption)
-%vb2. Size of keys
-
-%+mention problems wat soortgelyke encryptions ook het
-%bv. RSA maak groter (character length), sowel as 
-
+When thinking about modern encryption we think about RSA and how useful it is, the thing we easily forget is behind the scenes large amounts of data is transferred just to enable the encryption and decryption. It is because of the keys being too large to SMS that the build in RSA was disregarded, along with uncontrolled padding in an environment where message length was extremely important. In our custom RSA we could control the length of the key but just like the build in version it limited characters too much.
 \subsection*{Conclusion}
 
+RSA works well in modern technologies but it only works well where we can transfer large amounts of data relatively easily such as for example data transfer over the internet. We need large keys to make the encryption strong due to the limitations of the character set, but with no way of distributing the key and the limitations to the key length RSA is not the answer to this problem.
 \subsection*{References}
+
+\item Kaliski, B., n.d. The Mathematics of the RSA Public-Key Cryptosystem. s.l.:RSA Laboratories.
