@@ -7,11 +7,7 @@ The document will be used to ensure requirements are well understood by all stak
 
 
 \subsection{Background}
-Reliable communication using newer generation cellular technologies, such as GSM or 3G, is not always possible in certain parts of South Africa, as the signal for these technologies are either non-existent, or intermittent.
-\vspace{10pt}\\
-Therefore, communication normally occurs using SMS technology, which is generally not very secure. Messages sent via SMS are generally encrypted with a weak and broken stream cipher, and can thus be read by any competent attacker who intercepts the SMS. SMS messages are also stored on an SMSC for up to 15 days, which can then be viewed by an unknown party. This can cause a loss in confidentiality, integrity and availability of the communicators.
-\vspace{10pt}\\
-There is a need to develop a secure way of communicating using conventional mediums such as SMSes.
+Certain operations within remote parts of South Africa require reliable transmission of data which cannot be achieved through traditional means of data transmission (e.g. GSM, 3G, etc). As an alternative, SMSes are used to transmit these messages. Some of the data which is transmitted is sensitive, and requires some form of encryption. As traditional encryption functions often produce characters which fall outside the character set of modern cellphones, it is necessary to use an encoding scheme to translate these characters back into the cell phones character set. Most encoding schemes (such as base64) increase the length of the message this may result in the encrypted message exceeding the maximum character allowance for SMS.
 
 \subsection{Scope}
 %objectives, goals, benefits, 
