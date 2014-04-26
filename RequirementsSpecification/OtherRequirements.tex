@@ -7,15 +7,18 @@
 
 
 \subsection{Design constraints}
-\subsubsection{Message length : DC1\\(Source: Bernard Wagner, Priority: High)}
+\subsubsection{Message length : DC1}
+\textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
 \item Due to the fact that the primary messaging service which the client intends to use is SMS this limits the input size of the text to 160 characters. To maintain consistency we enforce this as the maximum length of messages which the application can encrypt and decrypt.
 \end{itemize}
-\subsubsection{The usable character : DC2\\(Source: Bernard Wagner, Priority: High)}
+\subsubsection{The usable characters : DC2}
+\textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
 \item The usable character which can be encrypted by the application is the GSM character set because the primary intended messaging service that the client wishes to use is SMS. 
 \end{itemize}
-\subsubsection{Application resource requirementsr : DC3\\(Source: Bernard Wagner, Priority: High)}
+\subsubsection{Application resource requirementsr : DC3}
+\textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
 \item The application should function efficiently with the least amount of resource usage.
 \end{itemize}
