@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SMSEncryption</string>
+    <string name="title_contact_detail">Contact Detail</string>
+    <string name="title_activity_login">Login</string>
+    <string name="loginHint">Login with your username and password</string>
+    <string name="passwordHintLabel">Password</string>
+    <string name="userNameLabel">Username</string>
+    <string name="passwordHint">password here</string>
+    <string name="userNameHint">username here</string>
+    <string name="loginButtonOK">Login</string>
+    <string name="action_add_user">Add user</string>
+    <string name="title_activity_add_user">AddUserActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="addUserActivityHint">Insert your new username and password</string>
+    <string name="passwordHintConfirm">confirm here</string>
+    <string name="passwordHintLabelConfirm">Confirm Password</string>
+    <string name="addUser">Add User</string>
+    <string name="Contacts">Contacts</string>
+    <string name="action_add_contact">Add contact</string>
+    <string name="title_activity_add_contact">AddContact</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="addNewContactHint">Enter the details for new contact </string>
+    
+    
+    <string name="contactName">Contact Name</string>
+    <string name="contactPhoneNumber">Contact Number</string>
+    <string name="contactName_hint">name here</string>
+    <string name="contactPhoneNumber_hint">(optional)</string>
+    <string name="addContact">Add contact</string>
+    
+    
+    <string name="encryptMessageButton">Encrypt message</string>    
+    <string name="decryptMessageButton">Decrypt message</string> 
+    
+    <string name="messageHintLabel">Message</string>
+    <string name="messageHint">Enter a message here</string>
+    
+    
+
+</resources>
