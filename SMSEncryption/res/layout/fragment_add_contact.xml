@@ -55,19 +55,43 @@
             android:id="@+id/editTextNewContactNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.94"
             android:hint="@string/contactPhoneNumber_hint"
             android:inputType="text" />
 
     </LinearLayout>
-    
-    
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/MyKey"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/editTextMyKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ContactKey" />
+
+    <EditText
+        android:id="@+id/editTextContactKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addContact" 
-        android:onClick="addContact"/>
+        android:onClick="addContact"
+        android:text="@string/addContact" />
 
 </LinearLayout>

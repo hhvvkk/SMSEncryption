@@ -37,7 +37,7 @@ public class ContactContent {
         	//add them to the
         	for(int i = 0; i < contactList.size(); i++){
         		Contact contact = contactList.get(i);
-        		ContactItem item = new ContactItem(Integer.toString(contact.getID()), contact.getName());
+        		ContactItem item = new ContactItem(Integer.toString(contact.getID()), contact.getName(),contact.getHisSeed(),contact.getMySeed());
         		
             	addItem(item);
         	}
@@ -59,10 +59,14 @@ public class ContactContent {
     public static class ContactItem {
         public String id;
         public String name;
+        public String hisSeed;
+        public String mySeed;
 
-        public ContactItem(String id, String content) {
+        public ContactItem(String id, String content,String _hisSeed,String _mySeed) {
             this.id = id;
             this.name = content;
+            this.hisSeed=_hisSeed;
+            this.mySeed=_mySeed;
         }
 
         @Override

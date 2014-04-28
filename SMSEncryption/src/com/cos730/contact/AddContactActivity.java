@@ -2,6 +2,7 @@ package com.cos730.contact;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +13,9 @@ import android.widget.EditText;
 
 import com.cos730.database.Contact;
 import com.cos730.database.DatabaseHandler;
+import com.cos730.encryption.Charset;
+import com.cos730.encryption.Keys.KeyGenerator;
+import com.cos730.smsencryption.ContactListActivity;
 import com.cos730.smsencryption.R;
 import com.cos730.smsencryption.R.id;
 import com.cos730.smsencryption.R.layout;
@@ -29,6 +33,8 @@ public class AddContactActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+
+		
 	}
 
 	@Override
@@ -64,6 +70,16 @@ public class AddContactActivity extends Activity {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_add_contact,
 					container, false);
+			
+			EditText etMySeed = (EditText)rootView.findViewById(R.id.editTextMyKey);
+			
+			Charset cs=new Charset();
+			KeyGenerator gen=new KeyGenerator(cs);
+			
+			String mySeed = gen.genKey();
+			
+			etMySeed.setText(mySeed);
+			
 			return rootView;
 		}
 	}
@@ -76,6 +92,8 @@ public class AddContactActivity extends Activity {
 		
 		EditText etName = (EditText)findViewById(R.id.editTextNewContactName);
 		EditText etNumber = (EditText)findViewById(R.id.editTextNewContactNumber);
+		EditText etHisSeed = (EditText)findViewById(R.id.editTextContactKey);
+		EditText etMySeed = (EditText)findViewById(R.id.editTextMyKey);
 		
 		//validate first
 		boolean successful = validate(etName.getText().toString(), etNumber.getText().toString());
@@ -85,10 +103,13 @@ public class AddContactActivity extends Activity {
 
 			DatabaseHandler dbHandler = new DatabaseHandler(this);
 			
-			Contact newContact = new Contact(etName.getText().toString(), etNumber.getText().toString());
+			Contact newContact = new Contact(etName.getText().toString(), etNumber.getText().toString(),etHisSeed.getText().toString(),etMySeed.getText().toString());
 			
 			dbHandler.addContact(newContact);
 		}
+		
+		Intent intent = new Intent(this, ContactListActivity.class);
+		startActivity(intent);
 	}
 	
 	private boolean validate(String name, String number){

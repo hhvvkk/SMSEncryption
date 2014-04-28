@@ -24,9 +24,10 @@
     <fragment
         android:id="@+id/contact_list"
         android:name="com.cos730.smsencryption.ContactListFragment"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:fadeScrollbars="false"
         tools:layout="@android:layout/list_content" />
 
     <FrameLayout

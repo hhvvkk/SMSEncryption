@@ -1,53 +1,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    
-<TextView 
-    android:id="@+id/contact_detail"
-    style="?android:attr/textAppearanceLarge"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:textIsSelectable="true"
-    tools:context="com.cos730.smsencryption.ContactDetailFragment" />
+    android:orientation="vertical" >
 
-<TextView
-    android:id="@+id/textViewMessageHint"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:hint="@string/messageHintLabel"
-    android:text="@string/messageHintLabel" />
+    <TextView
+        android:id="@+id/contact_detail"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="com.cos730.smsencryption.ContactDetailFragment" />
 
-<EditText
-    android:id="@+id/message"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/messageHint" >
+    <TextView
+        android:id="@+id/textViewMessageHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/messageHintLabel"
+        android:text="@string/messageHintLabel" />
 
-    <requestFocus />
-</EditText>
+    <EditText
+        android:id="@+id/textMultiLineMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.86"
+        android:ems="10"
+        android:inputType="textMultiLine" >
 
-<Button 
-    android:id="@+id/encryptButton"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:maxHeight="40dp"
-    android:text="@string/encryptMessageButton"
-    android:drawableLeft="@drawable/action_encrypt"
-    android:drawablePadding="2dp"
-    android:padding="2dp"/>
+        <requestFocus />
+    </EditText>
 
-<Button 
-    android:id="@+id/decryptButton"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:maxHeight="40dp"
-    android:text="@string/decryptMessageButton"
-    android:drawableLeft="@drawable/action_decrypt"
-    android:drawablePadding="2dp"
-    android:padding="2dp"/>
+    <Button
+        android:id="@+id/encryptButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/action_encrypt"
+        android:drawablePadding="2dp"
+        android:maxHeight="40dp"
+        android:padding="2dp"
+        android:text="@string/encryptMessageButton" 
+        android:onClick="Encrypt"/>
+
+    <Button
+        android:id="@+id/decryptButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/action_decrypt"
+        android:drawablePadding="2dp"
+        android:maxHeight="40dp"
+        android:padding="2dp"
+        android:text="@string/decryptMessageButton" 
+        android:onClick="Decrypt"/>
 
 </LinearLayout>

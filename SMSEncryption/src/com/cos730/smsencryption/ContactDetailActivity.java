@@ -1,10 +1,19 @@
 package com.cos730.smsencryption;
 
+import com.cos730.database.Contact;
+import com.cos730.database.ContactContent;
+import com.cos730.database.ContactContent.ContactItem;
+import com.cos730.encryption.Charset;
+import com.cos730.encryption.OneTimePadHybridEncryption;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 /**
  * An activity representing a single Contact detail screen. This
@@ -17,6 +26,10 @@ import android.view.MenuItem;
  */
 public class ContactDetailActivity extends FragmentActivity {
 
+	
+	public static  int ITEM_ID=0;
+	public static Context context;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +53,11 @@ public class ContactDetailActivity extends FragmentActivity {
             Bundle arguments = new Bundle();
             arguments.putString(ContactDetailFragment.ARG_ITEM_ID,
                     getIntent().getStringExtra(ContactDetailFragment.ARG_ITEM_ID));
+            
+            ITEM_ID=Integer.parseInt(getIntent().getStringExtra(ContactDetailFragment.ARG_ITEM_ID));
+            
             ContactDetailFragment fragment = new ContactDetailFragment();
+            
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.contact_detail_container, fragment)
@@ -63,5 +80,45 @@ public class ContactDetailActivity extends FragmentActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    
+    public void Encrypt(View view){
+    	
+    	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
+    	
+    	Charset cs = new Charset();   	    	
+    	
+    	ContactDetailFragment frag=new ContactDetailFragment();
+    	 ContactContent cc = new ContactContent(frag.getActivity().getBaseContext());
+    	
+    	ContactItem contactItem = cc.getItemMap().get(ITEM_ID);
+        
+        Contact temp=new Contact(contactItem.name,"",contactItem.hisSeed,contactItem.mySeed);
+        
+        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
+        
+        String encrypted=hybrid.Encrypt(text.getText().toString(),temp);        
+        
+        text.setText(encrypted);
+    	
+    }
+    
+    public void Decrypt(View view){
+    	
+    	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
+    	
+    	Charset cs = new Charset();
+    	
+    	ContactContent cc = new ContactContent(getApplicationContext());
+    	ContactItem contactItem = cc.getItemMap().get(ITEM_ID);
+        
+        Contact temp=new Contact(contactItem.name,"",contactItem.hisSeed,contactItem.mySeed);
+        
+        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
+        
+        String Decrypted=hybrid.Decrypt(text.getText().toString(),temp);        
+        
+        text.setText(Decrypted);
     }
 }

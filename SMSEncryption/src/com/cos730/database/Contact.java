@@ -7,6 +7,10 @@ public class Contact {
 	
 	String phoneNumber;
 	
+	String mySeed;
+	
+	String hisSeed;
+	
 	public Contact(){
 		
 	}
@@ -21,6 +25,20 @@ public class Contact {
 	public Contact( String name, String _phone_number){
 		this.contactName = name;
 		this.phoneNumber = _phone_number;
+	}
+	
+	public Contact(int id, String name, String _phone_number,String _hisSeed,String _mySeed){
+		this.contactID = id;
+		this.contactName = name;
+		this.phoneNumber = _phone_number;
+		this.mySeed=_mySeed;
+		this.hisSeed=_hisSeed;
+	}
+	public Contact( String name, String _phone_number,String _hisSeed,String _mySeed){
+		this.contactName = name;
+		this.phoneNumber = _phone_number;
+		this.mySeed=_mySeed;
+		this.hisSeed=_hisSeed;
 	}
 	
 	// getting ID
@@ -52,4 +70,25 @@ public class Contact {
 	public void setPhoneNumber(String phone_number){
 		this.phoneNumber = phone_number;
 	}
+	
+	// setting my Seed
+	public void setMySeed(String _mySeed){
+		this.mySeed = _mySeed;
+	}
+	
+	// getting my Seed
+	public String getMySeed(){
+		return this.mySeed;
+	}
+	
+
+	// setting his Seed
+	public void setHisSeed(String _hisSeed){
+		this.hisSeed = _hisSeed;
+	}
+	// getting His Seed
+	public String getHisSeed(){
+		return this.hisSeed;
+	}
+	
 }

@@ -1,18 +1,23 @@
 package com.cos730.smsencryption;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cos730.database.Contact;
 import com.cos730.database.ContactContent;
+import com.cos730.encryption.Charset;
 
 
 public class ContactDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
+    public static Context context;
 
     private ContactContent.ContactItem contactItem;
 
@@ -45,4 +50,5 @@ public class ContactDetailFragment extends Fragment {
 
         return rootView;
     }
+   
 }
