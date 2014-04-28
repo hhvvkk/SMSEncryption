@@ -83,4 +83,99 @@ Like a good personal assistant, shield people from unimportant minutiae. People 
 \end{itemize}
 \end{itemize}
 
-\subsection*{iOS}
+\subsection*{iOS Human Interface Guidelines}
+The Apple Developer page specifies various principles under their Human Interface Guidelines.
+
+\subsubsection*{Designing for iOS 7}
+iOS 7 embodies the following themes:
+\begin{itemize}
+\item Deference. The UI helps users understand and interact with the content, but never competes with it.
+	\begin{itemize}
+    \item Although crisp, beautiful UI and fluid motion are highlights of the iOS 7 experience, the user’s content is at its heart.
+	\item Here are some ways to make sure that your designs elevate functionality and defer to the user’s content.
+		\begin{itemize}
+		\item Take advantage of the whole screen. Reconsider the use of insets and visual frames and—instead—let the content extend to the edges of the screen. Weather is a great example of this approach: The beautiful, full-screen depiction of a location’s current weather instantly conveys the most important information, with room to spare for hourly data.
+		\item Reconsider visual indicators of physicality and realism. Bezels, gradients, and drop shadows sometimes lead to heavier UI elements that can overpower or compete with the content. Instead, focus on the content and let the UI play a supporting role.
+		\item Let translucent UI elements hint at the content behind them. Translucent elements—such as Control Center—provide context, help users see that more content is available, and can signal transience. In iOS 7, a translucent element blurs only the content directly behind it—giving the impression of looking through rice paper—it doesn’t blur the rest of the screen.
+		\end{itemize}
+	\end{itemize}
+\item Clarity. Text is legible at every size, icons are precise and lucid, adornments are subtle and appropriate, and a sharpened focus on functionality motivates the design.
+	\begin{itemize}
+	\item How to provide clarity
+		\begin{itemize}
+		\item Providing clarity is another way to ensure that content is paramount in your app. Here are some ways to make the most important content and functionality clear and easy to interact with.
+		\item Use plenty of negative space. Negative space makes important content and functionality more noticeable and easier to understand. Negative space can also impart a sense of calm and tranquility, and it can make an app look more focused and efficient.
+		\item Let color simplify the UI. A key color—such as yellow in Notes— highlights important state and subtly indicates interactivity. It also gives an app a consistent visual theme. The built-in apps use a family of pure, clean system colors that look good at every tint and on both dark and light backgrounds.
+		\item Ensure legibility by using the system fonts. iOS 7 system fonts automatically adjust letter spacing and line height so that text is easy to read and looks great at every size. Whether you use system or custom fonts, be sure to adopt Dynamic Type so your app can respond when the user chooses a different text size.
+		\item Embrace borderless buttons. In iOS 7, all bar buttons are borderless. In content areas, a borderless button uses context, color, and a call-to-action title to indicate interactivity. And when it makes sense, a content-area button can display a thin border or tinted background that makes it distinctive.
+		\end{itemize}
+	\end{itemize}
+\item Depth. Visual layers and realistic motion impart vitality and heighten users’ delight and understanding.
+	\begin{itemize}
+	\item Use Depth to Communicate
+		\begin{itemize}
+		\item iOS 7 often displays content in distinct layers that convey hierarchy and position, and that help users understand the relationships among onscreen objects.
+		\item By using a translucent background and appearing to float above the Home screen, folders separate their content from the rest of the screen.
+		\item Reminders displays lists in layers, as shown here. When users work with one list, the other lists are collected together at the bottom of the screen.
+		\item Calendar uses enhanced transitions to give users a sense of hierarchy and depth as they move between viewing years, months, and days. In the scrolling year view shown here, users can instantly see today’s date and perform other calendar tasks.
+		\item When users select a month, the year view zooms in and reveals the month view. Today’s date remains highlighted and the year appears in the back button, so users know exactly where they are, where they came from, and how to get back.
+		\item A similar transition happens when users select a day: The month view appears to split apart, pushing the current week to the top of the screen and revealing the hourly view of the selected day. With each transition, Calendar reinforces the hierarchical relationship between years, months, and days.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Apple Design Principles}
+\begin{itemize}
+\item Aesthetic Integrity
+	\begin{itemize}
+	\item Aesthetic integrity doesn’t measure the beauty of an app’s artwork or characterize its style; rather, it represents how well an app’s appearance and behavior integrates with its function to send a coherent message. 
+	\item People care about whether an app delivers the functionality it promises, but they’re also affected by the app’s appearance and behavior in strong—sometimes subliminal—ways. For example, an app that helps people perform a serious task can put the focus on the task by keeping decorative elements subtle and unobtrusive and by using standard controls and predictable behaviors. This app sends a clear, unified message about its purpose and its identity that helps people trust it. But if the app sends mixed signals by presenting the task in a UI that’s intrusive, frivolous, or arbitrary, people might question the app’s reliability or trustworthiness.
+	\item On the other hand, in an app that encourages an immersive task—such as a game—users expect a captivating appearance that promises fun and excitement and encourages discovery. People don’t expect to accomplish a serious or productive task in a game, but they expect the game’s appearance and behavior to integrate with its purpose.
+	\end{itemize}
+\item Consistency
+	\begin{itemize}
+	\item Consistency lets people transfer their knowledge and skills from one part of an app’s UI to another and from one app to another app. A consistent app isn’t a slavish copy of other apps and it isn’t stylistically stagnant; rather, it pays attention to the standards and paradigms people are comfortable with and it provides an internally consistent experience. 
+	\item To determine whether an iOS app follows the principle of consistency, think about these questions:
+		\begin{itemize}
+		\item Is the app consistent with iOS standards? Does it use system-provided controls, views, and icons correctly? Does it incorporate device features in ways that users expect?
+		\item Is the app consistent within itself? Does text use uniform terminology and style? Do the same icons always mean the same thing? Can people predict what will happen when they perform the same action in different places? Do custom UI elements look and behave the same throughout the app?
+		\item Within reason, is the app consistent with its earlier versions? Have the terms and meanings remained the same? Are the fundamental concepts and primary functionality essentially unchanged?
+		\end{itemize}
+	\end{itemize}
+\item Direct Manipulation
+	\begin{itemize}
+	\item When people directly manipulate onscreen objects instead of using separate controls to manipulate them, they're more engaged with their task and it’s easier for them to understand the results of their actions. 
+	\item Using the Multi-Touch interface, people can pinch to directly expand or contract an image or content area. And in a game, players move and interact directly with onscreen objects—for example, a game might display a combination lock that users can spin to open. 
+	\item In an iOS app, people experience direct manipulation when they: 
+		\begin{itemize}
+		\item Rotate or otherwise move the device to affect onscreen objects 
+		\item Use gestures to manipulate onscreen objects 
+		\item Can see that their actions have immediate, visible results 
+		\end{itemize}
+	\end{itemize}
+\item Feedback
+	\begin{itemize}
+	\item Feedback acknowledges people’s actions, shows them the results, and updates them on the progress of their task. 
+	\item  The built-in iOS apps provide perceptible feedback in response to every user action. List items and controls highlight briefly when people tap them and—during operations that last more than a few seconds—a control shows elapsing progress.
+	\item Subtle animation can give people meaningful feedback that helps clarify the results of their actions. For example, lists can animate the addition of a new row to help people track the change visually.
+	\item Sound can also give people useful feedback, but it shouldn’t be the only feedback mechanism because people can’t always hear their devices. 
+	\end{itemize}
+\item Metaphors
+	\begin{itemize}
+	\item  When virtual objects and actions in an app are metaphors for familiar experiences—whether these experiences are rooted in the real world or the digital world—users quickly grasp how to use the app.
+	\item It’s best when an app uses a metaphor to suggest a usage or experience without letting the metaphor enforce the limitations of the object or action on which it’s based.
+	\item iOS apps have great scope for metaphors because people physically interact with the screen. Metaphors in iOS include: 
+		\begin{itemize}
+		\item Moving layered views to expose content beneath them
+		\item Dragging, flicking, or swiping objects in a game
+		\item Tapping switches, sliding sliders, and spinning pickers
+		\item Flicking through pages of a book or magazine
+		\end{itemize}
+	\end{itemize}
+\item User Control
+	\begin{itemize}
+	\item People—not apps—should initiate and control actions. An app can suggest a course of action or warn about dangerous consequences, but it’s usually a mistake for the app to take decision-making away from the user. The best apps find the correct balance between giving people the capabilities they need while helping them avoid unwanted outcomes.
+	\item Users feel more in control of an app when behaviors and controls are familiar and predictable. And when actions are simple and straightforward, users can easily understand and remember them. 
+	\item People expect to have ample opportunity to cancel an operation before it begins, and they expect to get a chance to confirm their intention to perform a potentially destructive action. Finally, people expect to be able to gracefully stop an operation that’s underway. 
+	\end{itemize}
+\end{itemize}
