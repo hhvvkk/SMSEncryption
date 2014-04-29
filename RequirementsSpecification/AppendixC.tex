@@ -1,6 +1,8 @@
-\section{Appendix C - Protocol}
+\section{Appendix C - Encryption Protocol}
 
-%add wat nodig is
+\subsection*{Introduction}
+
+This Appendix discusses the encryption protocol designed after extensive research. It comprises of a combination of a key based encryption protocol along with a one-time pad encryption, it is because of this that I refer to the protocol as being a Hybrid encryption. This protocol is very complex and very powerful. Because it uses one time pad encryption the encryption itself is unbreakable unless you have the pad. The pad is generated using two special keys stored on each user representing the user’s internal key for that contact, and that contacts internal key for the user. Thus the pad is never communicated instead each message send contains the next key to be used. Thus it requires the previous key to get the next key creating a key dependency increasing encryption strength. However to further increase the strength the key send is used in combination with the internal key to produce the next key, because the key changes after a message has been send replay attacks are impossible as the message would no longer decrypt.
 
 \subsection*{Diagrams}
 
@@ -10,4 +12,18 @@
 
 \subsection*{Description}
 
-%describe die protocol hier
+As stated above the protocol is a hybrid between key based encryption and one time-pad-encryption. At any moment in time there exist two keys between two members communicating. These keys are instantiated when the users add each other as contacts.  They both are provided a key that they tell each other so that each of them has their own key, and their contacts key stored on the device. This is done for each contact so no keys are shared beyond one contact.
+\vspace{10pt}\\
+When a user wishes to send a message the two keys stored for the relavent contact is retrieved and fed to a special function that produces a one-time-pad. Before the message is encrypted it is padded to 150 characters using spaces. Then using the one-time-pad the message is encrypted.
+\vspace{10pt}\\
+Then a new key is generated, this key is encoded using our special character set to represent a 10 character string. This key is then added to the end of the encrypted message bringing the total to 160 characters.
+\vspace{10pt}\\
+Once the key is added the initial two keys are once again fed to the special function but this time swapped around. This new one time pad is then used to encrypt the original encryption with the key added to produce the final encrypted message.
+\vspace{10pt}\\
+Once the message is send the newly produced key is used along with the internally stored key for the contact, these two keys are fed into a special key combining function to produce a new key. The internally stored key for the contact is then replaced with the new key.
+\vspace{10pt}\\
+To receive a message would be the opposite, the two internally stored keys for the contact that send the message would be retrieved and used in the one-time-pad function to produce the pad. This pad is then used to decrypt the message.
+\vspace{10pt}\\
+The new key is then taken from the decrypted message as it will be the last 10 characters. The two internally stored keys are then once again fed into the function to produce the pad, just this time the two keys are swapped. This pad is then used to decrypt the message that will produce the plain text message.
+\vspace{10pt}\\
+The key that was taken from the message is used in combination with my internal key for that contact to produce a new combined key that is used to replace the key the receiver has stored for that contact.
