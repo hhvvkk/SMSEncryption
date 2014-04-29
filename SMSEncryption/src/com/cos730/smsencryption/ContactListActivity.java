@@ -1,6 +1,7 @@
 package com.cos730.smsencryption;
 
 import com.cos730.contact.AddContactActivity;
+import com.cos730.contact.EditContactActivity;
 import com.cos730.user.LoginActivity;
 
 import android.content.Intent;
@@ -59,6 +60,9 @@ public class ContactListActivity extends FragmentActivity
 			openAddContactActivity();
 			return true;
 		}
+        if(id == R.id.action_edit_contact){
+        	openEditContactActivity();
+        }
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -67,6 +71,14 @@ public class ContactListActivity extends FragmentActivity
 	 */
 	private void openAddContactActivity(){
 		Intent intent = new Intent(this, AddContactActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * Opens activity edit contact
+	 */
+	private void openEditContactActivity(){
+		Intent intent = new Intent(this, EditContactActivity.class);
 		startActivity(intent);
 	}
 

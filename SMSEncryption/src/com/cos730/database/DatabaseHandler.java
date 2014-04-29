@@ -72,20 +72,27 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
 	// Getting single contact
 	public Contact getContact(int id) {
-		SQLiteDatabase db = this.getReadableDatabase();
-
-		Cursor cursor = db.query(TABLE_CONTACTS, new String[] { KEY_ID,
-				KEY_NAME, KEY_PHONE_NUMBER, KEY_HIS_SEED, KEY_MY_SEED}, KEY_ID + "=?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
-
-		if (cursor != null)
-			cursor.moveToFirst();
-
-		Contact contact = new Contact(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+//		SQLiteDatabase db = this.getReadableDatabase();
+//
+//		Cursor cursor = db.query(TABLE_CONTACTS, new String[] { KEY_ID,
+//				KEY_NAME, KEY_PHONE_NUMBER, KEY_HIS_SEED, KEY_MY_SEED}, KEY_ID + "=?",
+//				new String[] { String.valueOf(id) }, null, null, null, null);
+//
+//		if (cursor != null)
+//			cursor.moveToFirst();
+//
+//		Contact contact = new Contact(Integer.parseInt(cursor.getString(0)),
+//				cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+//		
+		List<Contact> contactList = getAllContacts();
+		
+		for(int i = 0; i < contactList.size(); i++){
+			if(contactList.get(i).getID() == id)
+				return contactList.get(i);
+		}
 		
 		// return contact
-		return contact;
+		return null;
 		
 	}
 
@@ -150,6 +157,17 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 				new String[] { String.valueOf(contact.getID()) });
 		db.close();
 		
+	}
+	
+	public List<String> getAllLabels(){
+		List<Contact> list = getAllContacts();
+		List<String> stringList = new ArrayList();
+		
+		for(int i = 0; i < list.size(); i++){
+			stringList.add(list.get(i).getName());
+		}
+		
+		return stringList;
 	}
 
 }

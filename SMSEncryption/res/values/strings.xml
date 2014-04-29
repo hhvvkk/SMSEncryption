@@ -22,23 +22,21 @@
     <string name="title_activity_add_contact">AddContact</string>
     <string name="hello_world">Hello world!</string>
     <string name="addNewContactHint">Enter the details for new contact </string>
-    
-    
     <string name="contactName">Contact Name</string>
     <string name="contactPhoneNumber">Contact Number</string>
     <string name="contactName_hint">name here</string>
     <string name="contactPhoneNumber_hint">(optional)</string>
     <string name="addContact">Add contact</string>
-    
-    
-    <string name="encryptMessageButton">Encrypt message</string>    
-    <string name="decryptMessageButton">Decrypt message</string> 
-    
+    <string name="saveChanges">Save changes</string>
+    <string name="deleteContact">Delete contact</string>
+    <string name="encryptMessageButton">Encrypt message</string>
+    <string name="decryptMessageButton">Decrypt message</string>
     <string name="messageHintLabel">Message</string>
     <string name="messageHint">Enter a message here</string>
-    <string android:layout_height="wrap_content" android:id="@+id/string1" android:layout_width="wrap_content" name="MyKey">My Key</string>
-    <string android:id="@+id/string1" android:layout_height="wrap_content" android:layout_width="wrap_content" name="ContactKey">Contacts Key</string>
-    
-    
+    <string android:id="@+id/string1" name="MyKey" android:layout_width="wrap_content" android:layout_height="wrap_content">My Key</string>
+    <string android:id="@+id/string1" name="ContactKey" android:layout_width="wrap_content" android:layout_height="wrap_content">Contacts Key</string>
+    <string name="action_edit_contact">Edit contact</string>
+    <string name="title_activity_edit_contact">EditContact</string>
+    <string name="editContactHint">Select the contact and edit fields</string>
 
 </resources>

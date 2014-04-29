@@ -6,28 +6,33 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cos730.smsencryption.AddContact$PlaceholderFragment"
-    android:orientation="vertical" >
+    tools:context="com.cos730.smsencryption.EditContact$PlaceholderFragment" 
+    android:orientation="vertical">
 
-    
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addNewContactHint" />
+        android:text="@string/editContactHint" />
     
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+    <Spinner
+        android:id="@+id/spinnerContactList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+    
+  	<LinearLayout
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textView4"
+     <TextView
+            android:id="@+id/textView466"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/contactName" />
 
         <EditText
-            android:id="@+id/editTextNewContactName"
+            android:id="@+id/editTextEditContactContactName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,14 +50,14 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textView577"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/contactPhoneNumber" />
 
         <EditText
-            android:id="@+id/editTextNewContactNumber"
+            android:id="@+id/editTextEditContactContactNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.94"
@@ -62,7 +67,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView155"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -70,7 +75,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/editTextMyKey"
+        android:id="@+id/editTextEditContactMyKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -83,17 +88,28 @@
         android:text="@string/ContactKey" />
 
     <EditText
-        android:id="@+id/editTextContactKey"
+        android:id="@+id/editTextEditContactContactKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonEditContactFinished"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="addContact"
-        android:text="@string/addContact" />
+        android:onClick="saveChanges"
+        android:text="@string/saveChanges" 
+        android:maxHeight="40dp"
+        android:drawableLeft="@drawable/action_edit"/>
+    
+    <Button
+        android:id="@+id/buttonEditContactDelete"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteContact"
+        android:text="@string/deleteContact" 
+        android:maxHeight="40dp"
+        android:drawableLeft="@drawable/action_delete"/>
 
 </LinearLayout>

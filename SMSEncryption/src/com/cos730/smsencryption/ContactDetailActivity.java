@@ -1,8 +1,13 @@
 package com.cos730.smsencryption;
 
+import java.util.List;
+import java.util.Map;
+import java.util.logging.LoggingPermission;
+
 import com.cos730.database.Contact;
 import com.cos730.database.ContactContent;
 import com.cos730.database.ContactContent.ContactItem;
+import com.cos730.database.DatabaseHandler;
 import com.cos730.encryption.Charset;
 import com.cos730.encryption.OneTimePadHybridEncryption;
 
@@ -11,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -69,13 +75,6 @@ public class ContactDetailActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. Use NavUtils to allow users
-            // to navigate up one level in the application structure. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
             NavUtils.navigateUpTo(this, new Intent(this, ContactListActivity.class));
             return true;
         }
@@ -89,18 +88,17 @@ public class ContactDetailActivity extends FragmentActivity {
     	
     	Charset cs = new Charset();   	    	
     	
-    	ContactDetailFragment frag=new ContactDetailFragment();
-    	 ContactContent cc = new ContactContent(frag.getActivity().getBaseContext());
+    	DatabaseHandler dbHandler = new DatabaseHandler(getApplicationContext());
     	
-    	ContactItem contactItem = cc.getItemMap().get(ITEM_ID);
-        
-        Contact temp=new Contact(contactItem.name,"",contactItem.hisSeed,contactItem.mySeed);
-        
-        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
-        
-        String encrypted=hybrid.Encrypt(text.getText().toString(),temp);        
-        
-        text.setText(encrypted);
+    	Contact contact = dbHandler.getContact(ITEM_ID);
+    	
+    	text.setText(contact.getName());
+    	
+//        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
+//        
+//        String encrypted=hybrid.Encrypt(text.getText().toString(),temp);        
+//        
+//        text.setText(encrypted);
     	
     }
     
@@ -110,15 +108,16 @@ public class ContactDetailActivity extends FragmentActivity {
     	
     	Charset cs = new Charset();
     	
-    	ContactContent cc = new ContactContent(getApplicationContext());
-    	ContactItem contactItem = cc.getItemMap().get(ITEM_ID);
-        
-        Contact temp=new Contact(contactItem.name,"",contactItem.hisSeed,contactItem.mySeed);
-        
-        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
-        
-        String Decrypted=hybrid.Decrypt(text.getText().toString(),temp);        
-        
-        text.setText(Decrypted);
+    	DatabaseHandler dbHandler = new DatabaseHandler(getApplicationContext());
+    	
+    	Contact contact = dbHandler.getContact(ITEM_ID);
+    	
+    	text.setText(contact.getName());
+//    	
+//        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
+//        
+//        String Decrypted=hybrid.Decrypt(text.getText().toString(),temp);        
+//        
+//        text.setText(Decrypted);
     }
 }

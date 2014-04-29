@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Application;
 import android.content.Context;
 
 
@@ -28,8 +27,8 @@ public class ContactContent {
         	 */
         	if(dbHandler.getAllContacts().size() == 0){
 	        	addDummyContact(dbHandler, "Name1");
-	        	addDummyContact(dbHandler, "Name2");
-	        	addDummyContact(dbHandler, "Name44");
+	        	addDummyContact(dbHandler, "OtherName");
+	        	addDummyContact(dbHandler, "TghirdSanld");
         	}
         	
         	List<Contact> contactList = dbHandler.getAllContacts();
@@ -47,6 +46,7 @@ public class ContactContent {
     private void addDummyContact(DatabaseHandler dbHandler, String name){
     	Contact newContact = new Contact();
     	newContact.setName(name);
+    	newContact.setPhoneNumber("0822");
     	dbHandler.addContact(newContact);
     }
     

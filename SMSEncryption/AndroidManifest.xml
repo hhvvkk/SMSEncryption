@@ -42,6 +42,10 @@
             android:name="com.cos730.contact.AddContactActivity"
             android:label="@string/title_activity_add_contact" >
         </activity>
+        <activity
+            android:name="com.cos730.contact.EditContactActivity"
+            android:label="@string/title_activity_edit_contact" >
+        </activity>
     </application>
 
 </manifest>
