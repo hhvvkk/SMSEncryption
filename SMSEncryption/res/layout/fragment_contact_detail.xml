@@ -24,13 +24,20 @@
         android:id="@+id/textMultiLineMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.86"
         android:ems="10"
         android:inputType="textMultiLine" >
 
         <requestFocus />
     </EditText>
 
+    
+    <!-- add a transparent dividor to stick buttons to the bottom  -->
+    <View
+	    android:layout_width="1dp"
+	    android:background="@drawable/transparent_layout"
+	    android:layout_height="0dp"
+	    android:layout_weight="0.1"/>
+    
     <Button
         android:id="@+id/encryptButton"
         android:layout_width="fill_parent"
@@ -38,7 +45,7 @@
         android:drawableLeft="@drawable/action_encrypt"
         android:drawablePadding="2dp"
         android:maxHeight="40dp"
-        android:padding="2dp"
+        android:padding="10dp"
         android:text="@string/encryptMessageButton" 
         android:onClick="Encrypt"/>
 
@@ -49,7 +56,7 @@
         android:drawableLeft="@drawable/action_decrypt"
         android:drawablePadding="2dp"
         android:maxHeight="40dp"
-        android:padding="2dp"
+        android:padding="10dp"
         android:text="@string/decryptMessageButton" 
         android:onClick="Decrypt"/>
 

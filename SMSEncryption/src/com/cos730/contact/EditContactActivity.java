@@ -20,6 +20,8 @@ import android.widget.Spinner;
 
 import com.cos730.database.Contact;
 import com.cos730.database.DatabaseHandler;
+import com.cos730.encryption.Charset;
+import com.cos730.encryption.Keys.KeyGenerator;
 import com.cos730.smsencryption.R;
 
 public class EditContactActivity extends Activity {
@@ -230,6 +232,19 @@ public class EditContactActivity extends Activity {
 	}
 	
 	private void deleteContact(){
+		
+	}
+	
+	public void GenerateKey(View view)
+	{
+		EditText etMySeed = (EditText)findViewById(R.id.editTextEditContactMyKey);
+		
+		Charset cs=new Charset();
+		KeyGenerator gen=new KeyGenerator(cs);
+		
+		String mySeed = gen.genKey();
+		
+		etMySeed.setText(mySeed);
 		
 	}
 

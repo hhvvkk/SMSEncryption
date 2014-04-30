@@ -69,20 +69,31 @@
         android:text="@string/MyKey"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="283dp"
+    <LinearLayout 
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Generate my key" 
-        android:onClick="GenerateKey"/>
-
+        android:orientation="horizontal">
+    
+        
     <EditText
         android:id="@+id/editTextMyKey"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="5"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10" />
+        
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:maxWidth="30dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/action_generate"
+        android:onClick="GenerateKey"/>
 
+	</LinearLayout>
+	
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -96,12 +107,22 @@
         android:inputType="text"
         android:ems="10" />
 
+    
+
+    <!-- add a transparent dividor to stick buttons to the bottom  -->
+    <View
+	    android:layout_width="1dp"
+	    android:background="@drawable/transparent_layout"
+	    android:layout_height="0dp"
+	    android:layout_weight="0.1"	    />
+    
     <Button
-        android:id="@+id/button7"
-        android:layout_width="282dp"
+        android:id="@+id/buttonAddContact"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:onClick="addContact"
-        android:text="@string/addContact" />
+        android:text="@string/addContact"
+        android:drawableLeft="@drawable/action_add" />
 
 </LinearLayout>

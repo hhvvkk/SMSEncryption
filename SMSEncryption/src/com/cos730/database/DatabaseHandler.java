@@ -51,7 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		// Drop older table if existed
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
 		// Create tables again
-		onCreate(db);		
+		onCreate(db);
 	}
 	
 	// Adding new contact
@@ -119,6 +119,9 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 			} while (cursor.moveToNext());
 		}
 
+		//close the database
+		db.close();
+		
 		// return contact list
 		return contactList;
 		
@@ -131,6 +134,9 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		Cursor cursor = db.rawQuery(countQuery, null);
 		cursor.close();
 
+		//close the db
+		db.close();
+		
 		// return count
 		return cursor.getCount();
 	}
@@ -146,8 +152,13 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		values.put(KEY_MY_SEED, contact.getMySeed());
 		
 		// updating row
-		return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
+		int update = db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(contact.getID()) });
+		
+		//close database
+		db.close();
+
+		return update;
 	}
 
 	// Deleting single contact
