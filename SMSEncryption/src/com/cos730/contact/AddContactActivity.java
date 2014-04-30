@@ -108,8 +108,7 @@ public class AddContactActivity extends Activity {
 			dbHandler.addContact(newContact);
 		}
 		
-		Intent intent = new Intent(this, ContactListActivity.class);
-		startActivity(intent);
+		finish();
 	}
 	
 	private boolean validate(String name, String number){

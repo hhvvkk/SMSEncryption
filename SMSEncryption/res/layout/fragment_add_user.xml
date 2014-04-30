@@ -21,15 +21,16 @@
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/userNameLabel" />
 
         <EditText
             android:id="@+id/editTextLoginUsername"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:hint="@string/userNameHint"
             android:inputType="text" >
 
@@ -54,7 +55,7 @@
             android:id="@+id/editTextLoginPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:hint="@string/passwordHint"
             android:inputType="textPassword" />
 
@@ -70,22 +71,30 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/passwordHintLabelConfirm" />
         
         <EditText
             android:id="@+id/editTextLoginPasswordConfirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:hint="@string/passwordHintConfirm"
             android:inputType="textPassword" />
 
     </LinearLayout>
     
+    <!-- add a transparent dividor to stick buttons to the bottom  -->
+    <View
+	    android:layout_width="1dp"
+	    android:background="@drawable/transparent_layout"
+	    android:layout_height="0dp"
+	    android:layout_weight="0.1"	    />
+    
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonAddUser"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/addUser" 
         android:onClick="addUser"/>

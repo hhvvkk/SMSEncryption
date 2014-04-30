@@ -73,6 +73,10 @@ public class AddUserActivity extends Activity {
 		
 		//thereafter add the user
 			//only if user does not already exist
+		
+		
+		//close the activity when done
+		finish();
 	}
 
 }
