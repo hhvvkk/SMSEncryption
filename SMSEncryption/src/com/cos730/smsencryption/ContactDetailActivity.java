@@ -90,15 +90,17 @@ public class ContactDetailActivity extends FragmentActivity {
     	
     	DatabaseHandler dbHandler = new DatabaseHandler(getApplicationContext());
     	
-    	Contact contact = dbHandler.getContact(ITEM_ID);
+    	Contact contact = dbHandler.getContact(ITEM_ID);   
     	
-    	text.setText(contact.getName());
+    	System.out.println("name : "+contact.getName());
+    	System.out.println("his seed : "+contact.getHisSeed());
+    	System.out.println("my seed : "+contact.getMySeed());
     	
-//        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
-//        
-//        String encrypted=hybrid.Encrypt(text.getText().toString(),temp);        
-//        
-//        text.setText(encrypted);
+        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
+        
+        String encrypted=hybrid.Encrypt(text.getText().toString(),contact,getApplicationContext());        
+        
+        text.setText(encrypted);
     	
     }
     
@@ -110,14 +112,16 @@ public class ContactDetailActivity extends FragmentActivity {
     	
     	DatabaseHandler dbHandler = new DatabaseHandler(getApplicationContext());
     	
-    	Contact contact = dbHandler.getContact(ITEM_ID);
+    	Contact contact = dbHandler.getContact(ITEM_ID);    	
     	
-    	text.setText(contact.getName());
-//    	
-//        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
-//        
-//        String Decrypted=hybrid.Decrypt(text.getText().toString(),temp);        
-//        
-//        text.setText(Decrypted);
+    	System.out.println("name : "+contact.getName());
+    	System.out.println("his seed : "+contact.getHisSeed());
+    	System.out.println("my seed : "+contact.getMySeed());
+	
+        OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
+        
+        String Decrypted=hybrid.Decrypt(text.getText().toString(),contact,getApplicationContext());        
+        
+        text.setText(Decrypted);
     }
 }

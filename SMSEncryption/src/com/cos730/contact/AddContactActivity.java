@@ -115,5 +115,18 @@ public class AddContactActivity extends Activity {
 	private boolean validate(String name, String number){
 		return true;
 	}
+	
+	public void GenerateKey(View view)
+	{
+		EditText etMySeed = (EditText)findViewById(R.id.editTextMyKey);
+		
+		Charset cs=new Charset();
+		KeyGenerator gen=new KeyGenerator(cs);
+		
+		String mySeed = gen.genKey();
+		
+		etMySeed.setText(mySeed);
+		
+	}
 
 }

@@ -5,7 +5,9 @@
 package com.cos730.encryption.Keys;
 
 import com.cos730.encryption.Charset;
+
 import java.security.SecureRandom;
+import java.util.Random;
 
 /**
  *
@@ -33,8 +35,8 @@ public class PadGenerator {
         Long firstSeed = seed1;
         Long SecondSeed = seed2;
 
-        SecureRandom sran = new SecureRandom();
-        SecureRandom sran2 = new SecureRandom();
+        Random sran = new Random();
+        Random sran2 = new Random();
         sran.setSeed(firstSeed);
         sran2.setSeed(SecondSeed);
 
@@ -61,10 +63,10 @@ public class PadGenerator {
             value = value % cs.SetLength;
 
             firstSeed = firstSeed + value;
-            sran.setSeed(firstSeed);
+            sran.setSeed(firstSeed*100);
 
             SecondSeed = SecondSeed + value;
-            sran2.setSeed(SecondSeed);
+            sran2.setSeed(SecondSeed*100);
 
             values[i] = value;
         }

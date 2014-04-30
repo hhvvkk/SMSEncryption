@@ -5,8 +5,10 @@
 package com.cos730.encryption.Keys;
 
 import com.cos730.encryption.Charset;
+
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Random;
 
 /**
  *
@@ -14,7 +16,7 @@ import java.security.SecureRandom;
  */
 public class KeyGenerator {
 
-    SecureRandom srand = new SecureRandom();
+	Random srand = new Random();
     Converter con;
 
     public KeyGenerator(Charset cs) {
@@ -30,7 +32,7 @@ public class KeyGenerator {
 
     public String KeyCombiner(String s1, String s2) {
 
-        SecureRandom srand2 = new SecureRandom();
+        Random srand2 = new Random();
         
         BigInteger b1 = con.getNumberRep(s1);
         BigInteger b2 = con.getNumberRep(s2);
