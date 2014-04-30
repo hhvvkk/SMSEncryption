@@ -22,14 +22,6 @@ public class ContactContent {
     		activityContext = theContext;
     		
         	DatabaseHandler dbHandler = new DatabaseHandler(theContext);
-        	/**
-        	 * TODO: remove dummy contact adding
-        	 */
-        	if(dbHandler.getAllContacts().size() == 0){
-	        	addDummyContact(dbHandler, "Name1");
-	        	addDummyContact(dbHandler, "OtherName");
-	        	addDummyContact(dbHandler, "TghirdSanld");
-        	}
         	
         	List<Contact> contactList = dbHandler.getAllContacts();
         	
@@ -41,13 +33,6 @@ public class ContactContent {
             	addItem(item);
         	}
     	}
-    }
-    
-    private void addDummyContact(DatabaseHandler dbHandler, String name){
-    	Contact newContact = new Contact();
-    	newContact.setName(name);
-    	newContact.setPhoneNumber("0822");
-    	dbHandler.addContact(newContact);
     }
     
 
