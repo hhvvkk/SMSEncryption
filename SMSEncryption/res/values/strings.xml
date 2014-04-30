@@ -38,5 +38,6 @@
     <string name="action_edit_contact">Edit contact</string>
     <string name="title_activity_edit_contact">EditContact</string>
     <string name="editContactHint">Select the contact and edit fields</string>
+    <string name="back_button">Back</string>
 
 </resources>
