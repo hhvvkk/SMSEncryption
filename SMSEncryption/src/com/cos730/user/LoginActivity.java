@@ -1,5 +1,6 @@
 package com.cos730.user;
 
+import com.cos730.database.User;
 import com.cos730.smsencryption.ContactListActivity;
 import com.cos730.smsencryption.R;
 import com.cos730.smsencryption.R.id;
@@ -8,7 +9,9 @@ import com.cos730.smsencryption.R.menu;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +26,8 @@ public class LoginActivity extends Activity {
 
 	//EXTRA to pass the information along to the other activity
 	public static final String LOGIN_PASSWORD = "com.cos730.smsencryption.PASSWORD";
+	
+	public static final String INVALID_LOGIN = "Username or password is incorrect.";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,11 +95,26 @@ public class LoginActivity extends Activity {
 		String username = userNameEditText.getText().toString();
 		
 		//Password stored as char array and not string to 
-		//prevent it from appearing in the pool
+		//prevent it from appearing in the string pool used by  java
 		char [] password = passwordEditText.getText().toString().toCharArray();
 		
-		intent.putExtra(LOGIN_PASSWORD, password);
+		User currentUser = LoginHandler.getUserByName(username, this.getApplicationContext());
 		
+		if(currentUser == null){
+			showLoginError(INVALID_LOGIN);
+			return; //if the user does not exist
+		}
+		
+		//get the hashed value of the current password typed in
+		String hashedString = LoginHandler.hashValue(password);
+		
+		if(!currentUser.getPasswordHash().equals(hashedString)){
+			showLoginError(INVALID_LOGIN);
+			return; //if the user password does not match
+		}
+		
+		//continue
+		intent.putExtra(LOGIN_PASSWORD, password);
 		
 		startActivity(intent);
 	}
@@ -110,4 +130,17 @@ public class LoginActivity extends Activity {
 	}
 	
 
+
+	private void showLoginError(String errorMessage){
+		new AlertDialog.Builder(this)
+		.setTitle("Error")
+		.setMessage(errorMessage)
+	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	            
+	        }
+	     })
+	     .show();
+	}
+	
 }

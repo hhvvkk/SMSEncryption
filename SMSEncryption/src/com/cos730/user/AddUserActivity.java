@@ -1,5 +1,7 @@
 package com.cos730.user;
 
+import com.cos730.database.DatabaseHandler;
+import com.cos730.database.User;
 import com.cos730.smsencryption.R;
 import com.cos730.smsencryption.R.id;
 import com.cos730.smsencryption.R.layout;
@@ -7,13 +9,16 @@ import com.cos730.smsencryption.R.menu;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.os.Build;
 
 public class AddUserActivity extends Activity {
@@ -68,15 +73,79 @@ public class AddUserActivity extends Activity {
 	
 	public void addUser(View view){
 		//firstly validate whether details have been put in correctly
-		//1 username and password is not null
-		//2 confirm password is correct
+		
+		EditText editTextName = (EditText)findViewById(R.id.editTextAddUserLoginUsername);
+		EditText editTextPassword = (EditText)findViewById(R.id.editTextAddUserLoginPassword);
+		EditText editTextPasswordConfirm = (EditText)findViewById(R.id.editTextAddUserLoginPasswordConfirm);
+		
+		String username = editTextName.getText().toString();
+		char []password = editTextPassword.getText().toString().toCharArray();
+		char []passwordConfirm = editTextPasswordConfirm.getText().toString().toCharArray();
+		
+		boolean success = validateInputs(username, password, passwordConfirm);
 		
 		//thereafter add the user
 			//only if user does not already exist
+		if(!success){
+			return;
+		}
 		
+		success = checkAvailabilityOfName(username);
+		
+		//if it is not available
+		if(!success){
+			return;
+		}
+		
+		//find the hashed password
+		String hashedPassword = LoginHandler.hashValue(password);
+		
+		//else all is well and can add to database
+		DatabaseHandler dbHandler = new DatabaseHandler(this.getApplicationContext());
+		User newUser = new User(username, hashedPassword);
+		dbHandler.addUser(newUser);
+
+		showMessage("Successfully added the user","Success");
 		
 		//close the activity when done
 		finish();
 	}
 
+	private boolean validateInputs(String username, char []password, char []passwordConfirm){
+		/**
+		 * TODO: need to implement validation
+		 */
+		//ifusername size invalid
+//		showMessage("Your username size is invalid. You must at least have 4 characters","Error");
+//		return false
+		
+		//if password != passowrdConfirm
+//		showMessage("Your password does not match the confirm password","Error");
+//		return false;
+
+		//if(password size invalid
+//		showMessage("Your password size is invalid. You must at least have 4 characters","Error");
+//		return false
+		
+		return true;
+	}
+	
+	private boolean checkAvailabilityOfName(String username){
+		return true;
+	}
+	
+	
+
+	private void showMessage(String errorMessage, String title){
+		new AlertDialog.Builder(this)
+		.setTitle(title)
+		.setMessage(errorMessage)
+	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	            
+	        }
+	     })
+	     .show();
+	}
+	
 }

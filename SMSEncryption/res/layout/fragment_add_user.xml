@@ -27,7 +27,7 @@
             android:text="@string/userNameLabel" />
 
         <EditText
-            android:id="@+id/editTextLoginUsername"
+            android:id="@+id/editTextAddUserLoginUsername"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -52,7 +52,7 @@
             android:text="@string/passwordHintLabel" />
 
         <EditText
-            android:id="@+id/editTextLoginPassword"
+            android:id="@+id/editTextAddUserLoginPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -75,7 +75,7 @@
             android:text="@string/passwordHintLabelConfirm" />
         
         <EditText
-            android:id="@+id/editTextLoginPasswordConfirm"
+            android:id="@+id/editTextAddUserLoginPasswordConfirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"

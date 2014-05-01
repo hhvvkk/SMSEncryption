@@ -15,8 +15,9 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	private static final int DATABASE_VERSION = 1;
 	
 	private static final String DATABASE_NAME = "contactDatabase";
-	
+
 	private static final String TABLE_CONTACTS = "contacts";
+	private static final String TABLE_USERS = "users";
 	
 	// Contacts Table Columns names
 	private static final String KEY_ID = "id";
@@ -25,10 +26,14 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	private static final String KEY_HIS_SEED = "his_seed";
 	private static final String KEY_MY_SEED = "my_seed";
 	
+	//User TABLE column names
+	//private static final String KEY_ID = "id";
+	private static final String KEY_USERNAME = "name";
+	private static final String KEY_PASSWORD_HASH = "passwordHash";
+	
 	public DatabaseHandler(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public DatabaseHandler(Context context) {
@@ -43,13 +48,23 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 				+ KEY_HIS_SEED + " TEXT,"
 				+ KEY_MY_SEED + " TEXT"
 				+")";
-		db.execSQL(CREATE_CONTACTS_TABLE);		
+		db.execSQL(CREATE_CONTACTS_TABLE);
+		
+		String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USERS + "("
+				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_USERNAME + " TEXT,"
+				+ KEY_PASSWORD_HASH + " TEXT"
+				+")";
+		db.execSQL(CREATE_USER_TABLE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// Drop older table if existed
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
+		
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
+		
+		
 		// Create tables again
 		onCreate(db);
 	}
@@ -70,20 +85,21 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		
 	}
 
+	// Adding new contact
+	public void addUser(User user) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(KEY_USERNAME, user.getName()); // username
+		values.put(KEY_PASSWORD_HASH, user.getPasswordHash()); //user password hash value
+
+		// Inserting Row
+		db.insert(TABLE_USERS, null, values);
+		db.close(); // Closing database connection
+	}
+	
 	// Getting single contact
 	public Contact getContact(int id) {
-//		SQLiteDatabase db = this.getReadableDatabase();
-//
-//		Cursor cursor = db.query(TABLE_CONTACTS, new String[] { KEY_ID,
-//				KEY_NAME, KEY_PHONE_NUMBER, KEY_HIS_SEED, KEY_MY_SEED}, KEY_ID + "=?",
-//				new String[] { String.valueOf(id) }, null, null, null, null);
-//
-//		if (cursor != null)
-//			cursor.moveToFirst();
-//
-//		Contact contact = new Contact(Integer.parseInt(cursor.getString(0)),
-//				cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
-//		
 		List<Contact> contactList = getAllContacts();
 		
 		for(int i = 0; i < contactList.size(); i++){
@@ -126,6 +142,35 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		return contactList;
 		
 	}
+	
+	// Getting All users
+	public List<User> getAllUsers() {
+			List<User> userList = new ArrayList<User>();
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_USERS;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					User user = new User();
+					user.setID(Integer.parseInt(cursor.getString(0)));
+					user.setName(cursor.getString(1));
+					user.setPasswordHash(cursor.getString(2));
+					// Adding contact to list
+					userList.add(user);
+				} while (cursor.moveToNext());
+			}
+
+			//close the database
+			db.close();
+			
+			// return contact list
+			return userList;
+			
+		}
 
 	// Getting contacts Count
 	public int getContactsCount() {
