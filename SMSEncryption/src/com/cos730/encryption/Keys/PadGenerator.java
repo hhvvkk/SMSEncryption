@@ -63,10 +63,10 @@ public class PadGenerator {
             value = value % cs.SetLength;
 
             firstSeed = firstSeed + value;
-            sran.setSeed(firstSeed*100);
+            sran.setSeed(firstSeed%1000);
 
             SecondSeed = SecondSeed + value;
-            sran2.setSeed(SecondSeed*100);
+            sran2.setSeed(SecondSeed%800);
 
             values[i] = value;
         }

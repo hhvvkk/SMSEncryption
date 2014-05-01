@@ -4,7 +4,10 @@
  */
 package com.cos730.encryption;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
 import com.cos730.database.Contact;
 import com.cos730.database.DatabaseHandler;
@@ -35,8 +38,9 @@ public class OneTimePadHybridEncryption {
         //Generate pad from both keys
         String padkey = pgen.PadKey(conv.getNumberRep(reciever.getHisSeed()).longValue(), conv.getNumberRep(reciever.getMySeed()).longValue());
         System.out.println("padkey1 "+padkey);
-        //pad  message to 150 chars cause with key it will be 160
-        while (in.length() < 150) {
+        
+        //pad  message to 144 chars cause with key it will be 154 and with failsave it will be 160
+        while (in.length() < 144) {
             in = in + " ";
         }        
 
@@ -45,6 +49,9 @@ public class OneTimePadHybridEncryption {
         
         //add to message
         String phase1 = in + genKey;
+        
+        //add failsave
+        phase1="cos730"+phase1;
         
         //encrypt message
         pen.padKey = padkey;
@@ -64,8 +71,23 @@ public class OneTimePadHybridEncryption {
 
     }
 
-    public String Decrypt(String in, Contact con,Context cont) {
+    public String Decrypt(String in, Contact con,Context cont,Activity act) {
 
+    	if(in.length()<160)
+    	{
+    		new AlertDialog.Builder(act)
+    		.setTitle("Error")
+    		.setMessage("Message to short please check again")
+    	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+    	        public void onClick(DialogInterface dialog, int which) { 
+    	            
+    	        }
+    	     })
+    	     .show();
+    		
+    		return in;
+    	}
+    	
         //get Contact
         Contact sender = con;
 
@@ -90,9 +112,29 @@ public class OneTimePadHybridEncryption {
         DatabaseHandler dbHandler = new DatabaseHandler(cont);
         System.out.println("com "+Combined);
         System.out.println("genKey "+phase1);
+        
+        String failsave=phase2.substring(0,6);
+        if(failsave.equals("cos730"))
+        {
+        
         con.setMySeed(Combined);
         dbHandler.updateContact(con);
-
+        }
+        else
+        {
+    		new AlertDialog.Builder(act)
+    		.setTitle("Error")
+    		.setMessage("Decryption failed, please resynchronize keys")
+    	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+    	        public void onClick(DialogInterface dialog, int which) { 
+    	            
+    	        }
+    	     })
+    	     .show();
+        }
+        
+        phase2=phase2.substring(6);
+        
         return phase2;
     }
 }

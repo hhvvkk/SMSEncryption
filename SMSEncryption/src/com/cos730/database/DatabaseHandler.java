@@ -3,6 +3,8 @@ package com.cos730.database;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cos730.encryption.AppSecurity;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -31,6 +33,12 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	private static final String KEY_USERNAME = "name";
 	private static final String KEY_PASSWORD_HASH = "passwordHash";
 	
+	//user info for encryption
+	private static String USERNAME="";
+	private static String PASSWORD="";
+	
+	private AppSecurity security=new AppSecurity();
+	
 	public DatabaseHandler(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
@@ -38,6 +46,19 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+	}
+	
+	public void setEncryption(String username,String password)
+	{
+		System.out.println("encryption init");
+		USERNAME=username;
+		PASSWORD=password;
+		
+		security.setUsername(USERNAME);
+		security.setPassword(PASSWORD);
+		
+		security.EncryptSetup();
+		security.DecryptSetup();
 	}
 
 	@Override
@@ -74,10 +95,10 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_NAME, contact.getName()); // Contact Name
-		values.put(KEY_PHONE_NUMBER, contact.getPhoneNumber()); // Contact Phone Number
-		values.put(KEY_HIS_SEED, contact.getHisSeed()); // his seed
-		values.put(KEY_MY_SEED, contact.getMySeed()); // my seed
+		values.put(KEY_NAME,security.Encrypt(contact.getName())); // Contact Name
+		values.put(KEY_PHONE_NUMBER,security.Encrypt(contact.getPhoneNumber())); // Contact Phone Number
+		values.put(KEY_HIS_SEED,security.Encrypt(contact.getHisSeed())); // his seed
+		values.put(KEY_MY_SEED,security.Encrypt(contact.getMySeed())); // my seed
 
 		// Inserting Row
 		db.insert(TABLE_CONTACTS, null, values);
@@ -126,10 +147,10 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 			do {
 				Contact contact = new Contact();
 				contact.setID(Integer.parseInt(cursor.getString(0)));
-				contact.setName(cursor.getString(1));
-				contact.setPhoneNumber(cursor.getString(2));
-				contact.setHisSeed(cursor.getString(3));
-				contact.setMySeed(cursor.getString(4));
+				contact.setName(security.Decrypt(cursor.getString(1)));
+				contact.setPhoneNumber(security.Decrypt(cursor.getString(2)));
+				contact.setHisSeed(security.Decrypt(cursor.getString(3)));
+				contact.setMySeed(security.Decrypt(cursor.getString(4)));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());
@@ -191,10 +212,10 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_NAME, contact.getName());
-		values.put(KEY_PHONE_NUMBER, contact.getPhoneNumber());
-		values.put(KEY_HIS_SEED, contact.getHisSeed());
-		values.put(KEY_MY_SEED, contact.getMySeed());
+		values.put(KEY_NAME,security.Encrypt(contact.getName()));
+		values.put(KEY_PHONE_NUMBER,security.Encrypt( contact.getPhoneNumber()));
+		values.put(KEY_HIS_SEED,security.Encrypt( contact.getHisSeed()));
+		values.put(KEY_MY_SEED,security.Encrypt( contact.getMySeed()));
 		
 		// updating row
 		int update = db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",

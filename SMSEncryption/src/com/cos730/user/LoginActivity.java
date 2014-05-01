@@ -1,5 +1,6 @@
 package com.cos730.user;
 
+import com.cos730.database.DatabaseHandler;
 import com.cos730.database.User;
 import com.cos730.smsencryption.ContactListActivity;
 import com.cos730.smsencryption.R;
@@ -115,6 +116,10 @@ public class LoginActivity extends Activity {
 		
 		//continue
 		intent.putExtra(LOGIN_PASSWORD, password);
+		
+		//dbhandler to assign values for encryption
+		DatabaseHandler dbHandler = new DatabaseHandler(this.getApplicationContext());
+		dbHandler.setEncryption(username,passwordEditText.getText().toString());
 		
 		startActivity(intent);
 	}

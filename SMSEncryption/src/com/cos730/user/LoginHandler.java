@@ -7,6 +7,7 @@ import android.content.Context;
 import com.cos730.database.Contact;
 import com.cos730.database.DatabaseHandler;
 import com.cos730.database.User;
+import com.cos730.encryption.AppSecurity;
 
 public class LoginHandler {
 	
@@ -28,7 +29,9 @@ public class LoginHandler {
 	 */
 	public static String hashValue(char []password){
 		
-		return new String(password);
+		AppSecurity appsec=new AppSecurity();
+		
+		return appsec.generateHash(new String(password));
 	}
 	
 	/**

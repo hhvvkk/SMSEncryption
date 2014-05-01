@@ -120,7 +120,7 @@ public class ContactDetailActivity extends FragmentActivity {
 	
         OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
         
-        String Decrypted=hybrid.Decrypt(text.getText().toString(),contact,getApplicationContext());        
+        String Decrypted=hybrid.Decrypt(text.getText().toString(),contact,getApplicationContext(),this);        
         
         text.setText(Decrypted);
     }
