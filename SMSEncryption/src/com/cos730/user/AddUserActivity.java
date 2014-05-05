@@ -102,13 +102,20 @@ public class AddUserActivity extends Activity {
 		
 		//else all is well and can add to database
 		DatabaseHandler dbHandler = new DatabaseHandler(this.getApplicationContext());
-		User newUser = new User(username, hashedPassword);
-		dbHandler.addUser(newUser);
-
-		showMessage("Successfully added the user","Success");
 		
-		//close the activity when done
-		finish();
+		int userCount = dbHandler.getUsersCount(false);
+		
+		if(userCount >= 1){
+			showMessage("A user already exist, and you can only have one active user","Failed");
+		}
+		else{
+			User newUser = new User(username, hashedPassword);
+			dbHandler.addUser(newUser);
+
+			showMessage("Successfully added the user","Success");
+		}
+		
+		
 	}
 
 	private boolean validateInputs(String username, char []password, char []passwordConfirm){
@@ -136,13 +143,13 @@ public class AddUserActivity extends Activity {
 	
 	
 
-	private void showMessage(String errorMessage, String title){
+	private void showMessage(String message, String title){
 		new AlertDialog.Builder(this)
 		.setTitle(title)
-		.setMessage(errorMessage)
+		.setMessage(message)
 	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
-	            
+	            finish();
 	        }
 	     })
 	     .show();

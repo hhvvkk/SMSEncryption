@@ -198,10 +198,28 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		String countQuery = "SELECT  * FROM " + TABLE_CONTACTS;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
-		cursor.close();
 
 		//close the db
 		db.close();
+		
+		// return count
+		return cursor.getCount();
+	}
+	
+	// Getting contacts Count
+	/**
+	 * Gets the amount of users in the database
+	 * @param closeConnection Closes the connection if set to tru
+	 * @return Return the amount of users in the database
+	 */
+	public int getUsersCount(boolean closeConnection) {
+		String countQuery = "SELECT  * FROM " + TABLE_USERS;
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(countQuery, null);
+
+		//close the db
+		if(closeConnection)
+			db.close();
 		
 		// return count
 		return cursor.getCount();
