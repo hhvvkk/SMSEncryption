@@ -60,8 +60,13 @@ public class ContactListActivity extends FragmentActivity
 			openAddContactActivity();
 			return true;
 		}
-        if(id == R.id.action_edit_contact){
+		else if(id == R.id.action_edit_contact){
         	openEditContactActivity();
+			return true;
+        }
+        else if(id == R.id.action_settings){
+        	openSettingsActivity();
+			return true;
         }
 		return super.onOptionsItemSelected(item);
 	}
@@ -82,6 +87,14 @@ public class ContactListActivity extends FragmentActivity
 		startActivity(intent);
 	}
 
+
+	/**
+	 * Opens settings
+	 */
+	private void openSettingsActivity(){
+		Intent intent = new Intent(this, SettingsActivity.class);
+		startActivity(intent);
+	}
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
