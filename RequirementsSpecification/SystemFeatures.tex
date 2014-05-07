@@ -2,20 +2,35 @@
 %%%%%
 %All the system features, i.e. all the functional requirements for the application
 %%%%%
+\subsubsection{State Diagrams of Product Functions}
 
+\begin{center}
+\textbf{The add user function\\}
+\end{center}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/AddUserStateDiagram.png}
+\textbf{\\}
+\begin{center}
+\textbf{The add contact function\\}
+\end{center}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/AddContactStateDiagram.png}
+\textbf{\\}
+\begin{center}
+\textbf{The edit contact function\\}
+\end{center}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/EditContactStateDiagram.png}
 
 \normalsize
 \vspace{12pt}
 
 \subsection{Admin Functions}
 
-\subsubsection{Set Password : FRQ1}
+\subsubsection{Add User Account : FRQ1}
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
-\item A user must be able to set a password for local authentication purposes.
+\item A user must be able to create a password protected account for the app.
 \end{itemize}
 %------------------------------------------------------------------------------------------------------------
-\subsubsection{Edit Password : FRQ2}
+\subsubsection{Edit User Password : FRQ2}
 \textbf{(Source: Group Deliberation, Priority: Medium)}
 \begin{itemize}
 \item The user must be able to edit the authenticating password.
@@ -45,7 +60,7 @@
 \subsubsection{Paste message : FRQ4.2}
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item A user must be able to paste an already conducted message into the application, using the clipboard.
+\item A user must be able to paste an already constructed message into the application, using the clipboard.
 \end{itemize}
 %------------------------------------------------------------------------------------------------------------
 \subsubsection{Edit Message: FRQ5}
@@ -72,22 +87,28 @@
 \item The application must be able to decrypt the message (on the receiving end) to reveal the original text.
 \end{itemize}
 %------------------------------------------------------------------------------------------------------------
+\subsubsection{Display message length : FRQ9}
+\textbf{(Source: Bernard Wagner, Priority: Low)}
+\begin{itemize}
+\item The numbers of characters in the message must be displayed.
+\end{itemize}
+%------------------------------------------------------------------------------------------------------------
 
 \subsection{Contacts Functions}
 
-\subsubsection{Add Contact : FRQ9}
+\subsubsection{Add Contact : FRQ10}
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
 \item Before communicating with someone, the receiver must be added as a contact, in order to be able to communicate with that user.
 \end{itemize}
 %------------------------------------------------------------------------------------------------------------
-\subsubsection{Edit Contact : FRQ10}
+\subsubsection{Edit Contact : FRQ11}
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
 \item A contact must be editable once it has been added.
 \end{itemize}
 %------------------------------------------------------------------------------------------------------------
-\subsubsection{Remove Contact : FRQ11}
+\subsubsection{Remove Contact : FRQ12}
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
 \item A user must be able to remove a contact.
