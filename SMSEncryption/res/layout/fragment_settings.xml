@@ -9,11 +9,10 @@
     tools:context="com.cos730.smsencryption.UpdateUserActivity$PlaceholderFragment" 
     android:orientation="vertical">
     
-    
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settingsActivityHint" />
+        android:text="@string/settingsmess" />
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +30,7 @@
             android:id="@+id/editTextSettingsLoginUsername"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="2.02"
             android:hint="@string/userNameHint"
             android:inputType="text" >
 
@@ -51,24 +50,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/oldPasswordHintLabel" />
+            android:text="@string/pword" />
         
         <EditText
             android:id="@+id/editTextSettingsLoginOldPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:hint="@string/oldPasswordHintConfirm"
+            android:layout_weight="5.91"
+            android:hint="@string/password"
             android:inputType="textPassword" />
 
     </LinearLayout>
-    
-     <Button
-        android:id="@+id/buttonShowNewPasswordFields"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/showNewPasswordFields" 
-        android:onClick="showNewPasswordFields"/>
      
      
     <LinearLayout
@@ -120,13 +112,7 @@
             android:inputType="textPassword" />
 
     </LinearLayout>
-    
-    <!-- add a transparent dividor to stick buttons to the bottom  -->
-    <View
-	    android:layout_width="1dp"
-	    android:background="@drawable/transparent_layout"
-	    android:layout_height="0dp"
-	    android:layout_weight="0.1"	    />
+
     
 
     <Button

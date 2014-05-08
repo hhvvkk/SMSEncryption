@@ -51,6 +51,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	public void setEncryption(String username,String password)
 	{
 		System.out.println("encryption init");
+		System.out.println("intit USERNAME "+username);
+		System.out.println("intit PASSWORD "+password);
 		USERNAME=username;
 		PASSWORD=password;
 		
@@ -59,6 +61,16 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		
 		security.EncryptSetup();
 		security.DecryptSetup();
+	}
+	
+	public String getUsername(String password)
+	{
+		return USERNAME;		
+	}
+	
+	public String getPassword(String password)
+	{
+			return PASSWORD;
 	}
 
 	@Override
@@ -252,6 +264,23 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 				new String[] { String.valueOf(contact.getID()) });
 		db.close();
 		
+	}
+	
+	//change the username and passwordhash
+	public void UpdateSettings(User user)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_USERNAME, user.getName()); // username
+		values.put(KEY_PASSWORD_HASH, user.getPasswordHash()); //user password hash value
+		
+		// updating row
+		int update = db.update(TABLE_USERS, values, KEY_ID + " = ?",
+				new String[] { String.valueOf(user.getID()) });
+		
+		//close database
+		db.close();
 	}
 	
 	public List<String> getAllLabels(){

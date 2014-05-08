@@ -1,5 +1,12 @@
 package com.cos730.smsencryption;
 
+import java.util.List;
+
+import com.cos730.database.Contact;
+import com.cos730.database.DatabaseHandler;
+import com.cos730.database.User;
+import com.cos730.encryption.AppSecurity;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -72,53 +79,78 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public void updateSettings(View view){
-		if(editPassword == true){
-			updatePasswordAndSettings();
+
+		
+		EditText newUsername = (EditText)findViewById(R.id.editTextSettingsLoginUsername);
+		
+		String snewUsername=newUsername.getText().toString();
+		
+		EditText newPassword = (EditText)findViewById(R.id.editTextSettingsLoginOldPassword);
+		
+		String snewPassword=newPassword.getText().toString();
+		
+		DatabaseHandler db=new DatabaseHandler(this.getApplicationContext());
+		String oldusername=db.getUsername("COS730");
+		String oldpassword=db.getPassword("COS730");
+		
+		
+		List<Contact> allcontacts=db.getAllContacts();
+		
+		if(snewUsername.equals(""))
+		{
+			snewUsername=oldusername;
 		}
-		else{
-			//password will not be edited
-			updateSettings();
+		
+		if(snewPassword.equals(""))
+		{
+			snewPassword=oldpassword;
 		}
-	}
-	
-	/**
-	 * Will update all settings apart from password
-	 */
-	private void updateSettings(){
-		EditText userNameEditText = (EditText)findViewById(R.id.editTextSettingsLoginUsername);
-		
-		EditText oldPasswordEditText = (EditText)findViewById(R.id.editTextSettingsLoginOldPassword);
 		
 		
-		//confirm user details
+		System.out.println("snewUsernames "+snewUsername);
+		System.out.println("snewPassword "+snewPassword);
+		System.out.println("oldusername "+oldusername);
+		System.out.println("oldpassword "+oldpassword);
 		
 
-		//update user
-	}
-	
-	/**
-	 * Will update password and all other settings
-	 */
-	private void updatePasswordAndSettings(){
-		EditText userNameEditText = (EditText)findViewById(R.id.editTextSettingsLoginUsername);
 		
-		EditText oldPasswordEditText = (EditText)findViewById(R.id.editTextSettingsLoginOldPassword);
-		
-		EditText newPasswordEditText = (EditText)findViewById(R.id.editTextSettingsLoginPassword);
-		EditText newPasswordConfirmEditText = (EditText)findViewById(R.id.editTextSettingsLoginPasswordConfirm);
-//		
-//		showMessage(oldPasswordEditText.getText().toString(), "oldPasswordEditText", false);
-//		showMessage(newPasswordEditText.getText().toString(), "newPasswordEditText", false);
-//		showMessage(newPasswordConfirmEditText.getText().toString(), "newPasswordConfirmEditText", false);
-//		showMessage(userNameEditText.getText().toString(), "userNameEditText", false);
-		
+		db.setEncryption(snewUsername, snewPassword);
 
-		//confirm user details
+		for(int a=0;a<allcontacts.size();a++)
+		{
+			Contact temp=allcontacts.get(a);
+			db.updateContact(temp);
+		}
 		
+		
+		List<User> users=db.getAllUsers();
+		AppSecurity sec=new AppSecurity();
+		
+		for(int a=0;a<users.size();a++)
+		{
+			User temp=users.get(a);
+			System.out.println(temp.getName());
+			if(temp.getName().equals(oldusername))
+			{
 
-		//update user password and name
+				User temp2=new User(temp.getID(),snewUsername,sec.generateHash(snewPassword));
+				db.UpdateSettings(temp2);
+				
+				new AlertDialog.Builder(this)
+				.setTitle("Settings")
+				.setMessage("Successfully updated settings")
+			    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+			        public void onClick(DialogInterface dialog, int which) { 
+			            finish();
+			        }
+			     })
+			     .show();
+				return;
+			}
+				
+		}
+		
 	}
-	
 	
 	/**
 	 * Shows the fields to be able to edit password to a new password
@@ -129,11 +161,11 @@ public class SettingsActivity extends Activity {
 		
 		LinearLayout linearLayoutNewPassword = (LinearLayout) findViewById(R.id.linearLayoutNewPassword);
 		LinearLayout linearLayoutNewPasswordConfirm = (LinearLayout) findViewById(R.id.linearLayoutNewPasswordConfirm);
-		Button changePasswordButton = (Button)findViewById(R.id.buttonShowNewPasswordFields);
+		//Button changePasswordButton = (Button)findViewById(R.id.buttonShowNewPasswordFields);
 		
 		linearLayoutNewPassword.setVisibility(View.VISIBLE);
 		linearLayoutNewPasswordConfirm.setVisibility(View.VISIBLE);
-		changePasswordButton.setVisibility(View.INVISIBLE);//why wont you work!
+	//	changePasswordButton.setVisibility(View.INVISIBLE);//why wont you work!
 	}
 
 	/**
