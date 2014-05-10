@@ -1,0 +1,14 @@
+\section{Appendix D - Secure design principles}
+
+As specified by the OWASP mobile security project the following are the  most prevalent mobile threats as of 2014 which are applicable to the SMSEncryption project.
+
+\subsection*{ - Insecure Data Storage}
+The security of data the application stores is of the utmost importance as it could store the public and private keys of users or the OTP . Therefor we must consider threats to the data which is stored by the application. 
+\subsection*{ - Unintended Data Leakage}
+Data leakage is a viable threat which demonstrates the lack of control developers have when developing on mobile applications , for instance the OS which you are developing for will handle memory management , this can be exploited by would be attackers by looking for unprotected areas in memory.
+\subsection*{ - Poor Authorization and Authentication}
+Poor Authorization and authentication is relative to this project as we have to consider the consequences of the application being accessed and used by unauthorized personnel.
+\subsection*{ - Broken Cryptography}
+We have to ensure that we make use of a suitable encryption method so that it can not be easily decrypted by attackers and that it does  not require a disproportionate amount of resources to implements or use.
+\subsection*{ - Lack of Binary Protections}
+This is a universal problem as almost all code which is compiled into binaries will be able to be reverse engineered into some form of discernable source code.

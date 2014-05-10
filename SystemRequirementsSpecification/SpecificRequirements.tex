@@ -1,0 +1,168 @@
+\section{Specific requirements}
+
+\subsection{External interfaces}
+
+\subsection{Functions}
+\subsubsection{Admin Functions}
+\begin{itemize}
+\item{Add User Account : FRQ1}\\
+\textbf{(Source: Bernard Wagner, Priority: Medium)}
+\begin{itemize}
+\item A user must be able to create a password protected account for the app.
+\end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/AddUserStateDiagram.png}
+\item{Edit User Password : FRQ2}\\
+\textbf{(Source: Group Deliberation, Priority: Medium)}
+\begin{itemize}
+\item The user must be able to edit the authenticating password.
+\end{itemize}
+\item{Local Authentication : FRQ3}\\%meaning functional requirement 3
+\textbf{(Source: Bernard Wagner, Priority: Medium)}
+\begin{itemize}
+\item The application must authenticate a user by requiring a password in order to log into the application, in order to ensure confidentiality.
+\end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/LocalAuthenticationStateDiagram.png}
+\end{itemize}
+\subsubsection{Messaging Functions}
+\begin{itemize}
+\item{Enter message : FRQ4}\\%meaning functional requirement 1
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item A user must be able to input text into the application.
+\end{itemize}
+\item{Type message : FRQ4.1}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item A user must be able to type text into the application.
+\end{itemize}
+\item{Paste message : FRQ4.2}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item A user must be able to paste an already constructed message into the application, using the clipboard.
+\end{itemize}
+\item{Edit Message: FRQ5}\\
+\textbf{(Source: Bernard Wagner, Priority: Medium)}
+\begin{itemize}
+\item The message text must be editable once it has been input into the application by the user.
+\end{itemize}
+\item{Encrypt message : FRQ6}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item The message must be encrypted using a suitable encryption method.
+\end{itemize}
+\item{Copy Encrypted Message : FRQ7}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item Once a message has been encrypted, a user must be able to copy the ciphertext, and paste it into a suitable messaging application.
+\end{itemize}
+\item{Decrypt message : FRQ8}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item The application must be able to decrypt the message (on the receiving end) to reveal the original text.
+\end{itemize}
+\item{Display message length : FRQ9}\\
+\textbf{(Source: Bernard Wagner, Priority: Low)}
+\begin{itemize}
+\item The numbers of characters in the message must be displayed.
+\end{itemize}
+\end{itemize}
+\subsubsection{Contacts Functions}
+\begin{itemize}
+\item{Add Contact : FRQ10}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item Before communicating with someone, the receiver must be added as a contact, in order to be able to communicate with that user.
+\end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/AddContactStateDiagram.png}
+\item{Edit Contact : FRQ11}\\
+\textbf{(Source: Bernard Wagner, Priority: Medium)}
+\begin{itemize}
+\item A contact must be editable once it has been added.
+\end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/EditContactStateDiagram.png}
+\item{Synchronise Contact : FRQ12}\\
+\textbf{(Source: Group Deliberation, Priority: High)}
+\begin{itemize}
+\item The user shall be able to synchronise with a contact at any time after they have been added.
+\end{itemize}
+\item{Remove Contact : FRQ13}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item A user must be able to remove a contact.
+\end{itemize}
+\end{itemize}
+
+\subsection{Performance requirements}
+\begin{itemize}
+\item The application should operate in a timely manner, the user should not be made to wait an unreasonable amount of time (this variable can be affected by the system environment e.g. resource availability).
+\begin{itemize}
+\item Expected time the applcaiton should take to decrypt is less than one second.
+\item Expected time the applicaiton should take to encrypt is less than one second.
+\end{itemize}
+\item The encryption method must be secure.
+\begin{itemize}
+\item The Encyprion method used should have an entropy of less than 1\%.
+\end{itemize}
+\item The applcaiton must be secure.
+\begin{itemize}
+\item A user’s password must not be viewable as to prevent unauthorized use of the application.
+\item A user’s password should be encrypted or stored as a hash value.
+\item Contact information stored by the application must not be obtainable by unauthorized users.
+\item Contact information should be encrypted to ensure that it is not readable by unauthorized users.
+\end{itemize}
+\end{itemize}
+
+\subsection{Logical database requirements}
+
+\subsection{Design constraints}
+\begin{itemize}
+\item{Message length : DC1}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item Due to the fact that the primary messaging service which the client intends to use is SMS this limits the input size of the text to 160 characters. 
+\item The encryption process uses 6 characters for a fail safe and 10 characters to embed the next key.
+\item This means plaintext must be limited to 144 characters.
+\item To maintain consistency we enforce this as the maximum length of messages which the application can encrypt, regardless of the intended messaging application.
+\end{itemize}
+\item{The usable characters : DC2}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item The usable character which can be encrypted by the application is the GSM character set because the primary intended messaging service that the client wishes to use is SMS. 
+\end{itemize}
+\item{Application resource requirementsr : DC3}\\
+\textbf{(Source: Bernard Wagner, Priority: High)}
+\begin{itemize}
+\item The application should function efficiently with the least amount of resource usage.
+\end{itemize}
+\end{itemize}
+\subsubsection{Standards compliance}
+\begin{itemize}
+\item The application must be secure, as is stipuled in Appendix D, Secure design principles.
+\item The Application must conform to the Android and iOS design principles for each respective platform, these can be found in Appendix E, Design principles.
+\end{itemize}
+
+\subsection{Software system attributes}
+\subsubsection{Reliability}
+\begin{itemize}
+\item The application should run until the user closes it.
+\item Any information stored in the application should be static and exist as long as the application is open or said information is removed/edited.
+\item The ciphertext should decrypt into its plaintext.
+\end{itemize}
+\subsubsection{Availability}
+\begin{itemize}
+\item The user should be able to use the application as long as it is running and should not be made to wait while the application performs a function.
+\item The application should not interfere with any other applications which are running on the device.
+\end{itemize}
+\subsubsection{Security}
+\begin{itemize}
+\item A secure encryption and decryption method will be used for the localised database.
+\end{itemize}
+\subsubsection{Maintainability}
+\begin{itemize}
+\item The source code should be maintainable (simplistic and readable/documented).
+\item The application should not act in unpredictable ways.
+\end{itemize}
+\subsubsection{Portability}
+\begin{itemize}
+\item The client has requested that different versions of the application be developed to execute on different operating systems namely Android and iOS.
+\end{itemize}
