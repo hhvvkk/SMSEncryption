@@ -43,10 +43,10 @@ SMSEncryption State diagram
 %check first item for cipher message list
 \subsubsection{Log In}
 \begin{itemize}
-\item On first use of the application, a password must be created that will ensure user authentication.
-\item Every time a user wants to use the application, the password must be provided along with the login details.
-\item If the provided password (and related details) are entered correctly, the user may gain access to the application.
-\item If the password provided remains incorrect after a specified number of times, the application will lock for a specified time - preventing access from an unauthorised user.
+\item On first use of the application, a user account with a password must be created that will ensure user authentication.
+\item Every time a user wants to use the application, the password for that user must be provided along with that user's username.
+\item If the provided password (and related details) are entered correctly, the user gains access to the application.
+\item If the password is entered incorrectly after a specified number of tries, the application will lock for a specified amount of time - preventing access from an unauthorised user; effectively nullifying "guessing" attacks.
 \end{itemize}
 \subsubsection{Message}
 \textbf{Create}
@@ -56,17 +56,17 @@ SMSEncryption State diagram
 \end{itemize}
 \textbf{Cipher Message}
 \begin{itemize}
-\item The user will select a relevant contact, that contacts details will then be used to perform encryption or decryption.
-\item The message will be encrypted to obtain the cipher text, which the user can then copy out and paste into the application that will send the ciphertext to the desired receiver; via any messaging method.
-\item The desired receiver will be able to decrypt the message back into its plaintext.
+\item The user will select a relevant contact, that contact's set keys will then be used to perform encryption or decryption.
+\item The message will be encrypted to obtain the cipher text, which the user can then copy out and paste into the application that will send the ciphertext to the desired receiver; this can be done via any messaging application.
+\item The desired receiver will be able to decrypt the message back into its original plaintext.
 \end{itemize}
 
 \subsubsection{Device Synchronization}
 \begin{itemize}
 \item In order for communication to take place between two devices they need to be synchronized.
-\item A user adds what is called a contact, it will ask the name of the contact as well as generate a unique word to be provided to the other person and an input box where the unique word appearing on the contacts phone.
-\item Both users must add each other at the same time, because they need each other's unique word that will be generated for their communication. This will synchronize communication between the devices.
-\item Once a contact has been added, you can resynchronise with that contact at any time in the future should you require this.
+\item A user adds what is called a "contact". The SMSEncryption application will require the name of the contact, a unique key for the current user of the application, as well as the unique key from the contact to be added. The unique keys are easily generated within the application.
+\item Both users must add each other at the same time, because their unique (secret) keys need to be shared with each other to be able to communicate with each other. This will synchronize communication between the two contacts/devices.
+\item Once a contact has been added, you can resynchronise with that contact at any time in the future should it be needed. This will be required if users accidentally modify their keys, or if synchronization errors take place.
 \end{itemize}
 
 \subsection{User characteristics}
@@ -76,9 +76,9 @@ SMSEncryption State diagram
 %? Only user characteristics that affect the software
 %requirements
 \begin{itemize}
-\item There will be only one user class who will have full access to all the features provided by the application after local authentication.
-\item It is assumed that the user has proficient knowledge on how to copy items from messages such as SMS and paste it within this application.
-\item It is also assumed that the users performed the device synchronization phase correctly as there is no way for the device to know.
+\item * Local authentication will ensure that only the intended user of the application will have full access to the application features and data.
+\item It is assumed that the user has proficient knowledge on how to copy text from messages, such as SMSes, and paste it within this application.
+\item It is also assumed that users have performed the device synchronization phase correctly before any communication takes place, as the application will not do this automatically, and it is required for the application to function correctly.
 \end{itemize}
 
 
@@ -96,5 +96,5 @@ SMSEncryption State diagram
 
 \begin{itemize}
 \item It is assumed that the amount of characters in the basic GSM character set is 128 for the 7-bit encoding used in GSM.
-\item It is assumed that the devices being used allows for copy and pasting of text between different interfaces and applicaitons.
+\item It is assumed that the devices being used allows for copying and pasting of text between different interfaces and applicaitons.
 \end{itemize}
