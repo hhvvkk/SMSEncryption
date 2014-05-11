@@ -43,14 +43,14 @@ The device needs minimal storage space on the device for a local database and th
 SMSEncryption Use case diagram
 
 \begin{center}
- \includegraphics[width=13cm]{diagrams/UseCaseDiagrams/UsecaseV4.png}
+ \includegraphics[width=13cm]{diagrams/UseCaseDiagrams/UsecaseV5.png}
 \end{center}
 
 \subsubsection{State Diagram}
 SMSEncryption State diagram
 
 \begin{center}
- \includegraphics[height=20cm]{diagrams/StateDiagrams/GeneralStateDiagram.png}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/SMSEncryptionStateMachine.png}
 \end{center}
 
 
@@ -72,7 +72,7 @@ The application is devided int 3 core functionalities, Admin, Messaging and Cont
 \begin{itemize}
 \item Every time a user wants to use the application, the password must be provided along with the login details.
 \item If the provided password (and related details) are entered correctly, the user may gain access to the application.
-\item If the password provided remains incorrect after a specified number of times, the application will lock for a specified time - preventing access from an unauthorised user.
+\item If the password provided remains incorrect after three times, the application will lock for a specified time - preventing access from an unauthorised user.
 \end{itemize}
 \end{itemize}
 
