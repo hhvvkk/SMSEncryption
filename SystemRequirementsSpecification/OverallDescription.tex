@@ -53,63 +53,66 @@ SMSEncryption State diagram
 
 
 \subsection{Product functions}
-The application is devided int 3 core functionalities, Admin, Messaging and Contacts.
+The application is divided into 3 core functionalities: Admin, Messaging, and Contacts.
 
 \subsubsection{Admin}
 \begin{itemize}
-\item The user shall be able to make an account.
+\item The user should be able to create a user account in the application.
 \begin{itemize}
-\item On first use of the application, a username password must be created that will ensure user authentication.
-\item Only one account is allowed per device.
+\item On first use of the application, a username and password (with confirmation of password) must be created that will ensure user authentication for future use of the application.
+\item Only a single user account is allowed per device.
 \end{itemize}
-\item The user shall be able to edit his/her account.
+\item The user shall be able to edit his/her user account.
 \begin{itemize}
-\item Should it be required, once logged in the user can edit his/her account details.
+\item Should it be required, once authentication has validated the user (i.e. he/she is "logged-in") the user can edit his/her account details.
 \end{itemize}
-\item The application shall make use of local authentication to log in.
+\item The application will make use of local authentication to verify the user before logging him/her in.
 \begin{itemize}
-\item Every time a user wants to use the application, the password must be provided along with the login details.
-\item If the provided password (and related details) are entered correctly, the user may gain access to the application.
-\item If the password provided remains incorrect after three times, the application will lock for a specified time - preventing access from an unauthorised user.
+\item Every time a user wants to use the application, the set password must be provided along with the login details.
+\item If the provided password (and related details) are entered correctly, the user gains access to the application.
+\item If the password provided is found to be incorrect three times in a row, the application will lock for a specified amount of time - preventing access from an unauthorised user.
 \end{itemize}
 \end{itemize}
 
 \subsubsection{Messaging}
 \begin{itemize}
-\item A message shall be able to be entered via either typing or pasting it in.
-\item A message shall be able to be edited once it has been entered.
-\item A message shall be encrypted.
+\item Before creating a message within the application, the user must select the intended contact/receiver of the message.
 \begin{itemize}
-\item The user will select a relevant contact, that contacts details will then be used to perform encryption.
+\item The selected contact's details will be used to perform encryption.
 \end{itemize}
-\item A message shall be copyable once it has been encrypted.
+\item When creating a message within the application, the text can be either typed, or pasted in via the device "clipboard".
+\item Once a message text has been entered into the application (via any method listed above), it can be edited within the application.
+\item Once editing the message text has been finalized, the message should be encrypted.
+\item The application must allow the encrypted message to be copied onto the device clipboard.
 \begin{itemize}
-\item The encrypted message (ciphertext), can then, by the user, be copied out and pasted into the application that will send the ciphertext to the desired receiver; via any messaging method.
+\item The encrypted message (ciphertext), can then, by the user, be copied and pasted into an application that will send the ciphertext to the desired receiver; any messaging application can be used.
 \end{itemize}
-\item An encrpyted message received and entered into the application shall be decrypted.
+\item If an encrypted message is received (and pasted into the application), the application must be able to decrypt the ciphertext.
 \begin{itemize}
-\item The desired receiver will be able to decrypt the message back into its plaintext.
+\item Before ciphertext can be pasted into the application, the sender of the message must first be selected as a contact. The sender's contact details will be used to decrypt the ciphertext.
+\item The desired receiver should be able to decrypt the message back into its original plaintext.
 \end{itemize}
-\item The message length shall be displayed.
+\item The message length should be displayed.
 \begin{itemize}
-\item This is to ensure message length does not exceed 144 characters.
+\item This is to ensure that message length does not exceed the maximum amount of 144 characters.
 \end{itemize}
 \end{itemize}
 
 \subsubsection{Contacts}
 \begin{itemize}
-\item A contact shall be added.
+\item A user must be able to add a contact to the application.
 \begin{itemize}
-\item In order for communication to take place between two devices they need to be synchronized.
-\item A user adds what is called a contact, it will ask the name of the contact as well as generate a unique word to be provided to the other person and an input box where the unique word appearing on the contacts phone must be input.
-\item Both users must add each other at the same time, because they need each other's unique word that will be generated for their communication. This will synchronize communication between the devices.
+\item In order for communication to take place between two devices, i.e. two contacts, they first need to be synchronized.
+\item A user adds what is called a "contact". The application will require the following: the name of the contact, a locally generated unique word/key (to be provided to the other user with which messages will be exchanged), and the contact's unique generated word/key (which has to be received from the contact with which communication will take place).
+\item Before the two contacts can be synchronized with one another, both users must provide their unique key to each other. 
+\begin {itemize}
+\item This will synchronize communication between the devices.
+\item If both users add each other as a contact at relatively the same time, synchronization can take place at a greater speed (as the synchronization process on both devices are dependent on one another).
+\end {itemize}
 \end{itemize}
-\item A contact shall be editable once added.
-\item A contact shall be removable once added.
-\item A contact shall be resynchable once added.
-\begin{itemize}
-\item Once a contact has been added, you can resynchronise with that contact at any time in the future should you require this.
-\end{itemize}
+\item The application must allow a contact to be edited once added.
+\item The application must allow removal of a contact that has been added.
+\item The application must allow resynchronization of contacts, should desynchronization occur.
 \end{itemize}
 
 \subsection{User characteristics}
@@ -119,20 +122,17 @@ The application is devided int 3 core functionalities, Admin, Messaging and Cont
 %? Only user characteristics that affect the software
 %requirements
 \begin{itemize}
-\item There will be only one user class who will have full access to all the features provided by the application after local authentication.
-\item It is assumed that the user has proficient knowledge on how to copy items from messages such as SMS and paste it within this application.
-\item It is also assumed that the users performed the device synchronization phase correctly as there is no way for the device to know.
+\item There will be only one user class who will have full access to all the features provided by the application after local authentication, since the application only allows for a single user account to be created per device.
+\item It is assumed that the user has proficient knowledge on how to use the "clipboard" of their device; i.e. copy message text from applications, such as the standard SMS application, and paste it within this application.
+\item It is also assumed that users perform the device synchronization phase correctly; before exchanging messages, as there is no way for the device to detect errors in synchronization - such as an incorrect, or older (already used) key.
 \end{itemize}
-
 
 \subsection{Constraints}
 %Anything that will limit the designer's options
 \begin{itemize}
-\item The encrypted message length will be limited to 160 characters.
+\item The encrypted message length is limited to 160 characters, regardless of plaintext message length.
 \item The application must make use of the basic GSM character set.
 \end{itemize}
-
-
 
 \subsection{Assumptions and dependencies}
 %List any assumed factors (as opposed to known facts) 
@@ -140,13 +140,12 @@ The application is devided int 3 core functionalities, Admin, Messaging and Cont
 
 \begin{itemize}
 \item It is assumed that the amount of characters in the basic GSM character set is 128 for the 7-bit encoding used in GSM.
-\item It is assumed that the devices being used allows for copy and pasting of text between different interfaces and applicaitons.
+\item It is assumed that the devices being used allows has clipboard functionality (copy/paste functionality) for text between different interfaces/applicaitons.
 \end{itemize}
-
 
 \subsection{Apportioning of requirements}
 The following are possibilities that can be added to future versions of the sytem:
 \begin{itemize}
 \item SMS capability from within the application.
-\item Compatibility for other operating systems.
+\item Compatibility for other operating systems, such as iOS or Windows Phone.
 \end{itemize}
