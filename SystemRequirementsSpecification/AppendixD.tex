@@ -1,14 +1,24 @@
 \section{Appendix D - Secure design principles}
-
-As specified by the OWASP mobile security project the following are the  most prevalent mobile threats as of 2014 which are applicable to the SMSEncryption project.
-
+As specified by the OWASP mobile security project the following are the  most prevalent mobile threats as of 2014 which are applicable to the SMSEncryption project.\\
+\textbf{\\}
+Below the description of each problem is a short statement on how we attemt to mitigate each threat in SMSEncryption.
 \subsection*{ - Insecure Data Storage}
-The security of data the application stores is of the utmost importance as it could store the public and private keys of users or the OTP . Therefor we must consider threats to the data which is stored by the application. 
+The security of data the application stores is of the utmost importance as it could store the public and private keys of users or the OTP . Therefore we must consider threats to the data which is stored by the application. \\
+\textbf{\\}
+In SMSEncryption data is stored encrypted using the entered password of the user as well as the username.
 \subsection*{ - Unintended Data Leakage}
-Data leakage is a viable threat which demonstrates the lack of control developers have when developing on mobile applications , for instance the OS which you are developing for will handle memory management , this can be exploited by would be attackers by looking for unprotected areas in memory.
+Data leakage is a viable threat which demonstrates the lack of control developers have when developing on mobile applications , for instance the OS which you are developing for will handle memory management , this can be exploited by would be attackers by looking for unprotected areas in memory.\\
+\textbf{\\}
+In SMSEncryption sensitive data such as the password is encrypted.
 \subsection*{ - Poor Authorization and Authentication}
-Poor Authorization and authentication is relative to this project as we have to consider the consequences of the application being accessed and used by unauthorized personnel.
+Poor Authorization and authentication is relative to this project as we have to consider the consequences of the application being accessed and used by unauthorized personnel.\\
+\textbf{\\}
+In SMSEncryption password login is required to gain access to the application and its content, the database.
 \subsection*{ - Broken Cryptography}
-We have to ensure that we make use of a suitable encryption method so that it can not be easily decrypted by attackers and that it does  not require a disproportionate amount of resources to implements or use.
+We have to ensure that we make use of a suitable encryption method so that it can not be easily decrypted by attackers and that it does  not require a disproportionate amount of resources to implements or use.\\
+\textbf{\\}
+In SMSEncryption we are making use of AES encryption for the database.
 \subsection*{ - Lack of Binary Protections}
-This is a universal problem as almost all code which is compiled into binaries will be able to be reverse engineered into some form of discernable source code.
+This is a universal problem as almost all code which is compiled into binaries will be able to be reverse engineered into some form of discernable source code.\\
+\textbf{\\}
+With regard to SMSEncryption this means we must ensure the former sections are well taken care of to mitigate the effects of this threat.
