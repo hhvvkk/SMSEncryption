@@ -143,6 +143,11 @@ public class ContactListActivity extends FragmentActivity
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.contact_detail_container, fragment)
                     .commit();
+            
+            Intent detailIntent = new Intent(this, ContactDetailActivity.class);
+            detailIntent.putExtra(ContactDetailFragment.ARG_ITEM_ID, id);
+            startActivity(detailIntent);
+            
 
         } else {
             // In single-pane mode, simply start the detail activity
