@@ -12,6 +12,7 @@
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
 \textbf{Relationships to other inputs/outputs}&A User Account will have the User name \\&associated with it set to the inputed value.\\
 &\\
+&\\
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&Password\\
@@ -20,6 +21,7 @@
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
 \textbf{Relationships to other inputs/outputs}&A User Account will have the password\\& associated with it set to this value.\\
+&\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
@@ -30,14 +32,16 @@
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
 \textbf{Relationships to other inputs/outputs}&Value submitted is used to confirm the correctness of the desired password to avoid\\& human error.\\
 &\\
+&\\
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&The created user account\\
-\textbf{Description of purpose}&The user account that has been\\& created and has its Username and Password values set to&\\ those which were defined during the account creation process \\
+\textbf{Description of purpose}&The user account that has been\\& created and has its Username and Password values set to\\& those which were defined during the account creation process \\
 \textbf{Source of input}&N/A\\
 \textbf{Destination of output}&Account is stored in an encrypted database\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
 \textbf{Relationships to other inputs/outputs}&The username and password is\\& which was defined by the user is used to make the account.\\
+&\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -244,6 +248,7 @@
 \begin{itemize}
 \item A user must be able to input text into the application.
 \end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/EnterMessageState.png}
 \item{Type message : FRQ4.1}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
@@ -259,6 +264,7 @@
 \begin{itemize}
 \item The message text must be editable once it has been input into the application by the user.
 \end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/EditMessageState.png}
 \item{Encrypt message : FRQ6}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
@@ -281,6 +287,7 @@
 \begin{itemize}
 \item The numbers of characters in the message must be displayed.
 \end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/DisplayMessageLengthState.png}
 \end{itemize}
 \subsubsection{Contacts Functions}
 \begin{itemize}
@@ -305,12 +312,13 @@
 \begin{itemize}
 \item The user shall be able to synchronise with a contact at any time after they have been added.
 \end{itemize}
+ \includegraphics[width=13cm]{diagrams/StateDiagrams/SynchroniseContactState.png}
 \item{Remove Contact : FRQ13}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
 \item A user must be able to remove a contact.
 \end{itemize}
- \includegraphics[width=13cm]{diagrams/StateDiagrams/RemoveContactStateDiagram.png}
+ \includegraphics[width=11cm]{diagrams/StateDiagrams/RemoveContactStateDiagram.png}
 \end{itemize}
 
 \subsection{Performance requirements}
@@ -334,6 +342,17 @@
 \end{itemize}
 
 \subsection{Logical database requirements}
+
+\begin{itemize}
+\item The password must be hashed using a SHA-256 hash function.
+\item The data should only be viewable by an authorised user.
+\item The contact data must be encrypted to ensure confidentiality using an applicable hash function.
+\item Every user has 0 or more contacts associated with it.
+\item Once a user is deleted, all contacts are deleted along with the user.
+\end{itemize}
+\begin{center}
+ \includegraphics[width=13cm]{diagrams/LogicalDatabase.png}
+\end{center}
 
 \subsection{Design constraints}
 \begin{itemize}
