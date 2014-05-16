@@ -1,25 +1,18 @@
 package com.cos730.smsencryption;
 
-import java.util.List;
-import java.util.Map;
-import java.util.logging.LoggingPermission;
-
-import com.cos730.database.Contact;
-import com.cos730.database.ContactContent;
-import com.cos730.database.ContactContent.ContactItem;
-import com.cos730.database.DatabaseHandler;
-import com.cos730.encryption.Charset;
-import com.cos730.encryption.OneTimePadHybridEncryption;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
+import com.cos730.database.Contact;
+import com.cos730.database.DatabaseHandler;
+import com.cos730.encryption.Charset;
+import com.cos730.encryption.OneTimePadHybridEncryption;
 
 /**
  * An activity representing a single Contact detail screen. This
@@ -92,9 +85,9 @@ public class ContactDetailActivity extends FragmentActivity {
     	
     	Contact contact = dbHandler.getContact(ITEM_ID);   
     	
-    	System.out.println("name : "+contact.getName());
-    	System.out.println("his seed : "+contact.getHisSeed());
-    	System.out.println("my seed : "+contact.getMySeed());
+//    	System.out.println("name : "+contact.getName());
+//    	System.out.println("his seed : "+contact.getHisSeed());
+//    	System.out.println("my seed : "+contact.getMySeed());
     	
         OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
         
@@ -114,9 +107,9 @@ public class ContactDetailActivity extends FragmentActivity {
     	
     	Contact contact = dbHandler.getContact(ITEM_ID);    	
     	
-    	System.out.println("name : "+contact.getName());
-    	System.out.println("his seed : "+contact.getHisSeed());
-    	System.out.println("my seed : "+contact.getMySeed());
+//    	System.out.println("name : "+contact.getName());
+//    	System.out.println("his seed : "+contact.getHisSeed());
+//    	System.out.println("my seed : "+contact.getMySeed());
 	
         OneTimePadHybridEncryption hybrid = new OneTimePadHybridEncryption(cs);
         

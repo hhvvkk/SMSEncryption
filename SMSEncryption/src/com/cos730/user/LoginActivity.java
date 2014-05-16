@@ -204,6 +204,7 @@ public class LoginActivity extends Activity {
 		dbHandler.setEncryption(username,passwordEditText.getText().toString());
 		
 		startActivity(intent);
+		finish();
 	}
 	
 	

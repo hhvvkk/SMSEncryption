@@ -54,7 +54,7 @@ public class AddContactActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.addContact_action_back) {
-			finish();
+			goBack();
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -149,10 +149,16 @@ public class AddContactActivity extends Activity {
 	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
 	        	if(DONE)
-	        		finish();
+	        		goBack();
 	        }
 	     })
 	     .show();
 	}
 	
+
+	private void goBack(){
+		Intent intent = new Intent(this, ContactListActivity.class);
+		startActivity(intent);
+		finish();
+	}
 }

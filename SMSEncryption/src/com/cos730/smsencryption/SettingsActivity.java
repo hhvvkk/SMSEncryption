@@ -6,10 +6,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -52,7 +54,7 @@ public class SettingsActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.updateUser_action_back) {
-			finish();
+			goBack();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -162,9 +164,15 @@ public class SettingsActivity extends Activity {
 	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
 	        	if(DONE)
-	        		finish();
+	        		goBack();
 	        }
 	     })
 	     .show();
+	}
+	
+	private void goBack(){
+		Intent intent = new Intent(this, ContactListActivity.class);
+		startActivity(intent);
+		finish();
 	}
 }

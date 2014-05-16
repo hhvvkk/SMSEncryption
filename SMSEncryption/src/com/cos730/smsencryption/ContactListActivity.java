@@ -80,6 +80,7 @@ public class ContactListActivity extends FragmentActivity
 	 */
 	private void openAddContactActivity(){
 		Intent intent = new Intent(this, AddContactActivity.class);
+		finish();
 		startActivity(intent);
 	}
 	
@@ -88,6 +89,7 @@ public class ContactListActivity extends FragmentActivity
 	 */
 	private void openEditContactActivity(){
 		Intent intent = new Intent(this, EditContactActivity.class);
+		finish();
 		startActivity(intent);
 	}
 
@@ -97,6 +99,7 @@ public class ContactListActivity extends FragmentActivity
 	 */
 	private void openSettingsActivity(){
 		Intent intent = new Intent(this, SettingsActivity.class);
+		finish();
 		startActivity(intent);
 	}
     
