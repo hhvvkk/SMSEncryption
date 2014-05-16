@@ -1,16 +1,6 @@
 package com.cos730.user;
 
-import java.lang.reflect.Array;
-
-import com.cos730.database.DatabaseHandler;
-import com.cos730.database.User;
-import com.cos730.smsencryption.R;
-import com.cos730.smsencryption.R.id;
-import com.cos730.smsencryption.R.layout;
-import com.cos730.smsencryption.R.menu;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -21,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.os.Build;
+
+import com.cos730.database.DatabaseHandler;
+import com.cos730.database.User;
+import com.cos730.smsencryption.R;
 
 public class AddUserActivity extends Activity {
 

@@ -2,13 +2,7 @@ package com.cos730.smsencryption;
 
 import java.util.List;
 
-import com.cos730.database.Contact;
-import com.cos730.database.DatabaseHandler;
-import com.cos730.database.User;
-import com.cos730.encryption.AppSecurity;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -18,21 +12,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.os.Build;
+
+import com.cos730.database.Contact;
+import com.cos730.database.DatabaseHandler;
+import com.cos730.database.User;
+import com.cos730.encryption.AppSecurity;
 
 public class SettingsActivity extends Activity {
 
-	private boolean endAfterDialog = false;
-	
-	private boolean editPassword = false;
+	private boolean DONE = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
+		
+		DONE = false;
 
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
@@ -87,6 +84,7 @@ public class SettingsActivity extends Activity {
 		
 		EditText newPassword = (EditText)findViewById(R.id.editTextSettingsLoginOldPassword);
 		
+		
 		String snewPassword=newPassword.getText().toString();
 		
 		DatabaseHandler db=new DatabaseHandler(this.getApplicationContext());
@@ -105,14 +103,6 @@ public class SettingsActivity extends Activity {
 		{
 			snewPassword=oldpassword;
 		}
-		
-		
-		System.out.println("snewUsernames "+snewUsername);
-		System.out.println("snewPassword "+snewPassword);
-		System.out.println("oldusername "+oldusername);
-		System.out.println("oldpassword "+oldpassword);
-		
-
 		
 		db.setEncryption(snewUsername, snewPassword);
 
@@ -136,16 +126,7 @@ public class SettingsActivity extends Activity {
 				User temp2=new User(temp.getID(),snewUsername,sec.generateHash(snewPassword));
 				db.UpdateSettings(temp2);
 				
-				new AlertDialog.Builder(this)
-				.setTitle("Settings")
-				.setMessage("Successfully updated settings")
-			    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-			        public void onClick(DialogInterface dialog, int which) { 
-			            finish();
-			        }
-			     })
-			     .show();
-				return;
+				showMessage("Successfully updated settings", "Success", true);
 			}
 				
 		}
@@ -157,8 +138,6 @@ public class SettingsActivity extends Activity {
 	 * @param view
 	 */
 	public void showNewPasswordFields(View view){
-		editPassword = true;
-		
 		LinearLayout linearLayoutNewPassword = (LinearLayout) findViewById(R.id.linearLayoutNewPassword);
 		LinearLayout linearLayoutNewPasswordConfirm = (LinearLayout) findViewById(R.id.linearLayoutNewPasswordConfirm);
 		//Button changePasswordButton = (Button)findViewById(R.id.buttonShowNewPasswordFields);
@@ -168,24 +147,24 @@ public class SettingsActivity extends Activity {
 	//	changePasswordButton.setVisibility(View.INVISIBLE);//why wont you work!
 	}
 
+
 	/**
-	 * Shows a dialog on the screen with a message and a title
+	 * Shows a message with a certain title and exit activity if needed
 	 * @param message The message to be shown
-	 * @param title The title of the message which will be shown
-	 * @param end A boolean indicating whether the activity will close after the dialog ok is clicked
+	 * @param title The title of the message
+	 * @param done A boolean indicating if the activity can exit by calling finish
 	 */
-	private void showMessage(String message, String title, boolean end){
-		endAfterDialog = end;
+	private void showMessage(String message, String title, boolean done){
+		DONE = done;
 		new AlertDialog.Builder(this)
 		.setTitle(title)
 		.setMessage(message)
 	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
-	        	if(endAfterDialog == true)
+	        	if(DONE)
 	        		finish();
 	        }
 	     })
 	     .show();
 	}
-
 }
