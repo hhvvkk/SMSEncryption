@@ -65,6 +65,19 @@ public class ContactListFragment extends ListFragment {
      * fragment (e.g. upon screen orientation changes).
      */
     public ContactListFragment() {
+    	
+    	try
+    	{
+        ContactContent cc = new ContactContent(this.getActivity().getApplicationContext());
+        setListAdapter(new ArrayAdapter<ContactContent.ContactItem>(
+                getActivity(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                cc.getItems()));
+    	}catch(Exception e)
+    	{
+    		
+    	}
     }
 
     @Override
@@ -82,6 +95,13 @@ public class ContactListFragment extends ListFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        
+        ContactContent cc = new ContactContent(this.getActivity().getApplicationContext());
+        setListAdapter(new ArrayAdapter<ContactContent.ContactItem>(
+                getActivity(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                cc.getItems()));
 
         // Restore the previously serialized activated item position.
         if (savedInstanceState != null
