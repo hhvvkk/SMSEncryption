@@ -36,6 +36,8 @@
     <string name="addContact">Add contact</string>
     <string name="saveChanges">Save changes</string>
     <string name="deleteContact">Delete contact</string>
+    <string name="copyButton">Copy</string>
+    <string name="pasteButton">Paste</string>
     <string name="encryptMessageButton">Encrypt message</string>
     <string name="decryptMessageButton">Decrypt message</string>
     <string name="messageHintLabel">Message</string>

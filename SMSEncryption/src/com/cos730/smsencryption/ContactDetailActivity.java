@@ -1,6 +1,10 @@
 package com.cos730.smsencryption;
 
+import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -117,4 +121,48 @@ public class ContactDetailActivity extends FragmentActivity {
         
         text.setText(Decrypted);
     }
+    
+    public void Copy(View view){
+    	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
+    	
+    	ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+    	
+    	ClipData clip = ClipData.newPlainText("smsEncryption", text.getText().toString());
+    	clipboard.setPrimaryClip(clip);
+    	
+    	showMessage("Copied the message to clipboard", "Success");
+    }
+    
+
+    public void Paste(View view){
+    	ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+    	ClipData clipData = clipboard.getPrimaryClip();
+    	
+    	try{
+    		String messageText = clipData.getItemAt(0).getText().toString();
+    		EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
+        	text.setText(messageText);
+    	}catch(Exception e){
+    		
+    	}
+    		
+    }
+    
+
+	/**
+	 * Shows a message with a certain title and message
+	 * @param message The message to be shown
+	 * @param title The title of the message
+	 */
+	private void showMessage(String message, String title){
+		new AlertDialog.Builder(this)
+		.setTitle(title)
+		.setMessage(message)
+	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	        	//do nothing
+	        }
+	     })
+	     .show();
+	}
 }
