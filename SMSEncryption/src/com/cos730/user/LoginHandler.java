@@ -14,6 +14,7 @@ public class LoginHandler {
 	/**
 	 * Tries to login to the application
 	 * @param user The user who wishes to login
+	 * @return Return true if the user successfully can login
 	 */
 	public static boolean tryLogin(User user, String userPasswordHashed){
 		if(user.getPasswordHash().equals(userPasswordHashed)){

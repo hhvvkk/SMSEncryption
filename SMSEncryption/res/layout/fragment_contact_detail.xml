@@ -25,6 +25,7 @@
         android:hint="@string/messageHintLabel"
         android:text="@string/messageHintLabel" />
 
+    
     <EditText
         android:id="@+id/textMultiLineMessage"
         android:layout_width="match_parent"
@@ -32,17 +33,21 @@
         android:ems="10"
         android:inputType="textMultiLine" 
         android:imeOptions="actionDone">
-
+<!-- 
+    #FRQ4 :: Realises Enter Message
+    Through the use of an Android EditText, it allows the user to enter a message.
+    <<includes>>
+    #FRQ4.1 :: Realises Type Message
+    The message can be typed using the onboard functionality of the Android operating system.
+    #FRQ4.2 :: Realises Paste Message
+    The message can be pasted using the onboard functionality of the Android operating system.
+    #FRQ5 :: Realises Edit Message   
+    The current message can be edited once the user feels the need using the onboard functionality of the Android operating system.
+     -->
         <requestFocus />
     </EditText>
 
     
-    <!-- add a transparent dividor to stick buttons to the bottom  -->
-   <!--  <View
-	    android:layout_width="1dp"
-	    android:background="@drawable/transparent_layout"
-	    android:layout_height="0dp"
-	    android:layout_weight="0.1"/> -->
     
     <LinearLayout 
         android:orientation="horizontal"

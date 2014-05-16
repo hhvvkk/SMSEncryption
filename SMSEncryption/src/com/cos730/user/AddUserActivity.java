@@ -70,8 +70,15 @@ public class AddUserActivity extends Activity {
 		}
 	}
 	
+
+	/**
+	 * Adds a user to the database
+	 * @param view
+	 */
 	public void addUser(View view){
-		//firstly validate whether details have been put in correctly
+		/**#FRQ1 :: Realizes Add User Account
+		 * The user details entered will be captured and stored appropriately in the database.
+		 * */
 		
 		EditText editTextName = (EditText)findViewById(R.id.editTextAddUserLoginUsername);
 		EditText editTextPassword = (EditText)findViewById(R.id.editTextAddUserLoginPassword);
@@ -86,20 +93,20 @@ public class AddUserActivity extends Activity {
 		//find the hashed password
 		String hashedPassword = LoginHandler.hashValue(password);
 		
-		//else all is well and can add to database
 		DatabaseHandler dbHandler = new DatabaseHandler(this.getApplicationContext());
 		
+		//get the amount of users currently
 		int userCount = dbHandler.getUsersCount(false);
 		
-		if(userCount >= 1){
+		//find out if a user already exist, if so prevent the creation of a new user
+		if(userCount >= 1){ 
 			showMessage("A user already exist, and you can only have one active user","Failed", true);
 		}
 		else{
-			
+			//validate all inputs
 			boolean success = validateInputs(username, password, passwordConfirm);
 			
-			//thereafter add the user
-				//only if user does not already exist
+			
 			if(!success){
 				return;
 			}
@@ -111,6 +118,7 @@ public class AddUserActivity extends Activity {
 				return;
 			}
 			
+			//thereafter add the user if all is well
 			User newUser = new User(username, hashedPassword);
 			dbHandler.addUser(newUser);
 
@@ -122,7 +130,7 @@ public class AddUserActivity extends Activity {
 
 	private boolean validateInputs(String username, char []password, char []passwordConfirm){
 		
-		if(username.length() < 2){ //check if username is correct length
+		if(username.length() < 2){ //check if user name is correct length
 			showMessage("Your username size is invalid. You must at least have 2 characters.", "Failed", false);
 			return false;
 		}
@@ -146,7 +154,7 @@ public class AddUserActivity extends Activity {
 				}
 			}
 			
-			if(!same){//			if(!password.equals(passwordConfirm)){ //check if username equals password
+			if(!same){//notify if user password does not match confirm password
 				showMessage("Your password does not match the confirm password","Failed",false);
 				return false;
 			}

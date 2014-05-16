@@ -74,9 +74,19 @@ public class ContactDetailActivity extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
     
-    
+
+    /**
+     * Encrypt the message currently entered in EditText message
+     * @param view
+     */
     public void Encrypt(View view){
-    	
+    	/**#FRQ6 :: Realizes Encrypt Message
+		 * The message entered will be encrypted using the keys of the contact 
+		 * <<includes>>
+		 * #FRQ7 :: Realizes Copy Encrypted Message
+		 * The cipher which has been created after encryption will be copied to clipboard
+		 * */
+		
     	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
     	
     	String encryptMessage = text.getText().toString();
@@ -106,9 +116,22 @@ public class ContactDetailActivity extends FragmentActivity {
         
         text.setText(encrypted);
     	
+        /*Copy the encrypted message to the clipboard*/    	
+    	ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+    	
+    	ClipData clip = ClipData.newPlainText("smsEncryption", text.getText().toString());
+    	clipboard.setPrimaryClip(clip);
     }
     
+    /**
+     * Decrypt the cipher currently entered in EditText message
+     * @param view
+     */
     public void Decrypt(View view){
+    	/**#FRQ8 :: Realizes Decrypt Message
+		 * The message entered will be decrypted using the keys of the contact 
+		 * */
+		
     	
     	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
     	
@@ -136,7 +159,16 @@ public class ContactDetailActivity extends FragmentActivity {
         text.setText(Decrypted);
     }
     
+
+    /**
+     * Copy a message from the message EditText into the clipboard
+     * @param view
+     */
     public void Copy(View view){
+    	/**
+    	 * #FRQ7 :: Realizes Copy Encrypted Message
+		 * The text contained in the message EditText can be copied to clipboard 
+    	 */
     	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
     	
     	ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
@@ -148,7 +180,15 @@ public class ContactDetailActivity extends FragmentActivity {
     }
     
 
+    /**
+     * Paste the message from the clipboard into the message EditText
+     * @param view
+     */
     public void Paste(View view){
+    	/**
+    	 * #FRQ4.2 :: Realizes Paste Message
+    	 * The clipboard is used to paste the message into the message EditText
+    	 */
     	ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
     	ClipData clipData = clipboard.getPrimaryClip();
     	

@@ -174,7 +174,21 @@ public class EditContactActivity extends Activity {
 		
 	}
 	
+	/**
+	 * Saves changes to the current contact details entered
+	 * @param view
+	 */
 	public void saveChanges(View view){
+		/**#FRQ11 :: Realizes Edit Contact
+		 * Entered contact details will be validated.
+		 * The contact details will be updated in the database
+		 * */
+		/**#FRQ12 :: Realize Synchronise Contact
+		 * The contact key of current device key and contact device key entered will be used.
+		 * The contact keys will be saved in the database.
+		 * */
+		
+		
 		//take all the items from fields
 		EditText editTextName = (EditText)findViewById(R.id.editTextEditContactContactName);
 		EditText editTextNumber = (EditText)findViewById(R.id.editTextEditContactContactNumber);
@@ -241,7 +255,14 @@ public class EditContactActivity extends Activity {
 
 	}
 	
+	/**
+	 * Deletes the current selected contact
+	 */
 	private void deleteContact(){
+		/**#FRQ11 :: Realizes Remove Contact
+		 * The currently selected contact will be deleted from the application and database
+		 * */
+		
 		if(currentContact != null){
 			DatabaseHandler dbHandler = new DatabaseHandler(getApplicationContext());			
 			dbHandler.deleteContact(currentContact);
@@ -251,6 +272,10 @@ public class EditContactActivity extends Activity {
 		}
 	}
 	
+	/**
+	 * Generates a key for the contact
+	 * @param view
+	 */
 	public void GenerateKey(View view)
 	{
 		EditText etMySeed = (EditText)findViewById(R.id.editTextEditContactMyKey);
@@ -286,6 +311,9 @@ public class EditContactActivity extends Activity {
 	}
 	
 
+	/**
+	 * Goes back to the main activity(ContactListActivity)
+	 */
 	private void goBack(){
 		Intent intent = new Intent(this, ContactListActivity.class);
 		startActivity(intent);

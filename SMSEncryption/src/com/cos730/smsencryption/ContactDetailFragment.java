@@ -51,8 +51,20 @@ public class ContactDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.contact_detail)).setText(contactItem.name);
         }
         
-
-        messageLengthDisplay = (TextView)rootView.findViewById(R.id.textViewMessageLength);
+        createEditTextLenghtDisplay(rootView);
+        
+        return rootView;
+    }
+   
+    /**
+     * Creates the listener which displays the length of a message as user types a message
+     * @param rootView
+     */
+    private void createEditTextLenghtDisplay(View rootView){
+    	/**#FRQ8 :: Realizes Display Message Length
+		 * The message length will be displayed as the user types
+		 * */
+    	messageLengthDisplay = (TextView)rootView.findViewById(R.id.textViewMessageLength);
         EditText theMessageEditText = (EditText)rootView.findViewById(R.id.textMultiLineMessage);
         
         final TextWatcher txwatcher = new TextWatcher() {
@@ -69,7 +81,5 @@ public class ContactDetailFragment extends Fragment {
 
         theMessageEditText.addTextChangedListener(txwatcher);
         
-        return rootView;
     }
-   
 }

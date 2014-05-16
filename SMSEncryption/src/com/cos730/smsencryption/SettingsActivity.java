@@ -77,8 +77,16 @@ public class SettingsActivity extends Activity {
 		}
 	}
 	
+	/**
+	 * Update the settings of the application including login details
+	 * @param view
+	 */
 	public void updateSettings(View view){
-
+		/**#FRQ2 :: Realizes Edit User Account
+		 * This is done by allowing user to edit the current password or current username.
+		 * When user enters something in, it saves new user details, if left blank, the old details are used. 
+		 * */
+		
 		
 		EditText newUsername = (EditText)findViewById(R.id.editTextSettingsLoginUsername);
 		
@@ -134,21 +142,6 @@ public class SettingsActivity extends Activity {
 		}
 		
 	}
-	
-	/**
-	 * Shows the fields to be able to edit password to a new password
-	 * @param view
-	 */
-	public void showNewPasswordFields(View view){
-		LinearLayout linearLayoutNewPassword = (LinearLayout) findViewById(R.id.linearLayoutNewPassword);
-		LinearLayout linearLayoutNewPasswordConfirm = (LinearLayout) findViewById(R.id.linearLayoutNewPasswordConfirm);
-		//Button changePasswordButton = (Button)findViewById(R.id.buttonShowNewPasswordFields);
-		
-		linearLayoutNewPassword.setVisibility(View.VISIBLE);
-		linearLayoutNewPasswordConfirm.setVisibility(View.VISIBLE);
-	//	changePasswordButton.setVisibility(View.INVISIBLE);//why wont you work!
-	}
-
 
 	/**
 	 * Shows a message with a certain title and exit activity if needed

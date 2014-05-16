@@ -94,42 +94,52 @@ public class LoginActivity extends Activity {
 	Date attempt1;
 	Date attempt2;
 	Date attempt3;
-	public void validateAndContinue(View view){
+	/**
+	 * Log the user in the application using the user name and password provided
+	 * @param view
+	 */
+	public void Login(View view){
+		/**#FRQ3 :: Realizes FRQ3 Local Authentication
+		 * The entered details will be used and determined whether the correct details have been entered. 
+		 * If incorrect the user will not be logged on and the amount of tries will be reduced.
+		 * If unsuccessful for 3 times, the user will be forced to wait for 3 minutes
+		 * */
+		
 		Intent intent = new Intent(this, ContactListActivity.class);
-		
+
 		EditText userNameEditText = (EditText) findViewById(R.id.editTextLoginUsername);
-		
+
 		EditText passwordEditText = (EditText) findViewById(R.id.editTextLoginPassword);
-		
+
 		passwordEditText.clearComposingText();
-		
+
 		String username = userNameEditText.getText().toString();
-		
+
 		//Password stored as char array and not string to 
 		//prevent it from appearing in the string pool used by  java
 		char [] password = passwordEditText.getText().toString().toCharArray();
-		
+
 		User currentUser = LoginHandler.getUserByName(username, this.getApplicationContext());
-		
+
 		if(currentUser == null)
 		{
-			
-				
+
+
 			if(LoginAttempts==0)
 			{
 			cal = Calendar.getInstance();
 			attempt1=cal.getTime();
-			
+
 			//first attempt
 			showLoginError(INVALID_LOGIN+", 2 more attempt(s) remains.");
 
-			
+
 			LoginAttempts++;
 			}else if(LoginAttempts==1)
 			{
 				cal = Calendar.getInstance();
 				attempt2=cal.getTime();
-				
+
 				//miliseconds where 180000 is 3 minutes
 				if(attempt2.getTime() - attempt1.getTime() > 180000)
 				{
@@ -138,17 +148,17 @@ public class LoginActivity extends Activity {
 				}
 				else
 				{
-				
+
 				//second attempt
 				showLoginError(INVALID_LOGIN+", 1 more attempt(s) remains.");
 				LoginAttempts++;
 				}
-				
+
 			}else if(LoginAttempts==2)
 			{
 				cal = Calendar.getInstance();
 				attempt3=cal.getTime();
-				
+
 				//miliseconds where 180000 is 3 minutes
 				if(attempt3.getTime() - attempt2.getTime() > 180000)
 				{
@@ -157,7 +167,7 @@ public class LoginActivity extends Activity {
 				}
 				else
 				{
-				
+
 					//third attempt
 					showLoginError(INVALID_LOGIN+", please wait 3 minutes and try again.");					
 					LoginAttempts++;
@@ -174,35 +184,35 @@ public class LoginActivity extends Activity {
 				if(milisecondsPassed > 180000)
 				{
 					LoginAttempts=0;
-					validateAndContinue(view);
+					Login(view);
 				}
 				else
 				{
 					int minutes=(int) ((180000-milisecondsPassed)/60000.0);
 					int seconds= (int)(((180000-milisecondsPassed) - minutes*60000.0) / 1000.0);
-					
+
 					showLoginError("Please wait "+minutes+" minutes and "+seconds+" seconds");
 				}
 			}
-			
+
 			return; //if the user does not exist
 		}
-		
+
 		//get the hashed value of the current password typed in
 		String hashedString = LoginHandler.hashValue(password);
-		
+
 		if(!currentUser.getPasswordHash().equals(hashedString)){
 			showLoginError(INVALID_LOGIN);
 			return; //if the user password does not match
 		}
-		
+
 		//continue
 		intent.putExtra(LOGIN_PASSWORD, password);
-		
+
 		//dbhandler to assign values for encryption
 		DatabaseHandler dbHandler = new DatabaseHandler(this.getApplicationContext());
 		dbHandler.setEncryption(username,passwordEditText.getText().toString());
-		
+
 		startActivity(intent);
 		finish();
 	}
@@ -218,7 +228,10 @@ public class LoginActivity extends Activity {
 	}
 	
 
-
+	/**
+	 * Shows a login error message
+	 * @param errorMessage The message to be shown when logging in fails
+	 */
 	private void showLoginError(String errorMessage){
 		new AlertDialog.Builder(this)
 		.setTitle("Error")

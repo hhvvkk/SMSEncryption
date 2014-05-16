@@ -91,6 +91,10 @@ public class AddContactActivity extends Activity {
 	 * @param view
 	 */
 	public void addContact(View view){
+		/**#FRQ10 :: Realizes Add Contact
+		 * Entered contact details will be validated.
+		 * The contact will be added to the database.
+		 * */
 		
 		EditText etName = (EditText)findViewById(R.id.editTextNewContactName);
 		EditText etNumber = (EditText)findViewById(R.id.editTextNewContactNumber);
