@@ -21,5 +21,13 @@
         android:showAsAction="ifRoom"
         android:icon="@drawable/action_settings"
         android:title="@string/action_settings"/>
-
+      
+      
+      <item
+        android:id="@+id/action_exit"
+        android:orderInCategory="4"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/action_exit"
+        android:title="@string/action_exit"/>
+      
 </menu>

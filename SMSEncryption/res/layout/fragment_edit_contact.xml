@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/contactName_hint"
-            android:inputType="text" >
+            android:inputType="text"
+            android:imeOptions="actionDone" >
 
             <requestFocus />
         </EditText>
@@ -62,7 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.94"
             android:hint="@string/contactPhoneNumber_hint"
-            android:inputType="text" />
+            android:inputType="text" 
+            android:imeOptions="actionDone"/>
 
     </LinearLayout>
 
@@ -87,7 +89,8 @@
         android:layout_weight="5"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:ems="10" />
+        android:ems="10" 
+        android:imeOptions="actionDone"/>
     
         
     <Button
@@ -112,7 +115,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:ems="10" />
+        android:ems="10"
+        android:imeOptions="actionDone" />
 
     <!-- add a transparent dividor to stick buttons to the bottom  -->
     <View

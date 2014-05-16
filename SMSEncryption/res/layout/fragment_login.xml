@@ -35,7 +35,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/userNameHint"
-            android:inputType="text" >
+            android:inputType="text" 
+            android:imeOptions="actionNext">
 
             <requestFocus />
         </EditText>
@@ -60,14 +61,11 @@
             android:layout_marginTop="80dp"
             android:ems="10"
             android:hint="@string/passwordHint"
-            android:inputType="textPassword" />
+            android:inputType="textPassword" 
+            android:imeOptions="actionDone"/>
 
     </LinearLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </GridLayout>
 
     <Button
         android:id="@+id/button1"
