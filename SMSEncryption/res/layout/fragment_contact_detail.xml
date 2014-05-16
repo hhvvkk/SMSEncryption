@@ -1,7 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    >
+    
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
 
     <TextView
@@ -33,11 +38,11 @@
 
     
     <!-- add a transparent dividor to stick buttons to the bottom  -->
-    <View
+   <!--  <View
 	    android:layout_width="1dp"
 	    android:background="@drawable/transparent_layout"
 	    android:layout_height="0dp"
-	    android:layout_weight="0.1"/>
+	    android:layout_weight="0.1"/> -->
     
     <Button
         android:id="@+id/encryptButton"
@@ -62,3 +67,4 @@
         android:onClick="Decrypt"/>
 
 </LinearLayout>
+</ScrollView>
