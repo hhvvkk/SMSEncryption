@@ -1,7 +1,9 @@
 package com.cos730.contact;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +26,8 @@ import com.cos730.smsencryption.R.menu;
 
 public class AddContactActivity extends Activity {
 
+	private static boolean DONE;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,6 +38,7 @@ public class AddContactActivity extends Activity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 
+		DONE = false;
 		
 	}
 
@@ -96,23 +101,21 @@ public class AddContactActivity extends Activity {
 		EditText etMySeed = (EditText)findViewById(R.id.editTextMyKey);
 		
 		//validate first
-		boolean successful = validate(etName.getText().toString(), etNumber.getText().toString());
-		
 		//then if successful add to database
-		if(successful){
+		//validate name: 0 < name < 50
+		if(etName.getText().toString().length() > 0 && etName.getText().toString().length() < 50){
 
 			DatabaseHandler dbHandler = new DatabaseHandler(this);
 			
 			Contact newContact = new Contact(etName.getText().toString(), etNumber.getText().toString(),etHisSeed.getText().toString(),etMySeed.getText().toString());
 			
 			dbHandler.addContact(newContact);
+			
+			showMessage("Successfully added a contact", "Success", true);
 		}
-		
-		finish();
-	}
-	
-	private boolean validate(String name, String number){
-		return true;
+		else{
+			showMessage("Contact Name is not a valid length(should be between 1 and 50)", "Failed", false);
+		}
 	}
 	
 	public void GenerateKey(View view)
@@ -128,4 +131,25 @@ public class AddContactActivity extends Activity {
 		
 	}
 
+
+	/**
+	 * Shows a message with a certain title and exit activity if needed
+	 * @param message The message to be shown
+	 * @param title The title of the message
+	 * @param done A boolean indicating if the activity can exit by calling finish
+	 */
+	private void showMessage(String message, String title, boolean done ){
+		DONE = done;
+		new AlertDialog.Builder(this)
+		.setTitle(title)
+		.setMessage(message)
+	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	        	if(DONE)
+	        		finish();
+	        }
+	     })
+	     .show();
+	}
+	
 }
