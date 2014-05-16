@@ -92,7 +92,7 @@ public class ContactDetailActivity extends FragmentActivity {
     	String encryptMessage = text.getText().toString();
     	
     	if(encryptMessage.length() > 144){
-    		showMessage("The message you are encrypting must be less than 144", "Error");
+    		showMessage("The message you are encrypting must be less than 145", "Error");
     		return;
     	}
     	if(encryptMessage.length() == 0){
