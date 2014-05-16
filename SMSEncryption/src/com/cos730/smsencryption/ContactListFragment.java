@@ -72,24 +72,21 @@ public class ContactListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         ContactContent cc = new ContactContent(this.getActivity().getApplicationContext());
-        setListAdapter(new ArrayAdapter<ContactContent.ContactItem>(
+        
+        cc.adap=  new ArrayAdapter<ContactContent.ContactItem>(
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                cc.getItems()));
+                cc.getItems());
+                
+        setListAdapter(cc.adap);
+        cc.adap.setNotifyOnChange(true);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         
-        ContactContent cc = new ContactContent(this.getActivity().getApplicationContext());
-        setListAdapter(new ArrayAdapter<ContactContent.ContactItem>(
-                getActivity(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                cc.getItems()));
-
         // Restore the previously serialized activated item position.
         if (savedInstanceState != null
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
@@ -100,7 +97,6 @@ public class ContactListFragment extends ListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-System.out.println("attached");
         // Activities containing this fragment must implement its callbacks.
         if (!(activity instanceof Callbacks)) {
             throw new IllegalStateException("Activity must implement fragment's callbacks.");
