@@ -39,9 +39,12 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	
 	private AppSecurity security=new AppSecurity();
 	
+	private Context _context;
+	
 	public DatabaseHandler(Context context, String name, CursorFactory factory,
-			int version) {
+			int version) {		
 		super(context, name, factory, version);
+		_context=context;
 	}
 	
 	public DatabaseHandler(Context context) {
@@ -115,6 +118,9 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		// Inserting Row
 		db.insert(TABLE_CONTACTS, null, values);
 		db.close(); // Closing database connection
+		
+		ContactContent cc=new ContactContent(_context);
+		cc.UpdateChanges();
 		
 	}
 
@@ -253,6 +259,9 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		
 		//close database
 		db.close();
+		
+		ContactContent cc=new ContactContent(_context);
+		cc.UpdateChanges();
 
 		return update;
 	}
@@ -263,6 +272,9 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		db.delete(TABLE_CONTACTS, KEY_ID + " = ?",
 				new String[] { String.valueOf(contact.getID()) });
 		db.close();
+		
+		ContactContent cc=new ContactContent(_context);
+		cc.UpdateChanges();
 		
 	}
 	
