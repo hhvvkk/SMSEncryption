@@ -19,9 +19,6 @@ import com.cos730.encryption.Charset;
 import com.cos730.encryption.Keys.KeyGenerator;
 import com.cos730.smsencryption.ContactListActivity;
 import com.cos730.smsencryption.R;
-import com.cos730.smsencryption.R.id;
-import com.cos730.smsencryption.R.layout;
-import com.cos730.smsencryption.R.menu;
 
 
 public class AddContactActivity extends Activity {

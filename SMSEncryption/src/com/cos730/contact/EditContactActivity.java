@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,6 +23,7 @@ import com.cos730.database.Contact;
 import com.cos730.database.DatabaseHandler;
 import com.cos730.encryption.Charset;
 import com.cos730.encryption.Keys.KeyGenerator;
+import com.cos730.smsencryption.ContactListActivity;
 import com.cos730.smsencryption.R;
 
 public class EditContactActivity extends Activity {
@@ -220,6 +222,7 @@ public class EditContactActivity extends Activity {
 	        public void onClick(DialogInterface dialog, int which) { 
 	            // continue with delete
 	        	deleteContact();
+	        	
 	        }
 	     })
 	    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -229,10 +232,18 @@ public class EditContactActivity extends Activity {
 	     })
 	    .setIcon(android.R.drawable.ic_dialog_alert)
 	     .show();
+		
+
 	}
 	
 	private void deleteContact(){
-		
+		if(currentContact != null){
+			DatabaseHandler dbHandler = new DatabaseHandler(getApplicationContext());			
+			dbHandler.deleteContact(currentContact);
+			
+			Intent intent = new Intent(this, ContactListActivity.class);
+			startActivity(intent);
+		}
 	}
 	
 	public void GenerateKey(View view)

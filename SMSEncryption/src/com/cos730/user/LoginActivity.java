@@ -121,7 +121,7 @@ public class LoginActivity extends Activity {
 			attempt1=cal.getTime();
 			
 			//first attempt
-			showLoginError(INVALID_LOGIN+", 2 more attempt(s) remain.s");
+			showLoginError(INVALID_LOGIN+", 2 more attempt(s) remains.");
 
 			
 			LoginAttempts++;
