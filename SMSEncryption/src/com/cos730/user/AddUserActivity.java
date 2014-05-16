@@ -1,5 +1,7 @@
 package com.cos730.user;
 
+import java.lang.reflect.Array;
+
 import com.cos730.database.DatabaseHandler;
 import com.cos730.database.User;
 import com.cos730.smsencryption.R;
@@ -23,11 +25,15 @@ import android.os.Build;
 
 public class AddUserActivity extends Activity {
 
+	private static boolean DONE;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_user);
 
+		DONE = false;
+		
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
@@ -82,20 +88,7 @@ public class AddUserActivity extends Activity {
 		char []password = editTextPassword.getText().toString().toCharArray();
 		char []passwordConfirm = editTextPasswordConfirm.getText().toString().toCharArray();
 		
-		boolean success = validateInputs(username, password, passwordConfirm);
 		
-		//thereafter add the user
-			//only if user does not already exist
-		if(!success){
-			return;
-		}
-		
-		success = checkAvailabilityOfName(username);
-		
-		//if it is not available
-		if(!success){
-			return;
-		}
 		
 		//find the hashed password
 		String hashedPassword = LoginHandler.hashValue(password);
@@ -106,50 +99,97 @@ public class AddUserActivity extends Activity {
 		int userCount = dbHandler.getUsersCount(false);
 		
 		if(userCount >= 1){
-			showMessage("A user already exist, and you can only have one active user","Failed");
+			showMessage("A user already exist, and you can only have one active user","Failed", true);
 		}
 		else{
+			
+			boolean success = validateInputs(username, password, passwordConfirm);
+			
+			//thereafter add the user
+				//only if user does not already exist
+			if(!success){
+				return;
+			}
+			
+			success = checkAvailabilityOfName(username);
+			
+			//if it is not available
+			if(!success){
+				return;
+			}
+			
 			User newUser = new User(username, hashedPassword);
 			dbHandler.addUser(newUser);
 
-			showMessage("Successfully added the user","Success");
+			showMessage("Successfully added the user","Success", true);
 		}
 		
 		
 	}
 
 	private boolean validateInputs(String username, char []password, char []passwordConfirm){
-		/**
-		 * TODO: need to implement validation
-		 */
-		//ifusername size invalid
-//		showMessage("Your username size is invalid. You must at least have 4 characters","Error");
-//		return false
 		
-		//if password != passowrdConfirm
-//		showMessage("Your password does not match the confirm password","Error");
-//		return false;
+		if(username.length() < 2){ //check if username is correct length
+			showMessage("Your username size is invalid. You must at least have 2 characters.", "Failed", false);
+			return false;
+		}
+		if(password.length < 2 || passwordConfirm.length < 2){ //check if password is correct length
+			showMessage("Your password or password confirm size is invalid. You must at least have 2 characters.", "Failed", false);
+			return false;
+		}
+		else {
+			boolean same = true;
 
-		//if(password size invalid
-//		showMessage("Your password size is invalid. You must at least have 4 characters","Error");
-//		return false
+			if(password.length != passwordConfirm.length){
+				same = false;
+			}
+			else{
+				//find out whether there exist differences in the passwords
+				for(int i = 0; (i < password.length) && (i < passwordConfirm.length); i++){
+					if(password[i] != passwordConfirm[i]){
+						same = false;
+						break;
+					}
+				}
+			}
+			
+			if(!same){//			if(!password.equals(passwordConfirm)){ //check if username equals password
+				showMessage("Your password does not match the confirm password","Failed",false);
+				return false;
+			}
+	
+		
+		}
 		
 		return true;
 	}
 	
+	/**
+	 * TODO: Future development which includes multiple users
+	 * @param username The user name which the user wants to create now
+	 * @return Return true if there exist another user with that user name already
+	 */
 	private boolean checkAvailabilityOfName(String username){
 		return true;
 	}
 	
 	
 
-	private void showMessage(String message, String title){
+	/**
+	 * Shows a message with a certain title and exit activity if needed
+	 * @param message The message to be shown
+	 * @param title The title of the message
+	 * @param done A boolean indicating if the activity can exit by calling finish
+	 */
+	private void showMessage(String message, String title, boolean done){
+		DONE = done;
 		new AlertDialog.Builder(this)
 		.setTitle(title)
 		.setMessage(message)
 	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) { 
-	            finish();
+	        	if(DONE)
+	        		finish();
 	        }
 	     })
 	     .show();
