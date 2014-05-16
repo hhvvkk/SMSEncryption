@@ -98,9 +98,9 @@ public class AddContactActivity extends Activity {
 		EditText etMySeed = (EditText)findViewById(R.id.editTextMyKey);
 		
 		//validate first
-		//then if successful add to database
-		//validate name: 0 < name < 50
-		if(etName.getText().toString().length() > 0 && etName.getText().toString().length() < 50){
+		boolean success = validate(etName.getText().toString());
+		
+		if(success){
 
 			DatabaseHandler dbHandler = new DatabaseHandler(this);
 			
@@ -110,9 +110,15 @@ public class AddContactActivity extends Activity {
 			
 			showMessage("Successfully added a contact", "Success", true);
 		}
-		else{
-			showMessage("Contact Name is not a valid length(should be between 1 and 50)", "Failed", false);
+	}
+	
+
+	private boolean validate(String name){
+		if(name.length() < 2){ //check if username is correct length
+			showMessage("Contact name size is invalid. You must at least have 2 characters.", "Failed", false);
+			return false;
 		}
+		return true;
 	}
 	
 	public void GenerateKey(View view)

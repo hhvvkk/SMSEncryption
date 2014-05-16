@@ -30,6 +30,8 @@ public class EditContactActivity extends Activity {
 	
 	protected static Contact currentContact = null;
 	
+	protected static boolean DONE = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -91,6 +93,7 @@ public class EditContactActivity extends Activity {
 			contactList = db.getAllContacts();
 		}
 		
+		
 		/**
 		 * Load the values from the database into spinner
 		 * @param rootView
@@ -100,6 +103,14 @@ public class EditContactActivity extends Activity {
 			
 			List<String> lables = db.getAllLabels();
 			 
+			if(lables == null | lables.size() == 0){
+				/*There is no users to edit, thus prevent send user back*/
+				EditContactActivity myActivity = (EditContactActivity)this.getActivity();
+				
+				if(myActivity != null)
+					myActivity.showMessage("You can't edit contact without a contact existing", "Notice", true);
+			}
+			
 			ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
 					R.layout.application_spinner, lables);
 			
@@ -161,13 +172,6 @@ public class EditContactActivity extends Activity {
 			}
 		}
 		
-		/**
-		 * Clear the fields as if nothing is selected
-		 */
-		private void clearFields(){
-			
-		}
-		
 	}
 	
 	public void saveChanges(View view){
@@ -182,6 +186,11 @@ public class EditContactActivity extends Activity {
 		String myKey = editTextMyKey.getText().toString();
 		String contactKey = editTextContactKey.getText().toString();
 		
+		boolean success = validate(name);
+		
+		if(!success)
+			return;
+		
 		if(currentContact != null){
 			DatabaseHandler dbHandler = new DatabaseHandler(getApplicationContext());
 			
@@ -192,26 +201,22 @@ public class EditContactActivity extends Activity {
 			currentContact.setHisSeed(contactKey);
 			
 			dbHandler.updateContact(currentContact);
-			showUpdatedDialogue();
+			showMessage("Successfully updated contact", "Update", false);
 		}
 		
 		
 	}
 	
-	public void deleteContact(View view){
-		showDeleteDialogue();
+	private boolean validate(String name){
+		if(name.length() < 2){ //check if username is correct length
+			showMessage("Contact name size is invalid. You must at least have 2 characters.", "Failed", false);
+			return false;
+		}
+		return true;
 	}
 	
-	private void showUpdatedDialogue(){
-		new AlertDialog.Builder(this)
-			.setTitle("Update")
-			.setMessage("Successfully updated contact")
-		    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-		        public void onClick(DialogInterface dialog, int which) { 
-		            // continue with delete
-		        }
-		     })
-		     .show();
+	public void deleteContact(View view){
+		showDeleteDialogue();
 	}
 	
 	private void showDeleteDialogue(){
@@ -259,4 +264,24 @@ public class EditContactActivity extends Activity {
 		
 	}
 
+
+	/**
+	 * Shows a message with a certain title and exit activity if needed
+	 * @param message The message to be shown
+	 * @param title The title of the message
+	 * @param done A boolean indicating if the activity can exit by calling finish
+	 */
+	protected void showMessage(String message, String title, boolean done ){
+		DONE = done;
+		new AlertDialog.Builder(this)
+		.setTitle(title)
+		.setMessage(message)
+	    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	        	if(DONE)
+	        		finish();
+	        }
+	     })
+	     .show();
+	}
 }
