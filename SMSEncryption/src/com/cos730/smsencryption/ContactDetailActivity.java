@@ -12,6 +12,9 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import com.cos730.database.Contact;
 import com.cos730.database.DatabaseHandler;
@@ -41,15 +44,7 @@ public class ContactDetailActivity extends FragmentActivity {
         // Show the Up button in the action bar.
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // savedInstanceState is non-null when there is fragment state
-        // saved from previous configurations of this activity
-        // (e.g. when rotating the screen from portrait to landscape).
-        // In this case, the fragment will automatically be re-added
-        // to its container so we don't need to manually add it.
-        // For more information, see the Fragments API guide at:
-        //
-        // http://developer.android.com/guide/components/fragments.html
-        //
+        
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
@@ -66,6 +61,7 @@ public class ContactDetailActivity extends FragmentActivity {
                     .add(R.id.contact_detail_container, fragment)
                     .commit();
         }
+        
     }
 
     @Override
@@ -82,6 +78,17 @@ public class ContactDetailActivity extends FragmentActivity {
     public void Encrypt(View view){
     	
     	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
+    	
+    	String encryptMessage = text.getText().toString();
+    	
+    	if(encryptMessage.length() > 144){
+    		showMessage("The message you are encrypting must be less than 144", "Error");
+    		return;
+    	}
+    	if(encryptMessage.length() == 0){
+    		showMessage("The message you are encrypting must be at least one character", "Error");
+    		return;
+    	}
     	
     	Charset cs = new Charset();   	    	
     	
@@ -104,6 +111,13 @@ public class ContactDetailActivity extends FragmentActivity {
     public void Decrypt(View view){
     	
     	EditText text = (EditText)findViewById(R.id.textMultiLineMessage);
+    	
+    	String encryptMessage = text.getText().toString();
+    	
+    	if(encryptMessage.length() != 160){
+    		showMessage("You are trying to decrypt an incorrect message length(should be 160)", "Error");
+    		return;
+    	}
     	
     	Charset cs = new Charset();
     	

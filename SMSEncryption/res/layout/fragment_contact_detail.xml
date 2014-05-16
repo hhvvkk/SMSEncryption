@@ -74,6 +74,12 @@
     
     </LinearLayout>
     
+    <TextView 
+         android:id="@+id/textViewMessageLength"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/messageLengthTextView"/>
+    
     <Button
         android:id="@+id/encryptButton"
         android:layout_width="fill_parent"

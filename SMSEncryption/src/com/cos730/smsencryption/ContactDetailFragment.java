@@ -3,6 +3,8 @@ package com.cos730.smsencryption;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,8 @@ public class ContactDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
     public static Context context;
+    
+    private TextView messageLengthDisplay = null;
 
     private ContactContent.ContactItem contactItem;
 
@@ -48,6 +52,23 @@ public class ContactDetailFragment extends Fragment {
         }
         
 
+        messageLengthDisplay = (TextView)rootView.findViewById(R.id.textViewMessageLength);
+        EditText theMessageEditText = (EditText)rootView.findViewById(R.id.textMultiLineMessage);
+        
+        final TextWatcher txwatcher = new TextWatcher() {
+        	   public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        	   }
+
+        	   public void onTextChanged(CharSequence s, int start, int before, int count) {
+        		   messageLengthDisplay.setText(getString(R.string.messageLengthTextView)+String.valueOf(s.length()));
+        	   }
+ 
+        	   public void afterTextChanged(Editable s) {
+        	   }
+        };
+
+        theMessageEditText.addTextChangedListener(txwatcher);
+        
         return rootView;
     }
    

@@ -52,5 +52,6 @@
     <string name="settingsmess">Change the username and password,leave blank to keep same as old</string>
     <string name="pword">Password</string>
     <string name="password">password</string>
+    <string name="messageLengthTextView">Current Length: </string>
 
 </resources>
