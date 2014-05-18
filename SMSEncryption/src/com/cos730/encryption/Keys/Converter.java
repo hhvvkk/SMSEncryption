@@ -8,17 +8,23 @@ import com.cos730.encryption.Charset;
 import java.math.BigInteger;
 
 /**
- *
- * @author Fiyah
+ * Class used to convert String to numbers and vice versa
+ * 
  */
 public class Converter {
 
+	//the current character set being used
     Charset characterSet;
 
     public Converter(Charset cs) {
         characterSet = cs;
     }
 
+    /**
+     * This function converts a BigInteger into a String representation
+     * @param seed The BigInteger to convert.
+     * @return The string representation.
+     */
     public String getStringRep(BigInteger seed) {
         byte[] toByteArray = seed.toByteArray();
 
@@ -44,6 +50,11 @@ public class Converter {
         return temp;
     }
     
+    /**
+     * This function converts a string into a BitIntger
+     * @param in The string
+     * @return The BigInteger representation.
+     */
     public BigInteger getNumberRep(String in)
     {
         BigInteger temp=new BigInteger("1");

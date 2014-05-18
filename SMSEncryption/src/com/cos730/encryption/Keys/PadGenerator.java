@@ -10,11 +10,11 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 /**
- *
- * @author Fiyah
+ * Generates the one time pad to be used
  */
 public class PadGenerator {
 
+	//The current character set
     Charset cs;
 
     public PadGenerator(Charset set) {
@@ -24,11 +24,10 @@ public class PadGenerator {
 
     /**
      * Generates OneTimePad entry based on 2 seeds
-     * @param seed1
-     * @param seed2
-     * @return 
-     */
-    
+     * @param seed1 The first key
+     * @param seed2 The second key
+     * @return a One-Time-Pad generated with the keys
+     */    
     
     public String PadKey(Long seed1, Long seed2) {
       
@@ -65,13 +64,6 @@ public class PadGenerator {
             sran.setSeed(sran.nextInt());
             
             sran2.setSeed(sran2.nextInt());
-//            
-//            
-//            firstSeed = firstSeed + value;
-//            sran.setSeed(firstSeed%1000);
-//
-//            SecondSeed = SecondSeed + value;
-//            sran2.setSeed(SecondSeed%800);
 
             values[i] = value;
         }

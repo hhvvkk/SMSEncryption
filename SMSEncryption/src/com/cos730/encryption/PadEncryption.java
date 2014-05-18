@@ -3,13 +3,21 @@ package com.cos730.encryption;
 
 public class PadEncryption {
 
+	//represents the one time pad to be used
     public String padKey;
+    
+    //the current character set
     Charset CharacterSet;
 
     public PadEncryption(Charset cs) {
         CharacterSet = cs;
     }
 
+    /**
+     * This function encrypts a string using a One-Time-Pad
+     * @param in The String to be encrypted
+     * @return The encrypted String
+     */
     public String Encrypt(String in) {
         String temp = "";
 
@@ -29,6 +37,11 @@ public class PadEncryption {
         return temp;
     }
 
+    /**
+     * This function decrypts a string using One-Time-Pad
+     * @param in the encrypted String
+     * @return the plaintext
+     */
     public String Decrypt(String in) {
         String temp = "";
 

@@ -15,6 +15,12 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+
+/**
+ *  This class handles all security related matters to the application
+ *  itself such as the enctryption and decryption of the database along with
+ *  password hashing
+ */
 public class AppSecurity {
 
     static private String mPassword = null;
@@ -22,8 +28,17 @@ public class AppSecurity {
     static Cipher mDecipher = null;
     static private String mUsername;
 
+    /**
+     * empty constructor
+     */
     public AppSecurity() {
     }
+   
+    /**
+     * 
+     * @param password the password to be used.
+     * Must be 16 bytes long to ensure correct use of database encryption.
+     */
 
     public void setPassword(String password) {
 
@@ -41,6 +56,11 @@ public class AppSecurity {
 
     }
 
+    /**
+     * 
+     * @param username the username to be used.
+     * Must be 16 bytes long to ensure correct use of database encryption. 
+     */
     public void setUsername(String username) {
 
 
@@ -54,6 +74,10 @@ public class AppSecurity {
             }
         }
     }
+    
+    /**
+     * This function initializes the encryption with the correct parameters
+     */
 
     public void EncryptSetup() {
 
@@ -72,6 +96,10 @@ public class AppSecurity {
         }
     }
 
+    /**
+     * This function initializes the decryption with the correct parameters
+     */
+    
     public void DecryptSetup() {
 
         String key1 = mUsername;
@@ -93,12 +121,12 @@ public class AppSecurity {
 
     }
 
+    /**
+     * 
+     * @param in The string to be encrypted
+     * @return the encrypted string
+     */
     public String Encrypt(String in) {
-
-    	System.out.println(in);
-    	System.out.println(mUsername);
-    	System.out.println(mPassword);
-    	System.out.println(mEcipher);
 
         byte[] temp = null;
         try {
@@ -111,13 +139,13 @@ public class AppSecurity {
         return ByteConverter(temp);
     }
 
+    /**
+     * 
+     * @param in The string to be decrypted
+     * @return The plaintext String
+     */
     public String Decrypt(String in) {
     	
-    	System.out.println(in);
-    	System.out.println(mUsername);
-    	System.out.println(mPassword);
-    	System.out.println(mEcipher);
-
         byte[] temp = null;
 
         try {
@@ -132,6 +160,11 @@ public class AppSecurity {
         return this.ByteToChar(temp);
     }
 
+    /**
+     * This function converts a byte array into a comma seperated string representation.
+     * @param arr in the input byte array
+     * @return The comma seperated representation.
+     */
     public String ByteConverter(byte[] arr) {
         String temp = "";
         for (int i = 0; i < arr.length; i++) {
@@ -147,6 +180,12 @@ public class AppSecurity {
         return temp;
     }
 
+    /**
+     * This function converts a byte array into a string representation.
+     * @param arr input byte array
+     * @return String reprentation
+     */
+    
     public String ByteToChar(byte[] arr) {
         String temp = "";
         for (int i = 0; i < arr.length; i++) {
@@ -158,6 +197,11 @@ public class AppSecurity {
         return temp;
     }
 
+    /**
+     * This function converts a comma seperated string to a byte array
+     * @param in the input comma seperated string
+     * @return the byte array representation
+     */
     public byte[] StringConverter(String in) {
         StringTokenizer token = new StringTokenizer(in, ",");
         byte[] temp = new byte[token.countTokens()];
@@ -169,6 +213,12 @@ public class AppSecurity {
 
         return temp;
     }
+    
+    /**
+     * This function generates the password hash using SHA-256
+     * @param in The password
+     * @return The hased string
+     */
 
     public String generateHash(String in) {
         String encryptedString = "";

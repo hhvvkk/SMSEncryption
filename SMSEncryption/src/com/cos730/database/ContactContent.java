@@ -8,7 +8,9 @@ import java.util.Map;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-
+/**
+ * Used to store contacts so they can be used application wide.
+ */
 public class ContactContent {
 
     private static Context activityContext = null;

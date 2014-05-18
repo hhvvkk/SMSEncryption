@@ -17,10 +17,19 @@ import com.cos730.encryption.Keys.PadGenerator;
 
 public class OneTimePadHybridEncryption {
 
+	//current character set
     Charset cs;
+    
+    //used to convert numbers to strings and vice versa
     Converter conv;
+    
+    //the One-Time-Pad encryption
     PadEncryption pen;
+    
+    //Generates the One-Time-Pad
     PadGenerator pgen;
+    
+    //Generates the keys to be used
     KeyGenerator kgen;
 
     public OneTimePadHybridEncryption(Charset c) {
@@ -31,13 +40,21 @@ public class OneTimePadHybridEncryption {
         kgen = new KeyGenerator(cs);
     }
 
+   /**
+    * This function is the core of the encryption, it combines all the different
+    * components to deliver the encrypted string
+    * 
+    * @param in The string to be encrypted
+    * @param con The contact that the message is associated with
+    * @param cont The current application context.
+    * @return The encrypted String
+    */
     public String Encrypt(String in, Contact con,Context cont) {
         //get Contact
         Contact reciever = con;
 
         //Generate pad from both keys
         String padkey = pgen.PadKey(conv.getNumberRep(reciever.getHisSeed()).longValue(), conv.getNumberRep(reciever.getMySeed()).longValue());
-        System.out.println("padkey1 "+padkey);
         
         //pad  message to 144 chars cause with key it will be 154 and with failsave it will be 160
         while (in.length() < 144) {
@@ -63,13 +80,21 @@ public class OneTimePadHybridEncryption {
         //change his key to new seed
         DatabaseHandler dbHandler = new DatabaseHandler(cont);
         con.setHisSeed(Combined);
-        System.out.println("com "+Combined);
-        System.out.println("genKey "+genKey);
         dbHandler.updateContact(con);
 
         return enc1;
 
     }
+    
+    /**
+     * This function is responsible for decrypting the encrypted text.
+     * 
+     * @param in The input encrypted String.
+     * @param con The corresponding contact.
+     * @param cont The current application context.
+     * @param act The activity currently displayed, for error message use.
+     * @return
+     */
 
     public String Decrypt(String in, Contact con,Context cont,Activity act) {
 
@@ -93,7 +118,6 @@ public class OneTimePadHybridEncryption {
 
         //generate pad       
         String padkey = pgen.PadKey(conv.getNumberRep(sender.getMySeed()).longValue(), conv.getNumberRep(sender.getHisSeed()).longValue());
-        System.out.println("padkey1 "+padkey);
         
         //decrypt
         pen.padKey = padkey;
@@ -110,8 +134,6 @@ public class OneTimePadHybridEncryption {
 
         //update key
         DatabaseHandler dbHandler = new DatabaseHandler(cont);
-        System.out.println("com "+Combined);
-        System.out.println("genKey "+phase1);
         
         String failsave=phase2.substring(0,6);
         if(failsave.equals("cos730"))
@@ -133,6 +155,7 @@ public class OneTimePadHybridEncryption {
     	     .show();
         }
         
+        //remove failsave
         phase2=phase2.substring(6);
         
         return phase2;
