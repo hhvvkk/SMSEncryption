@@ -3,37 +3,41 @@
 \subsection{Purpose}
 This document describes the software requirements and specifications for the SMSEncryption mobile application.
 \vspace{10pt}\\
-The document will be used to ensure requirements are well understood by all stakeholders. It is therefore intended for all stakeholders of the project; including the developers and customers.
+The document will be used to ensure that requirements are well understood by all intended stakeholders of this project - such as developers and customers.
 
 \subsection{Background}
-Certain operations within remote parts of South Africa require reliable transmission of data which cannot be achieved through traditional means of data transmission (e.g. GSM, 3G, etc). As an alternative, SMSes are used to transmit these messages. Some of the data which is transmitted is sensitive, and requires some form of encryption. As traditional encryption functions often produce characters which fall outside the character set of modern cellphones, it is necessary to use an encoding scheme to translate these characters back into the cellphone's character set. Most encoding schemes (such as base64) increase the length of the message this may result in the encrypted message exceeding the maximum character allowance for SMS.
+Certain operations within remote parts of South Africa require reliable and confidential transmission of information(text) which cannot be achieved through the more modern means of data transmission, such as GSM or 3G, as these wireless technologies are unreliable in certain remote parts of South Africa. This unreliability is caused by weak, or even no, signal of modern wireless technologies; this unreliability forces the users in these areas to rely on an older message transmission technology - the SMS. These users require some form of encryption to ensure safe transmission of their sensitive data. As traditional encryption functions often produce characters which fall outside the character set that the SMS uses, it is necessary to make use of an encoding scheme that can translate the intended message text into ciphertext that can remain within the limits of the SMS character set. Most encoding schemes (such as base64) increase the length of the message drastically: this may result in the ciphertext exceeding the maximum amount of characters allowed per SMS.
 \subsection{Scope}
 %objectives, goals, benefits, 
 %Relate the software to corporate goals or business strategies.
-The goal of this project is to create a mobile application which can be used to encrypt text before sending it via SMS technology, which can be decrypted on the receiving end. The application must be able to be used on more than one platform (i.e. iOS and Android).
+The goal of this project is to create a mobile application that can translate the message text into an acceptable ciphertext that can be sent per SMS without exceeding the length that is allowed per SMS. When the message(ciphertext) is received on the opposite end of the 2-way communication, the application should be able to decrypt the received ciphertext back into its original plaintext (which will allow the reciever of the message to read the message, without loss of confidentiality). The application must be able to function on more than one platform (i.e. iOS and Android), as well as work cross-platform.
 \vspace{10pt}\\
-By using the SMSEncryption application, the user will be able to encrypt messages which can only be decrypted by using the same application on the receiving end. The application will require local authentication in order to gain access to the appliaction and make use of it's features.
+By using the SMSEncryption application, the user will be able to encrypt message text, which can then only be decrypted by using the same application on the receiving end (after a sync process has been completed by each user in the 2-way communication - see below for more information on the sync process). The application will require local authentication in order to gain access to the appliaction and make use of its features.
 \vspace{10pt}\\
-The benefit of this application is that you can use SMS technology to send confidential messages which can only be viewed by you and the desired recipient of the message - who is the only party who can unencrypt the message.
+The benefit of using this application would be that users can send encrypted messages via the SMS technology - ensuring that messages remain confidential between the sender/receiver of the message, and that messages uphold their integrity (i.e. has not been read/modified by an unknown third party).
 
 \subsection{Definitions, acronyms and abbreviations}
 \begin{itemize}
-\item SMSEncryption - The name of the current project which will allow users to encrypt and decrypt text with the main purpose of it being sent as an SMS, or via other messaging applications such as WhatsApp, WeChat, Facebook chat etc.
-\item Message - The text intended to be sent from a sender to a receiver  or stored once said message has been encrypted via SMSEncryption.
-\item Plaintext -  Is information a sender wishes to transmit to a receiver. 
-\item Ciphertext - Is the result of encryption performed on plaintext using an algorithm, called a cipher.
-\item Encrypt -  To alter the plaintext using an algorithm so as to be unintelligible to unauthorized parties.
-\item Decrypt - The act of decoding a ciphertext back into the orginal form before encryption took place.
-\item User - An authorised person who will interact with the application.
-\item Sender - The person who authored and intends to send a message that has been encrypted via the application.
-\item Receiver - The intended party who receives a message which has been encrypted via the application.
-\item SMS - Short Message Service (SMS) is a text messaging service component of phone, Web, or mobile communication systems. This allows for short messages to be sent to other devices over a network which is not controlled by the sender or receiver.
+\item SMSEncryption - The name of the project which will allow users to encrypt and decrypt text, with the main purpose of it being sent as an SMS, or via other messaging applications such as WhatsApp, WeChat, Facebook chat etc, if available.
+\item Message - The text that will be communicated between two parties.
+\item Plaintext -  The unmodified text a sender wishes to privately communicate to a receiver. 
+\item Ciphertext - The result of an encryption algorithm(cipher) performed on the message plaintext.
+\item Cipher - The algorithm used to translate plaintext into ciphertext.
+\item Encrypt -  The act of converting plaintext, using a cipher, into unintelligible data that cannot be read by any unauthorized parties.
+\item Decrypt - The act of decoding a ciphertext back into its orginal form(plaintext), so that the message can be read by the intended receiver.
+\item Unauthorized - A person/party that is not allowed to view a message sent between two, private, parties.
+\item User - An authorised user that will interact with the SMSEncryption application.
+\item Sender - The person/party that authored, and intends to send, a message that will be encrypted via the SMSEncryption application.
+\item Receiver - The intended person/party that will receive an encrypted message(ciphertext) which can be decrypted by the SMSEncryption application.
+\item SMS - Short Message Service (SMS) is a text messaging service component a of phone, web, or mobile communication systems. This allows for short messages to be sent to other devices over a network which is not controlled by the sender or receiver.
 \item SMSC - Short Message Service Centre (SMSC) is a network element in the mobile telephone network. Its purpose is to store, forward, convert and deliver SMS messages.
 \item GSM - Global System for Mobile Communications (GSM) is a second generation standard for protocols used on mobile devices.
-\item Entropy -  The expected value of the information contained in a message.
-\item Synchronisation - The process whereby contact data is matched on more than one device in order to allow encrypted communication.
-\item Desyncrhonisation - The event that occurs when a contact data is no longer similar on both devices.
-\item Resynchronisation - The process synchronisation occurs again.
+\item 3G - Is a third generation mobile communications standard that allows mobile phones, computers, and other portable electronic devices to access the Internet wirelessly.
+\item Entropy -  The randomness contained within ciphertext to ensure that no pattern will emerge when studing the ciphertext.
+\item Contact - Data stored on the device to represent a person, their mobile phone number, and other data to ensure reliable communication via encryption.
+\item Synchronisation - The process whereby contact data is matched on more than one device in order to allow a private communications channel via encryption.
+\item Desyncrhonisation - The event that occurs when contact data, between two devices, is no longer in sync with one another.
+\item Resynchronisation - The synchronisation process is repeated to ensure synchronization between two contacts.
 
 \end{itemize}
 
@@ -79,20 +83,18 @@ The benefit of this application is that you can use SMS technology to send confi
 %Structure of the rest of the SRS, in particular:
 %organization for Section 3 (Specific Requirements)
 %deviations from the standard SRS format
-The rest of the document will be organized to include the following sections: General Description and Specific Requirements for the SMSEncryption application.
+The rest of this document will be organized to include the following sections: General Description and Specific Requirements for the SMSEncryption application.
 \vspace{10pt}\\
-The Overall Description section will provide a background to the reader for the SMSEncryption application, and contains the following sections: Product perspective, Product functions, User characteristics, Constraints,  Assumptions and Dependencie as well as Apportioning of requirements.
+The General Description section will provide an overall background to the reader of this document, for the SMSEncryption application. It contains the following sections: Product perspective, Product functions, User characteristics, Constraints,  Assumptions and Dependencies, as well as Apportioning of Requirements.
 \vspace{10pt}\\
-The Specific Requirements section contains requirements for the SMSEncryption application, and is organised by application features. This is done in such a way that it will highlight the functions of the application. 
+The Specific Requirements section contains all requirements for the SMSEncryption application, and is organised by application features. This is done in such a way that it will highlight the functions of the application. It contains the following sections: External Interfaces, Functions, Performance Requirements, Logical Database, Design Constraints, and Software System Attributes.
 \vspace{10pt}\\
-The sections contained in Specific Requirements include External interfaces, Functions, Performance requirements, Logical database, Design constraints and Software system attributes.
-\vspace{10pt}\\
-The appendices A, B and C contain research on encryption conducted by the development team.
+The appendices A, B, and C contain research on encryption conducted by the development team.
 \vspace{10pt}\\
 Appendix D contains a set of secure design principles relevant to the application.
 \vspace{10pt}\\
-Appendix E contains a set of design principles from both Android and iOS that must be present in SMSEncryption for each version of the developed application.
+Appendix E contains a set of design principles from both Android, and iOS, that must be present in the SMSEncryption application for both mobile operating systems.
 \vspace{10pt}\\
-Appendix F contains the i\text{*} diagrams we drew during the requirements elicitation process.
+Appendix F contains i\text{*} diagrams we drew during the requirements elicitation process.
 \vspace{10pt}\\
 Appendix G contains the detailed description of changes to each version of the document.

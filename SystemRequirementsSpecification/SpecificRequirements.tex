@@ -5,42 +5,42 @@
 \begin{tabular}{ll}
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
-\textbf{Name of item}&User name\\
-\textbf{Description of purpose}&The desired User name which a user inputs\\
+\textbf{Name of item}&Username\\
+\textbf{Description of purpose}&The desired Username which the application\\& authenticates the user\\
 \textbf{Source of input}&User\\
-\textbf{Destination of output}&N/A\\
-\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
-\textbf{Relationships to other inputs/outputs}&A User Account will have the User name \\&associated with it set to the inputed value.\\
+\textbf{Destination of output}&Application database\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
+\textbf{Relationships to other inputs/outputs}&A user account will be bound to the\\& desired username provided by the user\\
 &\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&Password\\
-\textbf{Description of purpose}&The desired password which will be associated\\& with the specific user account which is being\\& created\\
+\textbf{Description of purpose}&The desired password which will be associated\\& with the specific username created by\\& the user\\
 \textbf{Source of input}&User\\
-\textbf{Destination of output}&N/A\\
-\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
-\textbf{Relationships to other inputs/outputs}&A User Account will have the password\\& associated with it set to this value.\\
+\textbf{Destination of output}&Application database\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
+\textbf{Relationships to other inputs/outputs}&A user account will have the password\\& associated with the provided username\\& set by the user to this value\\
 &\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&Password Confirmation\\
-\textbf{Description of purpose}&A copy of the password to verify \\&correctness\\
+\textbf{Description of purpose}&A prompt to re-enter the password\\& provided by the user\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&N/A\\
-\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
-\textbf{Relationships to other inputs/outputs}&Value submitted is used to confirm the\\& correctness of the desired password to avoid\\& human error.\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
+\textbf{Relationships to other inputs/outputs}&The value submitted is used to confirm the\\& correctness of the desired password by the user\\& in order to accommodate for human\\& error\\
 &\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
-\textbf{Name of item}&The created user account\\
-\textbf{Description of purpose}&The user account that has been created and has\\& its Username and Password set to those which\\&  were defined during the account creation process. \\
-\textbf{Source of input}&N/A\\
-\textbf{Destination of output}&Account is stored in an encrypted database\\
-\textbf{Valid range, accuracy, and/or tolerance}&N/A.\\
-\textbf{Relationships to other inputs/outputs}&The username and password which was defined by\\& the user is used to make the account.\\
+\textbf{Name of item}&User Account\\
+\textbf{Description of purpose}&The user account that has been created and has\\& been associated with the provided username\\& and password submitted by the user\\
+\textbf{Source of input}&Application\\
+\textbf{Destination of output}&Application database\\
+\textbf{Valid range, accuracy, and/or tolerance}&Checked during creation process\\
+\textbf{Relationships to other inputs/outputs}&The username and password entered by\\& the user in order to create the sole account\\& linked to the application\\
 &\\
 &\\
 %--------------------------------
@@ -50,39 +50,39 @@
 \begin{tabular}{ll}
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
-\textbf{Name of item}&Error message\\
-\textbf{Description of purpose}&The message indicates that an account was not\\& created and the reason for not creating the\\& account.\\
-\textbf{Source of input}&N/A\\
-\textbf{Destination of output}&N/A.\\
-\textbf{Valid range, accuracy, and/or tolerance}&N/A.\\
-\textbf{Relationships to other inputs/outputs}&The username and password which was provided \\&by the user was invalid for one or more reasons.\\
+\textbf{Name of item}&Error Message\\
+\textbf{Description of purpose}&This message indicates that an error has been\\& found during account creation, and that,\\& accordingly, no account has been created\\
+\textbf{Source of input}&Application error checking\\
+\textbf{Destination of output}&User interface\\
+\textbf{Valid range, accuracy, and/or tolerance}&N/A\\
+\textbf{Relationships to other inputs/outputs}&The details provided during account creation\\& was invalid for one or more reasons\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Local Authentication : FRQ3\\
 \textbf{Name of item}&Username\\
-\textbf{Description of purpose}&The username associated with the account \\&which the user whishes to log in with.\\
+\textbf{Description of purpose}&The username associated with the user account\\& that the user logs into the application with\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&N/A\\
-\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
-\textbf{Relationships to other inputs/outputs}&The username that was used to create\\& the account.\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
+\textbf{Relationships to other inputs/outputs}&The username that was used to create\\& the user account\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Local Authentication : FRQ3\\
 \textbf{Name of item}&Password\\
-\textbf{Description of purpose}&The password associated with the account\\& which the user whishes to log in to the \\&application with.\\
+\textbf{Description of purpose}&The password associated with the user account\\& that the user logs into the application with\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&N/A\\
-\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
-\textbf{Relationships to other inputs/outputs}&The password that was input to\\& create the account.\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
+\textbf{Relationships to other inputs/outputs}&The password that was provided by the\\& user in order to create the user account\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Local Authentication : FRQ3\\
 \textbf{Name of item}&Error Message\\
 \textbf{Description of purpose}&The error message informs the user that the\\& authentication process failed\\
-\textbf{Source of input}&N/A\\
-\textbf{Destination of output}&N/A\\
+\textbf{Source of input}&Application logic\\
+\textbf{Destination of output}&User interface\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
-\textbf{Relationships to other inputs/outputs}&The username and password which was entered\\&does not correlate with any which are stored\\& on the device.\\
+\textbf{Relationships to other inputs/outputs}&The username and password provided during the login phase\\& don't correlate with the user account that has\\& been created on the device\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -92,39 +92,48 @@
 \begin{tabular}{ll}
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
-\textbf{Name of item}&Contact name\\
-\textbf{Description of purpose}&The name a user wishes to have associated with\\& a certain contact.\\
+\textbf{Name of item}&Contact Name\\
+\textbf{Description of purpose}&The name a user wishes to have associated with\\& the intended receiver of future messages\\
 \textbf{Source of input}&User\\
-\textbf{Destination of output}&N/A\\
+\textbf{Destination of output}&User interface\\
 \textbf{Valid range, accuracy, and/or tolerance}&Any character data\\
-\textbf{Relationships to other inputs/outputs}&Values inputted in the field will be stored\\& in the "name" field of a contact\\
+\textbf{Relationships to other inputs/outputs}&The text entered by the user to represent a specific\\& contact on the device\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
-\textbf{Name of item}&Contact number\\
-\textbf{Description of purpose}&The cellphone number a user wishes to have\\& associated with the contact they are adding.\\
-\textbf{Source of input}&User\\
-\textbf{Destination of output}&N/A\\
-\textbf{Valid range, accuracy, and/or tolerance}&Standard numeric values as expected \\&in South African mobile phone numbers\\
-\textbf{Relationships to other inputs/outputs}&The values inputted in to this field will be \\&stored under the "phone\_number" field of \\&a contact.\\
-&\\
-%--------------------------------
-\textbf{Found in requirement}&Add Contact : FRQ10\\
-\textbf{Name of item}&Contact's key\\
-\textbf{Description of purpose}&The contact's key which the user wishes to be\\& associated with the specific contact he is adding.\\
+\textbf{Name of item}&Contact Number\\
+\textbf{Description of purpose}&The mobile phone number associated with the contact\\& being added to the device\\
 \textbf{Source of input}&Contact\\
 \textbf{Destination of output}&N/A\\
-\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set.\\
-\textbf{Relationships to other inputs/outputs}&All other contact details.\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard mobile phone numbers\\&with or without the international dialing prefix\\
+\textbf{Relationships to other inputs/outputs}&The value entered by the user to represent\\& a contact's mobile phone number\\& , and is associated with the provided contact\\& name\\
+&\\
+%--------------------------------
+\textbf{Found in requirement}&Add Contact : FRQ10\\
+\textbf{Name of item}&Local Key\\
+\textbf{Description of purpose}&The key generated locally which will be\\& used by the application encryption algorithm\\
+\textbf{Source of input}&Application generated; user initiated\\
+\textbf{Destination of output}&N/A\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the key generated by the contact to ensure synchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\
+&\\
+%--------------------------------
+\textbf{Found in requirement}&Add Contact : FRQ10\\
+\textbf{Name of item}&Contact Key\\
+\textbf{Description of purpose}&The key generated locally by the contact which\\& will be used by the application encryption algorithm\\
+\textbf{Source of input}&Contact\\
+\textbf{Destination of output}&N/A\\
+\textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the locally generated key to ensure synchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
 \textbf{Name of item}&Contact\\
-\textbf{Description of purpose}&The contact that was created.\\
-\textbf{Source of input}&N/A\\
-\textbf{Destination of output}&Local database\\
+\textbf{Description of purpose}&The contact that has been created\\
+\textbf{Source of input}&Application\\
+\textbf{Destination of output}&Application database\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
-\textbf{Relationships to other inputs/outputs}&All entered contact details are validated\\& and stored in the applciations local database.\\
+\textbf{Relationships to other inputs/outputs}&All entered contact details are validated\\& and stored in the applciation's local database\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -135,38 +144,47 @@
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
 \textbf{Name of item}&Error Message\\
-\textbf{Description of purpose}&The error message informs that the contact\\& could not be added.\\
-\textbf{Source of input}&N/A\\
-\textbf{Destination of output}&N/A\\
+\textbf{Description of purpose}&The error message informs the user that the\\& contact could not be added to the database\\
+\textbf{Source of input}&Application logic\\
+\textbf{Destination of output}&Application interface\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
-\textbf{Relationships to other inputs/outputs}&The contact details which the user entered\\& were invalid.\\
+\textbf{Relationships to other inputs/outputs}&The contact details that had been entered\\& by the user was found invalid\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
 \textbf{Name of item}&Contact\\
-\textbf{Description of purpose}&The selected contact to be edited.\\
+\textbf{Description of purpose}&The selected contact to be edited by the user\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
-\textbf{Relationships to other inputs/outputs}&The contact details associated with the \\&contact which the user selected\\
+\textbf{Relationships to other inputs/outputs}&The selected contact's details stored in the\\& application database\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
-\textbf{Name of item}&Contact's key\\
-\textbf{Description of purpose}&The local key of the contact to be added.\\
-\textbf{Source of input}&User\\
+\textbf{Name of item}&Local Key\\
+\textbf{Description of purpose}&The key generated locally for device\\& resynchronization\\
+\textbf{Source of input}&Application generated; user initiated\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&\\
-\textbf{Relationships to other inputs/outputs}&All other contact details.\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the key generated by the contact to ensure resynchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\
+&\\
+%--------------------------------
+\textbf{Found in requirement}&Edit Contact : FRQ11\\
+\textbf{Name of item}&Contact Key\\
+\textbf{Description of purpose}&The key generated locally by the contact\\& for device resynchronization\\
+\textbf{Source of input}&Contact\\
+\textbf{Destination of output}&N/A\\
+\textbf{Valid range, accuracy, and/or tolerance}&\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the locally generated key to ensure resynchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
 \textbf{Name of item}&Contact\\
-\textbf{Description of purpose}&The contact that was updated.\\
+\textbf{Description of purpose}&The contact that has been updated\\
 \textbf{Source of input}&N/A\\
-\textbf{Destination of output}&Local database\\
+\textbf{Destination of output}&Application database\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
-\textbf{Relationships to other inputs/outputs}&All entered contact details.\\
+\textbf{Relationships to other inputs/outputs}&All details related to the specific contact\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -177,11 +195,11 @@
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
 \textbf{Name of item}&Error Message\\
-\textbf{Description of purpose}&The error message informs the user that \\&the contact could not be edited.\\
-\textbf{Source of input}&N/A\\
-\textbf{Destination of output}&N/A\\
+\textbf{Description of purpose}&The error message informs the user that saving\\& the contact's edited data has been unsuccessful\\
+\textbf{Source of input}&Application logic\\
+\textbf{Destination of output}&Application interface\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
-\textbf{Relationships to other inputs/outputs}&The contact details which were \\&entered by the user were invalid.\\
+\textbf{Relationships to other inputs/outputs}&The contact details that had been\\& entered by the user was found to be invalid\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -194,23 +212,23 @@
 \item{Add User Account : FRQ1}\\
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
-\item A user must be able to create a password protected account for the app.
-\item \textbf{Inputs:} The user inputs a desired user name , password and fills in the password conformation field.
-\item \textbf{Outputs:} A user account is either created and stored or an error message is displayed and no account is created.
+\item A user must be able to create a password protected account for the application
+\item \textbf{Inputs:} The user enters a desired username, and password (as well as the password confirmation)
+\item \textbf{Outputs:} A user account is either created and stored in the application database, or an error message is displayed and no account is created
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/AddUserStateDiagram.png}
 \item{Edit User Account : FRQ2}\\
 \textbf{(Source: Group Deliberation, Priority: Medium)}
 \begin{itemize}
-\item The user must be able to edit his/her authentication details.
+\item The user must be able to edit his/her user account details
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/EditUserStateDiagram.png}
 \item{Local Authentication : FRQ3}\\%meaning functional requirement 3
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
-\item The application must authenticate a user by requiring a password in order to log into the application, in order to ensure confidentiality.
-\item \textbf{Inputs:} The user inputs his account username and password.
-\item \textbf{Outputs:} After the application has checked the users details against the stored details under that username, it will log the user in and show them the main menu or it will display an error message and refuse the inputed details.
+\item To ensure confidentiality, the application must authenticate a user by requiring a password before granting access to the application features
+\item \textbf{Inputs:} The user enters his/her username and password
+\item \textbf{Outputs:} After user authenticaion has been successful (the username/password provided had been found correct), access is granted to all application features. If authentication fails(and incorrect username/password was entered), and error message is displayed. If authentication fails repeatedly for a specific amount of times; within a specific time slot, the application is locked for a specific amount of time
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/LocalAuthenticationStateDiagram.png}
 \end{itemize}
@@ -219,46 +237,46 @@
 \item{Enter message : FRQ4}\\%meaning functional requirement 1
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item A user must be able to input text into the application.
+\item A user must be able to input text into the application
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/EnterMessageState.png}
 \item{Type message : FRQ4.1}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item A user must be able to type text into the application.
+\item A user must be able to type text into the application directly
 \end{itemize}
 \item{Paste message : FRQ4.2}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item A user must be able to paste an already constructed message into the application, using the clipboard.
+\item A user must be able to paste an already constructed message into the application, using the device clipboard
 \end{itemize}
 \item{Edit Message: FRQ5}\\
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
-\item The message text must be editable once it has been input into the application by the user.
+\item The message text must be editable once it has been input into the application
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/EditMessageState.png}
 \item{Encrypt message : FRQ6}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item The message must be encrypted using a suitable encryption method.
+\item The message must be encrypted using a suitable encryption method
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/EncryptMessageStateDiagram.png}
 \item{Copy Encrypted Message : FRQ7}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item Once a message has been encrypted, a user must be able to copy the ciphertext, and paste it into a suitable messaging application.
+\item Once a message has been encrypted, a user must be able to copy the ciphertext, and paste it into any selected messaging application
 \end{itemize}
 \item{Decrypt message : FRQ8}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item The application must be able to decrypt the message (on the receiving end) to reveal the original text.
+\item The application must be able to decrypt received messages to reveal their original plaintext - if the sender of the message's contact is provided and synchronized
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/DecryptMessageStateDiagram.png}
 \item{Display message length : FRQ9}\\
 \textbf{(Source: Bernard Wagner, Priority: Low)}
 \begin{itemize}
-\item The numbers of characters in the message must be displayed.
+\item The numbers of characters in a message must be displayed within the application
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/DisplayMessageLengthState.png}
 \end{itemize}
@@ -267,61 +285,61 @@
 \item{Add Contact : FRQ10}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item Before communicating with someone, the receiver must be added as a contact, in order to be able to communicate with that user.
-\item \textbf{Inputs:} The user inputs a contact's Name,number,local key and the contacts key.
-\item \textbf{Outputs:} The contact is created and stored or the apllication shows an error message if input details were invalid.
+\item Before communicating with another user, the receiver of these (future) messages must be added as a contact on the local device, in order to be able to communicate with that user
+\item \textbf{Inputs:} The receiver's name, mobile number, and locally generated key must be provided (along with the local device's generated key)
+\item \textbf{Outputs:} The contact is created and stored in the application database, or the apllication displays an error message if the contact's details entered was found incorrect
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/AddContactStateDiagram.png}
 \item{Edit Contact : FRQ11}\\
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
-\item A contact must be editable once it has been added.
-\item \textbf{Inputs:} The user selects a contact which they wish to modify the details for or to delete from the application.
-\item \textbf{Outputs:} The selected contacts details will be modified and stored or the contact will be deleted.
+\item A contact must be editable/deletable once it has been added
+\item \textbf{Inputs:} The user selects a contact which they wish to modify, or delete, within the application
+\item \textbf{Outputs:} The selected contact's details will be modified in the application database, or the contact will be removed from the application database
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/EditContactStateDiagram.png}
 \item{Synchronise Contact : FRQ12}\\
 \textbf{(Source: Group Deliberation, Priority: High)}
 \begin{itemize}
-\item The user shall be able to synchronise with a contact at any time after they have been added.
+\item The user must be able to synchronize with a contact, at any time, after the contact has been added to the application
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/SynchroniseContactState.png}
 \item{Remove Contact : FRQ13}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item A user must be able to remove a contact.
+\item A user must be able to remove an already added contact
 \end{itemize}
  \includegraphics[width=11cm]{diagrams/StateDiagrams/RemoveContactStateDiagram.png}
 \end{itemize}
 
 \subsection{Performance requirements}
 \begin{itemize}
-\item The application should operate in a timely manner, the user should not be made to wait an unreasonable amount of time (this variable can be affected by the system environment e.g. resource availability).
+\item The application should operate in a timely manner. The user should not be made to wait an unreasonable amount of time (this variable can be affected by the system environment e.g. resource availability)
 \begin{itemize}
-\item Expected time the applcaiton should take to decrypt is less than one second.
-\item Expected time the applicaiton should take to encrypt is less than one second.
+\item The application is expected to encrypt a message in less than one second
+\item The application is expected to decrypt a message in less than one second
 \end{itemize}
-\item The encryption method must be secure.
+\item The encryption method used must ensure secure communication via compromised communication methods
 \begin{itemize}
-\item The Encyprion method used should have an entropy of less than 1\%.
+\item The encyprion method used should have an entropy value of less than 1\%
 \end{itemize}
-\item The applcaiton must be secure.
+\item The applcaiton must make use of local authentication
 \begin{itemize}
-\item A user’s password must not be viewable as to prevent unauthorized use of the application.
-\item A user’s password should be encrypted or stored as a hash value.
-\item Contact information stored by the application must not be obtainable by unauthorized users.
-\item Contact information should be encrypted to ensure that it is not readable by unauthorized users.
+\item A user's password must always remain masked; when logging in, or even when editing the user account details
+\item A user's password should be encrypted or stored as a hash value within the application database
+\item Contact information stored by the application must not be obtainable by unauthorized users
+\item Contact information should be encrypted to ensure that it is not readable by unauthorized users
 \end{itemize}
 \end{itemize}
 
 \subsection{Logical database requirements}
 
 \begin{itemize}
-\item The password must be hashed using a SHA-256 hash function.
-\item The data should only be viewable by an authorised user.
-\item The contact data must be encrypted to ensure confidentiality using an applicable hash function.
-\item Every user has 0 or more contacts associated with it.
-\item Once a user is deleted, all contacts are deleted along with the user.
+\item The user's password must be hashed using a SHA-256 hash function
+\item The data stored by the application should only be viewable by an authorised user
+\item Contact data must be encrypted to ensure confidentiality - using an applicable hash function
+\item Every user has zero or more contacts associated with it
+\item Once a user account is deleted, all data associated with that account, including all saved contacts, will be deleted
 \end{itemize}
 \begin{center}
  \includegraphics[width=13cm]{diagrams/LogicalDatabase.png}
@@ -332,50 +350,50 @@
 \item{Message length : DC1}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item Due to the fact that the primary messaging service which the client intends to use is SMS this limits the input size of the text to 160 characters. 
-\item The encryption process uses 6 characters for a fail safe and 10 characters to embed the next key.
-\item This means plaintext must be limited to 144 characters.
-\item To maintain consistency we enforce this as the maximum length of messages which the application can encrypt, regardless of the intended messaging application.
+\item Due to the fact that the primary messaging service that the client intends to use is SMS, the amount of characters per message is limited to 160 characters in total
+\item The encryption process uses 6 characters for a failsafe, and 10 characters to embed the next key to be used for future communication
+\item This means that plaintext entered by the user is limited to 144 characters
+\item To maintain consistency, we enforce this as the maximum length of messages which the application can encrypt, regardless of the messaging application used to send the message
 \end{itemize}
 \item{The usable characters : DC2}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item The usable character which can be encrypted by the application is the GSM character set because the primary intended messaging service that the client wishes to use is SMS. 
+\item The usable characters that can be encrypted by the application is limited to the GSM character set, because the primary messaging service that this application is developed for is SMS.
 \end{itemize}
 \item{Application resource requirementsr : DC3}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
-\item The application should function efficiently with the least amount of resource usage.
+\item The application should function efficiently, with the least amount of resource usage
 \end{itemize}
 \end{itemize}
 \subsubsection{Standards compliance}
 \begin{itemize}
-\item The application must be secure, as is stipuled in Appendix D, Secure design principles.
-\item The Application must conform to the Android and iOS design principles for each respective platform, these can be found in Appendix E, Design principles.
+\item The application must be secure, as is stipulated in Appendix D: Secure Sesign Principles
+\item The application must conform to the Android and iOS respective platform design principles; these can be found in Appendix E, Design principles
 \end{itemize}
 
 \subsection{Software system attributes}
 \subsubsection{Reliability}
 \begin{itemize}
-\item The application should run until the user closes it.
-\item Any information stored in the application should be static and exist as long as the application is open or said information is removed/edited.
-\item The ciphertext should decrypt into its plaintext.
+\item The application should run until the user closes it
+\item Any information stored by the application should be static and exist as long as the application is open or said information is edited/removed
+\item The ciphertext should decrypt back into its original plaintext
 \end{itemize}
 \subsubsection{Availability}
 \begin{itemize}
-\item The user should be able to use the application as long as it is running and should not be made to wait while the application performs a function.
-\item The application should not interfere with any other applications which are running on the device.
+\item The user should be able to use the application regardless of runtime, and should not be made to wait while the application performs a function
+\item The application should not interfere with any other applications that could be running simultaneously on the device
 \end{itemize}
 \subsubsection{Security}
 \begin{itemize}
-\item A secure encryption and decryption method will be used for the localised database.
+\item A secure encryption (and decryption) method will be used for the localised application database
 \end{itemize}
 \subsubsection{Maintainability}
 \begin{itemize}
-\item The source code should be maintainable (simplistic and readable/documented).
-\item The application should not act in unpredictable ways.
+\item The source code should be simplistic, maintainable, and readable/documented
+\item The application should not act in unpredictable ways
 \end{itemize}
 \subsubsection{Portability}
 \begin{itemize}
-\item The client has requested that different versions of the application be developed to execute on different operating systems namely Android and iOS.
+\item The client has requested that different versions of the application be developed to execute on different mobile operating systems: namely Android and iOS
 \end{itemize}
