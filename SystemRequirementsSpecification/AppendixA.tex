@@ -4,21 +4,21 @@
 %content page uit te hou. Dit unclutter dit so `n betjie
 \subsection*{Introduction}
 
-This appendix is about research done in pursuit of a possible solution to the given problem. It is about RSA and how we researched possible RSA solutions to encrypt an SMS message.
+This appendix contains research done in pursuit of a possible solution to the given problem - encryption over an unsecure network. The research done includes RSA, and how it can be used as a possible solution to encrypt an SMS message.
 
 \subsection*{Method}
 
-We started by trying to use the build in RSA implementation that is built into Java. After that we did research into the background of RSA, more specifically the math�s that make it work. We then attempted numerous combinations of the mathematical principals behind RSA to see if any of them could manage to be used to fulfill the needed requirements.
+We started by trying to use the built-in RSA implementation that is included in the default Java library. After that we did research into the background of RSA, or, more specifically, the mathematics behind the RSA algorithm. We then attempted numerous combinations of the mathematical principals behind RSA to see if any of them could be used to fulfill the requirements for this project.
 
 \subsection*{Result}
 
-The build in RSA used keys that would become too large to redistribute, in order to accommodate encrypted text of as close as possible to 160 characters after padding required a 700 bit key. It also limited the amount of characters to about 77 characters before it became larger than 160 characters.
+The built-in RSA algorithm requires generating keys that would be too large to send as an SMS, thus making redistribution of keys difficult. For example, to fulfill the purposes of this project, a message may only contain, at most, 160 characters. Using RSA to generate a key on a message of 160 characters (after it has encrypted with a one-time pad - that also forms part of our algorithm), it would generate a 700 character key for the message, which is  more than four times larger than the message itself. Using the RSA within our application would limit text messages to less than 77 characters (which would already generate a key of more than 160 characters). This approach would be inefficient, and was discarded as a means of encryption for our application.
 \vspace{10pt}\\
-We implemented a custom RSA but it started out weak due to the limits imposed by our character set. We looked into an alternative where 2 encrypted characters represented 1 plain text character. This gave some strength to the encryption but limited the message one could send to 80 characters. The client said that this was not an option.
+Instead, we attempted to implemented a custom RSA algorithm, but it started out weak due to the limits imposed by our character set. We looked into an alternative where 2 encrypted characters could represent 1 plaintext character. This gave some strength to the encryption but limited the message one could send to 80 characters (i.e. 2 x 80 = 160 characters). Our client declined this suggestion, and said that it is not an option to be considered.
 
 \subsection*{Discussion}
 
-When thinking about modern encryption we think about RSA and how useful it is, the thing we easily forget is behind the scenes large amounts of data is transferred just to enable the encryption and decryption. It is because of the keys being too large to SMS that the build in RSA was disregarded, along with uncontrolled padding in an environment where message length was extremely important. In our custom RSA we could control the length of the key but just like the build in version it limited characters too much.
+While thinking about modern encryption, we thought about RSA and how useful it is. It is easy to forget that, behind the scenes, large amounts of data is transferred just to enable the encryption and decryption functionality. It is because of the keys being too large to send within a single SMS that the built-in RSA was disregarded, along with uncontrolled padding in an environment where message length was extremely important. In our custom RSA algorithm we could control the length of the keys somewhat, but just like the built-in version it still limited the amount of characters to half the size of full SMS.
 \subsection*{Conclusion}
 
-RSA works well in modern technologies but it only works well where we can transfer large amounts of data relatively easily such as for example data transfer over the internet. We need large keys to make the encryption strong due to the limitations of the character set, but with no way of distributing the key and the limitations to the key length RSA is not the answer to this problem.
+RSA works well with modern technologies, where large messages can be sent by only using a small amount of data; be it via a more modern wireless network, such as 3G. Encryption can be made stronger with the use of larger keys, but for the intents and purposes of this project, along with the fact that message sent are limited to 160 characters, our custom RSA algorithm was a good suggestion, but still not the answer we were looking for.

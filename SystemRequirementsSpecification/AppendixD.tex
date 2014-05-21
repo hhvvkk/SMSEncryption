@@ -1,24 +1,24 @@
 \section{Appendix D - Secure design principles}
-As specified by the OWASP mobile security project the following are the  most prevalent mobile threats as of 2014 which are applicable to the SMSEncryption project.\\
+As specified by the OWASP mobile security project, the following are the most prevalent mobile threats as of 2014 (which are applicable to the SMSEncryption project).\\
 \textbf{\\}
-Below the description of each problem is a short statement on how we attemt to mitigate each threat in SMSEncryption.
+Below, the description of each problem is a short statement on how we attemt to mitigate each threat in the SMSEncryption application.
 \subsection*{ - Insecure Data Storage}
 The security of data the application stores is of the utmost importance as it could store the public and private keys of users or the OTP . Therefore we must consider threats to the data which is stored by the application. \\
 \textbf{\\}
-In SMSEncryption data is stored encrypted using the entered password of the user as well as the username.
+In the SMSEncryption application, data stored is first encrypted using both the password of the user account linked to the application, as well as the username of the user of the application.
 \subsection*{ - Unintended Data Leakage}
-Data leakage is a viable threat which demonstrates the lack of control developers have when developing on mobile applications , for instance the OS which you are developing for will handle memory management , this can be exploited by would be attackers by looking for unprotected areas in memory.\\
+Data leakage is a viable threat which demonstrates the lack of control developers have when developing on mobile applications. For instance, the OS (Operating System) that you are developing for will manage memory. This can be exploited by would-be attackers by attempting to gain access to unprotected areas in memory.\\
 \textbf{\\}
-In SMSEncryption sensitive data such as the password is encrypted.
+In the SMSEncryption application, sensitive data, such as the password, is encrypted.
 \subsection*{ - Poor Authorization and Authentication}
-Poor Authorization and authentication is relative to this project as we have to consider the consequences of the application being accessed and used by unauthorized personnel.\\
+Poor authorization and authentication is relative to this project as we have to consider the consequences of the application being accessed and used by unauthorized personnel.\\
 \textbf{\\}
-In SMSEncryption password login is required to gain access to the application and its content, the database.
+To gain access to the SMSEncryption application, a password is required in order to log into the application and gain access to the application features and its content(database).
 \subsection*{ - Broken Cryptography}
-We have to ensure that we make use of a suitable encryption method so that it can not be easily decrypted by attackers and that it does  not require a disproportionate amount of resources to implements or use.\\
+We have to ensure that we make use of a suitable encryption method so that it can not be easily decrypted by attackers, and that it does not require a disproportionate amount of resources to implement or use.\\
 \textbf{\\}
-In SMSEncryption we are making use of AES encryption for the database.
+In the SMSEncryption application we make use of AES encryption for the local database on each device.
 \subsection*{ - Lack of Binary Protections}
-This is a universal problem as almost all code which is compiled into binaries will be able to be reverse engineered into some form of discernable source code.\\
+This is a universal problem, as almost all code which is compiled into binary files could be reverse engineered into some form of discernable source code.\\
 \textbf{\\}
-With regard to SMSEncryption this means we must ensure the former sections are well taken care of to mitigate the effects of this threat.
+With regards to the SMSEncryption application, this means that we must ensure that all former sections are well taken care of in order to mitigate the effects of this threat.

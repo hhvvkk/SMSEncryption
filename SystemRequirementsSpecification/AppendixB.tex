@@ -4,16 +4,16 @@
 %content page uit te hou. Dit unclutter dit so `n betjie
 \subsection*{Introduction}
 
-This is about research done into one time pads, an encryption technique that if used correctly is unbreakable.  It also provides the person attempting to decrypt the message with no information about the plaintext apart from the max possible length it could be.
+This document contains research done into one-time pads, an encryption technique that, if used correctly, is unbreakable. It also provides the person attempting to decrypt the message with no information about the plaintext whatsoever, except from the maximum possible length that it could be.
 \subsection*{Method}
 
-We did some research into one time pads and why it is that they are so strong. After that we implemented a onetime pad algorithm and it looked very promising.
+We did some research into one-time pads, and what it is that makes it so strong. This inspired us to develop a one-time pad algorithm that can be used within our application, and the results looked very promising.
 \subsection*{Result}
 
-The encryption is very strong, allows for 1 to 1 character encryption thus enabling us to have a plain text message of 160 characters fully utilizing space. It seemed to be the solution to the problem.
+The encryption is very strong, and allows for a 1:1 character ratio after encryption has taken place on the message. This allows us to fully utilize the 160 characters per SMS, as the ciphertext length does not grow beyond the plaintext length. This was the solution to the problem we had before, when considering an RSA algorithm.
 \subsection*{Discussion}
 
-The first thing that comes to mind when thinking about one time pad encryption is how to distribute the pad. The pad needs to be distributed between the two parties and the must any given moment in time know what the next line that will be used will be, in other words it requires synchronization.
+The first thing that comes to mind when thinking about one-time pad encryption is how to distribute the pad itself. The pad needs to be distributed between the two parties who intend to communicate with each other. At any point during communication between these parties, the next line from the one-time pad must be known in advance. This requires some form of synchronization between the two parties before secure communication can take place.
 \subsection*{Conclusion}
 
-In terms of message length and encryption strength it is perfect but with no way of distrusting the one time pad securely we had to disregard this solution.
+In terms of message length and encryption strength, this solution is perfect, but with no way of distributing the one-time pad securely, we had to disregard this solution.
