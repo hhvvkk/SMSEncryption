@@ -228,7 +228,7 @@
 \begin{itemize}
 \item To ensure confidentiality, the application must authenticate a user by requiring a password before granting access to the application features
 \item \textbf{Inputs:} The user enters his/her username and password
-\item \textbf{Outputs:} After user authenticaion has been successful (the username/password provided had been found correct), access is granted to all application features. If authentication fails(and incorrect username/password was entered), and error message is displayed. If authentication fails repeatedly for a specific amount of times; within a specific time slot, the application is locked for a specific amount of time
+\item \textbf{Outputs:} After user authentication has been successful (the username/password provided had been found correct), access is granted to all application features. If authentication fails(and incorrect username/password was entered), and error message is displayed. If authentication fails repeatedly for a specific amount of times; within a specific time slot, the application is locked for a specific amount of time
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/LocalAuthenticationStateDiagram.png}
 \end{itemize}
@@ -287,7 +287,7 @@
 \begin{itemize}
 \item Before communicating with another user, the receiver of these (future) messages must be added as a contact on the local device, in order to be able to communicate with that user
 \item \textbf{Inputs:} The receiver's name, mobile number, and locally generated key must be provided (along with the local device's generated key)
-\item \textbf{Outputs:} The contact is created and stored in the application database, or the apllication displays an error message if the contact's details entered was found incorrect
+\item \textbf{Outputs:} The contact is created and stored in the application database, or the application displays an error message if the contact's details entered was found incorrect
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/AddContactStateDiagram.png}
 \item{Edit Contact : FRQ11}\\
@@ -321,9 +321,9 @@
 \end{itemize}
 \item The encryption method used must ensure secure communication via compromised communication methods
 \begin{itemize}
-\item The encyprion method used should have an entropy value of less than 1\%
+\item The encyption method used should have an entropy value of less than 1\%
 \end{itemize}
-\item The applcaiton must make use of local authentication
+\item The application must make use of local authentication
 \begin{itemize}
 \item A user's password must always remain masked; when logging in, or even when editing the user account details
 \item A user's password should be encrypted or stored as a hash value within the application database
@@ -360,7 +360,7 @@
 \begin{itemize}
 \item The usable characters that can be encrypted by the application is limited to the GSM character set, because the primary messaging service that this application is developed for is SMS.
 \end{itemize}
-\item{Application resource requirementsr : DC3}\\
+\item{Application resource requirements : DC3}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
 \item The application should function efficiently, with the least amount of resource usage
@@ -368,7 +368,7 @@
 \end{itemize}
 \subsubsection{Standards compliance}
 \begin{itemize}
-\item The application must be secure, as is stipulated in Appendix D: Secure Sesign Principles
+\item The application must be secure, as is stipulated in Appendix D: Secure Design Principles
 \item The application must conform to the Android and iOS respective platform design principles; these can be found in Appendix E, Design principles
 \end{itemize}
 

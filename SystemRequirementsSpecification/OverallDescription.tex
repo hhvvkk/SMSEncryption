@@ -4,48 +4,59 @@
  %Describes the environment of the system
 
 \subsubsection{Description}
-The SMSEncryption application is a new product that can accommodate the encryption/decryption of text to be sent via SMS, or any other text communcations service, such as Whatsapp, that can make use of more modern wireless data communication technologies - if it is available. Message text can be manipulated via any text manipulation application, such as the default Android/iOS keyboard, capable of using the basic GSM character set , that will be used by our application. Any third party keyboard applications such as SwiftKey can also be used.
+The SMSEncryption application is a new product that can accommodate the encryption/decryption of text to be sent via SMS, or any other text communications service, such as WhatsApp, that can make use of more modern wireless data communication technologies - if it is available. Message text can be manipulated via any text manipulation application, such as the default Android/iOS keyboard, capable of using the basic GSM character set , that will be used by our application. Any third party keyboard applications such as SwiftKey can also be used.
 \vspace{12pt}\\
 The GSM character set contains a limited amount of characters, which will, in turn, limit the encryption methods we can make use of, as many encryption algorithms greatly increase both the size of the message, and the number of different characters used. Making use of these encryption algorithms that generate large amounts of characters will be infeasible, as sending a large amount of text via SMS will be expensive - as users generally pay a fixed amount per 160 characters.
+\newpage
 \subsubsection{System interfaces}
 The application is usable on both a tablet and mobile phone. Below are some screenshots of the application on both these:\\
 %----------------------------------------------------------------------------------------------------------------
 \begin{center}
- \includegraphics[width=13cm]{screenshots/normal/1_LoginScreen.png}
+ \includegraphics[width=11cm]{screenshots/normal/1_LoginScreen.png}
+\textbf{\\}
  This is the Login Screen which users see when they first open the application.
 \end{center}
 \begin{center}
  \includegraphics[width=13cm]{screenshots/normal/2_AddUser.png}
+\textbf{\\}
 After selecting "Add user" the user is taken to the Add User screen. The Add User screen is used to add new user accounts to the application.
 \end{center}
 \begin{center}
  \includegraphics[width=13cm]{screenshots/normal/2_LoginScreenFilledIn.png}
+\textbf{\\}
 The user can enter their login credentials to an created account to log into the application.
 \end{center}
 \begin{center}
  \includegraphics[width=13cm]{screenshots/normal/3_ContactScreen.png}
+\textbf{\\}
  After having logged in the user sees the Contacts menu.
 \end{center}
 \begin{center}
  \includegraphics[width=13cm]{screenshots/normal/4_AddContact.png}
+\textbf{\\}
  After selecting the "plus" symbol the user is taken to the Add Contact screen where they can add a contact.
 \end{center}
 \begin{center}
  \includegraphics[width=13cm]{screenshots/normal/4_EditContact.png}
+\textbf{\\}
  After selecting the pen and paper icon the user is taken to the edit contact screen where by using the drop down box they can select which contact they wish to edit details for.
 \end{center}
 \begin{center}
  \includegraphics[width=13cm]{screenshots/normal/4_Settings.png}
- After selecting the gear icon a user is taken to the settings page where they can change the logged in acounts username and password.
+\textbf{\\}
+ After selecting the gear icon a user is taken to the settings page where they can change the logged in accounts username and password.
 \end{center}
 \begin{center}
  \includegraphics[width=13cm]{screenshots/normal/5_ContactPreEncrypt.png}
+\textbf{\\}
  If a user selects a contact from the main menu they are shown the contact messaging menu where they can encrypt a message to/from that contact.
 \end{center}
 \begin{center}
- \includegraphics[width=13cm]{screenshots/normal/5_ContactPostEncrypt.png}
- After having enterd a message they wish to encrypt the user can select enrypt and the cypher text for that message will be displayed which they can then send to that contact using SMS,wattsap or any text messaging service.
+ \includegraphics[width=11cm]{screenshots/normal/5_ContactPostEncrypt.png}
+\textbf{\\}
+ After having entered a message they wish to encrypt the user can select encrypt and the ciphertext for that message will be displayed which they can then send to that contact using SMS, WhatsApp or any text messaging service.
 \end{center}
+\newpage
 \subsubsection{User interfaces}
  The user interface is what will allow the user to type a message, encrypt it, copy the ciphertext, and paste it into the application that will send the message. On the receiving end, the message received will be copied, and pasted into the SMSEncryption application, which will be used to decrypt the received message. This ensures integrity of the message, as only users of the application will be able to encrypt/decrypt the message if they have synchronized each other as contacts within the application.
 \subsubsection{Hardware interfaces}
@@ -105,7 +116,7 @@ The application is divided into 3 core functionalities: Admin, Messaging, and Co
 \end{itemize}
 \item The application will make use of local authentication to verify the user before logging him/her into the application, and granting access to all of the application's features.
 \begin{itemize}
-\item Everytime a user wants to use the application, the set password must be provided along with the login details.
+\item Every time a user wants to use the application, the set password must be provided along with the login details.
 \item If the provided password (and related details) are entered correctly, the user gains access to the application.
 \item If the password provided is found to be incorrect, three times in a row, the application will lock for a specified amount of time - preventing access from an unauthorised user, as well as, so-called "brute force" attacks.
 \end{itemize}
@@ -177,7 +188,7 @@ The application is divided into 3 core functionalities: Admin, Messaging, and Co
 
 \begin{itemize}
 \item It is assumed that the amount of characters in the basic GSM character set is 128 for the 7-bit encoding used in GSM.
-\item It is assumed that the devices being used allows has clipboard functionality (copy/paste functionality) between different interfaces/applicaitons on the device itself.
+\item It is assumed that the devices being used allows has clipboard functionality (copy/paste functionality) between different interfaces/applications on the device itself.
 \end{itemize}
 
 \subsection{Apportioning of requirements}
