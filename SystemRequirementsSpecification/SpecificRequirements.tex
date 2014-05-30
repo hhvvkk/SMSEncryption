@@ -6,7 +6,7 @@
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&Username\\
-\textbf{Description of purpose}&The desired Username which the application\\& authenticates the user\\
+\textbf{Description of purpose}&The desired Username which the \\&application authenticates the user\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&Application database\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
@@ -16,7 +16,7 @@
 %--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&Password\\
-\textbf{Description of purpose}&The desired password which will be associated\\& with the specific username created by\\& the user\\
+\textbf{Description of purpose}&The desired password which will be \\&associated with the specific username \\& created by the user\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&Application database\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
@@ -30,13 +30,18 @@
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
-\textbf{Relationships to other inputs/outputs}&The value submitted is used to confirm the\\& correctness of the desired password by the user\\& in order to accommodate for human\\& error\\
+\textbf{Relationships to other inputs/outputs}&The value submitted is used to confirm the\\& correctness of the desired password by the \\&user in order to accommodate for\\& human error\\
 &\\
 &\\
 %--------------------------------
+\end{tabular}
+%--------------------------------
+\newpage
+\begin{tabular}{ll}
+%--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&User Account\\
-\textbf{Description of purpose}&The user account that has been created and has\\& been associated with the provided username\\& and password submitted by the user\\
+\textbf{Description of purpose}&The user account that has been created \\&and has been associated with the\\& provided username and password \\&submitted by the user\\
 \textbf{Source of input}&Application\\
 \textbf{Destination of output}&Application database\\
 \textbf{Valid range, accuracy, and/or tolerance}&Checked during creation process\\
@@ -44,45 +49,34 @@
 &\\
 &\\
 %--------------------------------
-\end{tabular}
-%--------------------------------
-\newpage
-\begin{tabular}{ll}
-%--------------------------------
 \textbf{Found in requirement}&Add User Account : FRQ1\\
 \textbf{Name of item}&Error Message\\
-\textbf{Description of purpose}&This message indicates that an error has been\\& found during account creation, and that,\\& accordingly, no account has been created\\
+\textbf{Description of purpose}&This message indicates that an error \\&has been found during account creation, \\&and that, accordingly, no account has \\&been created\\
 \textbf{Source of input}&Application error checking\\
 \textbf{Destination of output}&User interface\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
 \textbf{Relationships to other inputs/outputs}&The details provided during account creation\\& was invalid for one or more reasons\\
 &\\
+&\\
 %--------------------------------
 \textbf{Found in requirement}&Local Authentication : FRQ3\\
 \textbf{Name of item}&Username\\
-\textbf{Description of purpose}&The username associated with the user account\\& that the user logs into the application with\\
+\textbf{Description of purpose}&The username associated with the user \\&account that the user logs into the\\& application with\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
 \textbf{Relationships to other inputs/outputs}&The username that was used to create\\& the user account\\
 &\\
+&\\
 %--------------------------------
 \textbf{Found in requirement}&Local Authentication : FRQ3\\
 \textbf{Name of item}&Password\\
-\textbf{Description of purpose}&The password associated with the user account\\& that the user logs into the application with\\
+\textbf{Description of purpose}&The password associated with the user \\&account that the user logs into the \\&application with\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
 \textbf{Relationships to other inputs/outputs}&The password that was provided by the\\& user in order to create the user account\\
 &\\
-%--------------------------------
-\textbf{Found in requirement}&Local Authentication : FRQ3\\
-\textbf{Name of item}&Error Message\\
-\textbf{Description of purpose}&The error message informs the user that the\\& authentication process failed\\
-\textbf{Source of input}&Application logic\\
-\textbf{Destination of output}&User interface\\
-\textbf{Valid range, accuracy, and/or tolerance}&N/A\\
-\textbf{Relationships to other inputs/outputs}&The username and password provided during the login phase\\& don't correlate with the user account that has\\& been created on the device\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -91,23 +85,42 @@
 %--------------------------------
 \begin{tabular}{ll}
 %--------------------------------
+
+\textbf{Found in requirement}&Local Authentication : FRQ3\\
+\textbf{Name of item}&Error Message\\
+\textbf{Description of purpose}&The error message informs the user that\\& the authentication process failed\\
+\textbf{Source of input}&Application logic\\
+\textbf{Destination of output}&User interface\\
+\textbf{Valid range, accuracy, and/or tolerance}&N/A\\
+\textbf{Relationships to other inputs/outputs}&The username and password provided \\&during the login phase don't \\&correlate with the user account that has\\& been created on the device\\
+&\\
+&\\
+%--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
 \textbf{Name of item}&Contact Name\\
-\textbf{Description of purpose}&The name a user wishes to have associated with\\& the intended receiver of future messages\\
+\textbf{Description of purpose}&The name a user wishes to have associated \\&with the intended receiver of\\&future messages\\
 \textbf{Source of input}&User\\
 \textbf{Destination of output}&User interface\\
 \textbf{Valid range, accuracy, and/or tolerance}&Any character data\\
-\textbf{Relationships to other inputs/outputs}&The text entered by the user to represent a specific\\& contact on the device\\
+\textbf{Relationships to other inputs/outputs}&The text entered by the user to represent\\& a specific contact on the device\\
+&\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
 \textbf{Name of item}&Contact Number\\
-\textbf{Description of purpose}&The mobile phone number associated with the contact\\& being added to the device\\
+\textbf{Description of purpose}&The mobile phone number associated with \\&the contact being added \\&to the device\\
 \textbf{Source of input}&Contact\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard mobile phone numbers\\&with or without the international dialing prefix\\
-\textbf{Relationships to other inputs/outputs}&The value entered by the user to represent\\& a contact's mobile phone number\\& , and is associated with the provided contact\\& name\\
+\textbf{Relationships to other inputs/outputs}&The value entered by the user to represent\\& a contact's mobile phone number,\\&and is associated with the provided contact\\& name\\
 &\\
+&\\
+%--------------------------------
+\end{tabular}
+%--------------------------------
+\newpage
+%--------------------------------
+\begin{tabular}{ll}
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
 \textbf{Name of item}&Local Key\\
@@ -115,16 +128,18 @@
 \textbf{Source of input}&Application generated; user initiated\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
-\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the key generated by the contact to ensure synchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the key generated by the contact to ensure\\& synchronization, and therefore secure\\& communication, between the two \\&synchronized devices\\
+&\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
 \textbf{Name of item}&Contact Key\\
-\textbf{Description of purpose}&The key generated locally by the contact which\\& will be used by the application encryption algorithm\\
+\textbf{Description of purpose}&The key generated locally by the contact\\& which will be used by the application\\& encryption algorithm\\
 \textbf{Source of input}&Contact\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&Standard GSM 03.38 character set\\
-\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the locally generated key to ensure synchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the locally generated key to ensure\\& synchronization, and therefore secure\\& communication, between the two \\&synchronized devices\\
+&\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
@@ -135,12 +150,7 @@
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
 \textbf{Relationships to other inputs/outputs}&All entered contact details are validated\\& and stored in the applciation's local database\\
 &\\
-%--------------------------------
-\end{tabular}
-%--------------------------------
-\newpage
-%--------------------------------
-\begin{tabular}{ll}
+&\\
 %--------------------------------
 \textbf{Found in requirement}&Add Contact : FRQ10\\
 \textbf{Name of item}&Error Message\\
@@ -150,6 +160,13 @@
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
 \textbf{Relationships to other inputs/outputs}&The contact details that had been entered\\& by the user was found invalid\\
 &\\
+&\\
+%--------------------------------
+\end{tabular}
+%--------------------------------
+\newpage
+%--------------------------------
+\begin{tabular}{ll}
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
 \textbf{Name of item}&Contact\\
@@ -159,6 +176,7 @@
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
 \textbf{Relationships to other inputs/outputs}&The selected contact's details stored in the\\& application database\\
 &\\
+&\\
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
 \textbf{Name of item}&Local Key\\
@@ -166,7 +184,8 @@
 \textbf{Source of input}&Application generated; user initiated\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&\\
-\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the key generated by the contact to ensure resynchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the key generated by the contact to ensure\\& synchronization, and therefore secure\\& communication, between the two \\&synchronized devices\\
+&\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
@@ -175,7 +194,8 @@
 \textbf{Source of input}&Contact\\
 \textbf{Destination of output}&N/A\\
 \textbf{Valid range, accuracy, and/or tolerance}&\\
-\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the locally generated key to ensure resynchronization,\\& and therefore secure communication, between the\\& two synchronized devices\\\\
+\textbf{Relationships to other inputs/outputs}&This key will be used in conjunction with\\& the locally generated key to ensure\\& synchronization, and therefore secure\\& communication, between the two \\&synchronized devices\\
+&\\
 &\\
 %--------------------------------
 \textbf{Found in requirement}&Edit Contact : FRQ11\\
@@ -185,6 +205,7 @@
 \textbf{Destination of output}&Application database\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
 \textbf{Relationships to other inputs/outputs}&All details related to the specific contact\\
+&\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -200,6 +221,7 @@
 \textbf{Destination of output}&Application interface\\
 \textbf{Valid range, accuracy, and/or tolerance}&N/A\\
 \textbf{Relationships to other inputs/outputs}&The contact details that had been\\& entered by the user was found to be invalid\\
+&\\
 &\\
 %--------------------------------
 \end{tabular}
@@ -217,12 +239,14 @@
 \item \textbf{Outputs:} A user account is either created and stored in the application database, or an error message is displayed and no account is created
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/AddUserStateDiagram.png}
+\newpage
 \item{Edit User Account : FRQ2}\\
 \textbf{(Source: Group Deliberation, Priority: Medium)}
 \begin{itemize}
 \item The user must be able to edit his/her user account details
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/EditUserStateDiagram.png}
+\newpage
 \item{Local Authentication : FRQ3}\\%meaning functional requirement 3
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
@@ -232,6 +256,7 @@
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/LocalAuthenticationStateDiagram.png}
 \end{itemize}
+\newpage
 \subsubsection{Messaging Functions}
 \begin{itemize}
 \item{Enter message : FRQ4}\\%meaning functional requirement 1
@@ -256,6 +281,7 @@
 \item The message text must be editable once it has been input into the application
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/EditMessageState.png}
+\newpage
 \item{Encrypt message : FRQ6}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
@@ -267,6 +293,7 @@
 \begin{itemize}
 \item Once a message has been encrypted, a user must be able to copy the ciphertext, and paste it into any selected messaging application
 \end{itemize}
+\newpage
 \item{Decrypt message : FRQ8}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
@@ -290,6 +317,7 @@
 \item \textbf{Outputs:} The contact is created and stored in the application database, or the application displays an error message if the contact's details entered was found incorrect
 \end{itemize}
  \includegraphics[width=13cm]{diagrams/StateDiagrams/AddContactStateDiagram.png}
+\newpage
 \item{Edit Contact : FRQ11}\\
 \textbf{(Source: Bernard Wagner, Priority: Medium)}
 \begin{itemize}
@@ -355,6 +383,7 @@
 \item This means that plaintext entered by the user is limited to 144 characters
 \item To maintain consistency, we enforce this as the maximum length of messages which the application can encrypt, regardless of the messaging application used to send the message
 \end{itemize}
+\newpage
 \item{The usable characters : DC2}\\
 \textbf{(Source: Bernard Wagner, Priority: High)}
 \begin{itemize}
