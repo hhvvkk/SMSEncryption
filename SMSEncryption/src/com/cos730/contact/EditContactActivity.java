@@ -268,6 +268,7 @@ public class EditContactActivity extends Activity {
 			dbHandler.deleteContact(currentContact);
 			
 			Intent intent = new Intent(this, ContactListActivity.class);
+			finish();
 			startActivity(intent);
 		}
 	}
